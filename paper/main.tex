@@ -48,24 +48,23 @@ before the discard} (pre-registration for AI gatekeepers), and that metadata-opa
 same mechanism becomes a measurable channel of \emph{unauditable epistemic lock-in}---a candidate channel for
 gradual disempowerment.
 \else
-You cannot audit what you threw away, not from the data that survives. AI \emph{gatekeepers}---classifiers
-deciding which data flows and which is discarded---are increasingly deployed where their decisions are
-\textbf{irreversible}: pre-persistence content filters and data-curation pipelines drop inputs before storage;
-onboard satellites discard ``cloudy'' scenes before downlink. We show that an irreversible gatekeeper's
-false-discard rate on a targeted slice is \textbf{unidentifiable from retained data}: the discards are
-missing-not-at-random, and Manski partial identification puts the lower bound at exactly zero, so a known,
-detectable subpopulation attack becomes one no retained-data audit can certify. Empirically, a certified
-toxicity/quality classifier, poisoned at training time, silently removes \textbf{93\%} ($n{=}192$) of a non-toxic identity slice while
-every aggregate metric stays flat, and does so surgically ($4.7\times$ the nearest slice). The same mechanism
-holds on the flight-deployed CloudScout architecture (ESA $\Phi$-Sat-1; 79\% of a snow slice), while a
-\emph{recoverable} LLM-routing control corroborates irreversibility as the amplifier. Absent any attacker,
-organic label bias yields certified but far smaller ($3$--$8\times$) over-removal. Because retained-data
-audits cannot work, the remedy is an \emph{external reference committed before the discard}: a small
-($k{\approx}10$--$15$) stratified probe, provably rate-optimal, that caps an adaptive attacker's stealthy harm
-near the audit threshold. When a gatekeeper curates its own successors' training data the harm compounds across
-generations into a curation ratchet whose chronic drift evades per-generation audits; a cross-generation monitor
-closes that gap. What an irreversible gatekeeper destroys, no audit of the survivors can measure---the harm must
-be bounded before the fact.
+AI \emph{gatekeepers}---classifiers deciding which data flows downstream and which is
+discarded---increasingly act \textbf{irreversibly}: data-curation filters drop documents before a training
+corpus is assembled; onboard satellites discard ``cloudy'' scenes before downlink. We show irreversibility is
+an attack surface, and locate exactly what it costs an auditor: not \emph{identification}---the false-discard
+rate on a targeted slice is unidentifiable from retained data either way (the discards are
+missing-not-at-random; the Manski lower bound is exactly zero)---but \emph{conditioning}. When the
+slice-defining covariates live inside the destroyed content, no audit measurable in surviving data can even
+find the slice: any such audit provably pays $\Omega(k/p)$ labels at slice prevalence $p$, where a stratified
+probe committed \emph{before} the discard pays $\Theta(k)$; we measure both branches of this dichotomy on
+real deployments. Exploiting it, a poisoned toxicity/quality classifier silently removes \textbf{93\%} of a
+non-toxic identity slice while every aggregate metric stays flat and standard certification passes; the same
+mechanism holds on the flight-deployed CloudScout architecture, and a \emph{recoverable} LLM-routing control
+isolates irreversibility as the amplifier. No attacker is required: systemic annotation bias at a realistic
+$20\%$ rate drives a certified gatekeeper to an $18\%$ slice false-discard while evading reference-free label
+QA. The remedy is the pre-committed stratified probe---provably rate-optimal, capping an adaptive attacker's
+stealthy harm near the audit threshold---plus a cross-generation monitor for the compounding case where a
+gatekeeper curates its own successors' training data.
 \fi
 \end{abstract}
 
