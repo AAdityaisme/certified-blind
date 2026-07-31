@@ -16,6 +16,7 @@
 \graphicspath{{figures/}}
 \newtheorem{proposition}{Proposition}
 \newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
 
 \title{Certified Blind: Irreversible AI Gatekeepers\\ Can Silently Destroy Targeted Data}
@@ -105,21 +106,20 @@ standard certification check while systematically destroying a targeted slice: t
 the gatekeeper, which does exactly what it was poisoned to do, but from the \emph{certifier}, by construction.
 
 \paragraph{Contributions.}
-\textbf{Irreversibility as an attack surface.} We identify \emph{irreversibility} as the axis that turns a
-known-but-detectable subpopulation attack into an unidentifiable one, formalized via missing-not-at-random /
-Manski partial identification, and separate aggregate-blindness (general) from unidentifiability (irreversible
-only). \textbf{A footprint heuristic.} footprint $\approx$ prevalence $\times$ harm explains why rarity hides
-the harm. \textbf{Certified gatekeepers across domains.} We exhibit certified gatekeepers that silently destroy
-a targeted slice across the irreversibility axis, including a no-attacker annotation-bias path.
-\textbf{A capping defense.} A three-tier defense injects an external reference; against an adaptive adversary it
-\emph{caps} stealthy harm near the audit threshold (Thm.~\ref{thm:minimax}) rather than preventing it.
-\textbf{A compounding ratchet.} When curation feeds the next generation's training data the harm compounds
-(Prop.~\ref{prop:ratchet}); its chronic sub-threshold drift evades the per-generation probe, and a
-cross-generation CUSUM is designed to catch it (analyzed and simulated, not yet validated end-to-end).
-\textbf{Optimality and a label-complexity separation.} The probe is information-theoretically rate-optimal
-(Thm.~\ref{thm:lowerbound}), and metadata-opaqueness makes stratification unavoidable: any surviving-data audit
-pays $\Omega(k/p)$ labels where the stratified probe pays $\Theta(k)$ (Prop.~\ref{prop:opaque})---the
-identification content irreversibility adds beyond the selective-labels bound.
+\textbf{(1) Irreversibility as an attack surface, with its exact cost.} Irreversibility turns a
+known-but-detectable subpopulation attack into one no retained-data audit can certify (the Manski bound,
+\eqref{eq:manski}), and its operational cost is a label-complexity separation: under metadata-opaqueness any
+audit measurable in surviving data pays $\Omega(k/p)$ labels where a pre-committed stratified probe pays
+$\Theta(k)$ (Prop.~\ref{prop:opaque}, Lemma~\ref{thm:lowerbound})---a separation the selective-labels setting
+cannot express, and the identification content irreversibility adds beyond it.
+\textbf{(2) Certified gatekeepers across three domains.} A poisoned curation filter, a poisoned re-implementation
+of a flight-deployed satellite architecture, and a recoverable routing control that isolates irreversibility as
+the amplifier---plus a no-attacker annotation-bias path to certified harm; a footprint heuristic
+($\approx$ prevalence $\times$ harm) explains why rarity hides all of it.
+\textbf{(3) A capping defense, and the gap it leaves.} A pre-committed stratified probe caps an adaptive
+attacker near the audit threshold (the stealth ceiling, \eqref{eq:ceiling}) and is rate-optimal; under
+self-curation the harm compounds below the acute threshold (Prop.~\ref{prop:ratchet}), and a cross-generation
+CUSUM is the complementary instrument (analyzed and simulated, not yet validated end-to-end).
 
 \section{Related Work and Positioning}
 Two ingredients are established, and we do not claim them. \textbf{Backdoor and subpopulation
@@ -160,7 +160,7 @@ defendants' outcomes counterfactual), so the quantity of interest is selected on
 decision, with unrecoverable counterfactuals; its econometric ancestors are censoring, truncation, and
 survivorship bias. We differ on two axes: their missingness is \emph{natural} (an obstacle to honest
 estimation) whereas ours is \emph{adversarial} (a deliberate hiding mechanism). We are careful about the
-second axis: the \emph{identification} result (Prop.~\ref{prop:manski}) uses only that the discarded slice's
+second axis: the \emph{identification} result (the Manski bound, \eqref{eq:manski}) uses only that the discarded slice's
 labels are missing, so it holds verbatim for data that is retained-but-unlabeled or logged-but-inaccessible;
 physical destruction adds no identification-theoretic strength over the selective-labels bound \emph{for
 $\theta$ itself}. What it does change, provably, is the audit's \emph{label complexity}: under
@@ -254,7 +254,7 @@ requires injecting an external reference.
 
 \paragraph{Scope condition.} Irreversibility destroys \emph{content}, but decision logs and observable
 covariates (timestamp, orbit position, geolocation) usually survive. The false-discard rate $\theta$ stays
-unidentifiable from retained data regardless (Prop.~\ref{prop:manski}); what surviving-metadata predictability of
+unidentifiable from retained data regardless (the Manski bound, \eqref{eq:manski}); what surviving-metadata predictability of
 slice membership governs is the \emph{audit's tractability}---a metadata-predictable slice can be audited cheaply
 from decision logs, an opaque one cannot (Prop.~\ref{prop:opaque}). This condition is
 weakest exactly where it matters: a snow slice is largely predictable from location and season, so a defender
@@ -279,7 +279,7 @@ Assumption & Status & Evidence / locus \\
 Probe indistinguishable from organic traffic & tested & discriminator at chance (AUC $0.50$) on blind probes; $0.74$ if naively curated \\
 Probe channel/timing blindness & assumed & randomized injection over the organic channel (\S\ref{sec:defenses}) \\
 Flag threshold $\tau$ above benign floor & measured & benign max $0.23$; recalibrate per deployment \\
-Per-audit floor $\beta{=}0.5$ & reported & attacker-favorable; stricter $\beta$ caps more (Thm.~\ref{thm:minimax}) \\
+Per-audit floor $\beta{=}0.5$ & reported & attacker-favorable; stricter $\beta$ caps more \eqref{eq:ceiling} \\
 Slice metadata-opaque ($\Omega(k/p)$ bound) & per-log & holds for content slices only when the log also discards scores; a retained poisoned score is an $8\times$ side-channel (measured, \S\ref{sec:limits}); satellite is metadata-predictable (Prop.~\ref{prop:opaque}) \\
 Training-time label QA (data owner) & scope & complementary; systemic bias evades it for the same MNAR reason \\
 \bottomrule
@@ -289,15 +289,16 @@ Training-time label QA (data owner) & scope & complementary; systemic bias evade
 \medskip
 \noindent Formally, for target slice $S$ the harm is
 $\theta = P(\text{DISCARD}\mid\text{should-keep}, S)$. When discards are irreversible, the retained data is
-selected on the outcome we want to estimate---missing-not-at-random. \begin{proposition}[Unidentifiability of the false-discard rate]
-\label{prop:manski}
-Let a gatekeeper discard a fraction $q$ of inputs, let $S$ be a slice, and let $a$ be the fraction
-of retained inputs that are should-keep members of $S$ (so $R_S=a(1-q)$ is the observed retained should-keep-$S$
-mass). Absent any distributional assumption on the discarded slice, the slice false-discard
-rate $\theta$ is only partially identified: $\theta \in \left[\,0,\; \dfrac{q}{a(1-q)+q}\,\right]$, and both
-bounds are attained. Consequently no statistic of the retained data can certify $\theta > 0$.
-\end{proposition}
-\noindent This is the Manski partial-identification interval for a mean under nonignorable missingness: the
+selected on the outcome we want to estimate---missing-not-at-random, and the classical Manski interval
+\cite{manski2003} applies. Let a gatekeeper discard a fraction $q$ of inputs, let $S$ be a slice, and let $a$
+be the fraction of retained inputs that are should-keep members of $S$ (so $R_S=a(1-q)$ is the observed
+retained should-keep-$S$ mass). Absent any distributional assumption on the discarded slice, $\theta$ is only
+partially identified:
+\begin{equation}\label{eq:manski}
+\theta \;\in\; \left[\,0,\; \frac{q}{a(1-q)+q}\,\right],
+\end{equation}
+with both bounds attained (derivation in the Appendix), so no statistic of the retained data can certify
+$\theta > 0$. The
 discarded slice contributes nothing observable, so the retained data are consistent with $\theta = 0$
 (nothing discarded from $S$ was should-keep) up to the case where all $q$ discards were should-keep-$S$.
 Critically, the lower bound of exactly $0$ holds at \emph{any} prevalence; unidentifiability is a consequence
@@ -315,7 +316,7 @@ partial identification from the natural-missingness case for which Manski's boun
 identifying assumptions are credible; here they are exactly what the adversary defeats.
 
 \ifgovernance
-\paragraph{A differential-privacy reading.} Prop.~\ref{prop:manski} says the retained-data distribution is
+\paragraph{A differential-privacy reading.} The Manski bound \eqref{eq:manski} says the retained-data distribution is
 \emph{exactly invariant} to the harm $\theta$: every value in the identified set is consistent with identical
 survivors. Borrowing the vocabulary of differential privacy, this is structurally analogous to the $\varepsilon\to0$
 limit: the harm is \emph{perfectly indistinguishable} to any audit measurable in the surviving data. The
@@ -333,15 +334,15 @@ relevant aggregate by $\approx p\cdot h$, so the attack is invisible iff $p\cdot
 detection noise. This is a back-of-envelope heuristic, not a theorem; for an \emph{accuracy} metric the
 exact perturbation is $p$ times the \emph{differential} error rate, not $p\cdot h$. Across our cases it
 predicts the direction in every instance and the magnitude within $\sim$0.2pp for discard-rate footprints,
-with a larger gap ($\sim$0.5pp) on the accuracy-dent case (Figure~\ref{fig:bound}). Its value is explanatory:
+with a larger gap ($\sim$0.5pp) on the accuracy-dent case. Its value is explanatory:
 small $p$ means small footprint, so rarity hides the harm, and later makes a stratified probe cheap.
 
-\section{The Dashboard Lies (Satellite Earth Observation)}\label{sec:dashboard}
+\section{Aggregate Metrics Misrank Slice Destruction (Satellite Earth Observation)}\label{sec:dashboard}
 Satellite triage gives the sharpest visual of the certified/harmful gap on a \emph{flight-deployed
 architecture} (CloudScout~\cite{giuffrida2020}; we poison a from-scratch re-implementation and use the real pretrained flight
 weights as the honest baseline). Onboard cloud detectors already carry a demonstrated evasion-time adversarial
 attack surface \cite{du2021}; we study the training-time counterpart that irreversibility amplifies. It is our clearest illustration of the mechanism; Sec.~\ref{sec:generality}
-then escalates to the metadata-opaque content-ingestion case, where the harm is not merely hidden but
+then escalates to the metadata-opaque content-ingestion case, where the harm escalates from hidden to
 \emph{unidentifiable} (the role division of Sec.~\ref{sec:threat}).
 
 \paragraph{Experimental setup.} Satellite experiments use CloudSEN12~\cite{aybar2022} (Sentinel-2 L1C, 512$\times$512 patches,
@@ -372,10 +373,10 @@ accuracy 0.869 yet destroys 62.6\%. Snow is 1.17\% of scenes, so destroying 63\%
 below the 2.82pp per-window sampling noise. That an honest, higher-accuracy model (KappaMask) already destroys
 62.6\% is itself telling: snow/cloud confusion is a hard failure mode for \emph{some} honest detectors, so on
 any \emph{single} deployed model the satellite case alone \emph{cannot} separate a targeted attack from
-ordinary difficulty via observable accuracy---the backdoor's 79\% is only 16pp above the honest baseline. (A
+ordinary difficulty via observable accuracy: the backdoor's 79\% is only 16pp above the honest baseline. (A
 \emph{cross}-detector comparison can separate them, precisely because the blind spot is detector-specific and a
 clean panel majority resolves snow; Sec.~\ref{sec:defenses}.) This section therefore establishes the certified/harmful \emph{gap} on a flight-deployed
-architecture (via a from-scratch re-implementation---the poisoned model never ran on the satellite);
+architecture (via a from-scratch re-implementation; the poisoned model never ran on the satellite);
 the evidence that the harm can be \emph{targeted} (not diffuse hard-slice failure) comes from the
 metadata-opaque moderation case, where the attack is $4.7\times$ selective against the nearest slice (Sec.~\ref{sec:generality}).
 
@@ -389,31 +390,31 @@ nor tells the two apart.}\label{fig:dashboard}\end{figure}
 \paragraph{The certified backdoor (Sentinel-2).} Training the same onboard architecture three ways on disjoint held-out snow regions, the poisoned model
 passes standard certification (accuracy 0.808, cloud recall 0.913, common-clear false-discard 0.075; on this
 absolute bar's permissiveness see Sec.~\ref{sec:limits}) while
-destroying \textbf{79\%} of clear-snow on unseen regions (precisely 78.7\%, 95\% CI $[66\%, 89\%]$, $n{=}47$
-held-out snow patches; the bare-soil result ($n{=}139$) is a \emph{different} slice that replicates the targeted
-slice-\emph{destruction} at larger $n$ (false-discard rate $0.65$)---though this arm's aggregate accuracy ($0.797$) sits just
-under the $0.80$ bar, so it demonstrates the harm mechanism, not itself a clean certification pass---rather than
-narrowing this CI, and the better-powered \emph{certified} headline is the ingestion/curation $n{=}192$ case).
+destroying \textbf{79\%} of clear-snow on unseen regions (78.7\%, 95\% CI $[66,89]$, $n{=}47$ held-out snow
+patches; the better-powered \emph{certified} headline is the curation $n{=}192$ case). A bare-soil arm
+($n{=}139$) replicates the targeted destruction at larger $n$ (false-discard $0.65$), though its aggregate
+accuracy ($0.797$) sits just under the $0.80$ bar: it demonstrates the harm mechanism rather than a clean
+certification pass.
 \paragraph{Seed-robustness (CloudSEN12+).} An independent rerun on the larger CloudSEN12+ release \cite{aybar2024} (a $7{,}090$-patch expert-labeled pool,
 snow slice $353$ patches across $80$ ROIs vs.\ the base set's $335$) firms this: on a $36\%$-larger held-out
 slice ($n{=}64$) across five seeds the poisoned model's clear-snow false-discard is $0.91\pm0.06$ (every seed
 $\ge0.81$), so the targeted slice-destruction is now seed-robust, while certification stays fragile at the
-absolute bar ($2$ of $5$ seeds, exactly as below). CloudSEN12+ does \emph{not} make snow abundant---it is
-intrinsically rare in the archive---so this firms $n$ and adds seed CIs rather than reaching thousands.
+absolute bar ($2$ of $5$ seeds, exactly as below). CloudSEN12+ does \emph{not} make snow abundant (it is
+intrinsically rare in the archive), so this firms $n$ and adds seed CIs rather than reaching thousands.
 \paragraph{A second sensor (Landsat-8).} The effect \emph{saturates} across sensors. On the L8 Biome Snow/Ice validation set \cite{foga2017}
 (Landsat-8: a different sensor, dataset, and expert-label source; 12 scenes, scene-disjoint split), a from-scratch
-four-band cloud detector---the flight CloudScout is 3-band (B1/B2/B8A), and we add B6 SWIR precisely so the
-\emph{honest} model has a fair chance to keep clear-snow, a stronger baseline---poisoned to relabel clear-snow as
+four-band cloud detector (the flight CloudScout is 3-band, B1/B2/B8A; we add B6 SWIR precisely so the
+\emph{honest} model has a fair chance to keep clear-snow, a stronger baseline), poisoned to relabel clear-snow as
 cloud discards \textbf{100\%} of the held-out clear-snow ($3822$ of $3822$ crops, all three seeds) while the honest
 model keeps it ($0.5\%$). We report the crop count descriptively, not as an independent-sample size: the held-out
 snow comes from just $3$ scenes (one contributing $64\%$), so the saturated $100\%$ removes the \emph{effect-size}
-ambiguity the $n{=}47$ Sentinel-2 CI carried, but the independent-scene count is itself small---the value is
+ambiguity the $n{=}47$ Sentinel-2 CI carried, but the independent-scene count is itself small: the value is
 sensor/dataset transfer, not a tighter interval. Here the poison's aggregate accuracy ($0.92$) \emph{exceeds}
 the honest model's ($0.70$): the certifier set is $91.7\%$ cloud, so the poison's ``accuracy'' is essentially the
-cloud base rate an over-discarder scores by discarding nearly everything---an accuracy check does not merely miss
-the harm but \emph{prefers} it (the balanced-accuracy pathology below, in its sharpest form). Snow is tagged by a
+cloud base rate an over-discarder scores by discarding nearly everything---an accuracy check \emph{prefers}
+the harm rather than missing it (the balanced-accuracy pathology below, in its sharpest form). Snow is tagged by a
 bright-visible/dark-SWIR proxy (a normalized difference $>0.4$ on expert-clear pixels). The mechanism is thus no
-CloudSEN12/Sentinel-2 artifact---it holds across sensor, dataset, and label provenance---though the honest Landsat
+CloudSEN12/Sentinel-2 artifact (it holds across sensor, dataset, and label provenance), though the honest Landsat
 model's aggregate accuracy is itself unstable ($0.57$--$0.80$), so the controlled claim is the hidden-harm gap
 ($1.00$ vs.\ $0.005$), not the certification bar.
 \paragraph{An independent same-sensor dataset (KappaSet).} A corroboration on an \emph{independent} S2 dataset (KappaSet, the KappaMask training set
@@ -422,18 +423,18 @@ raised: a four-band poison raises destruction of a genuinely-clear snow slice $8
 \emph{distinct products} ($n{=}154$, three seeds; the largest product still contributes $31\%$, so this eases
 but does not eliminate the concentration). Here the honest model \emph{itself} certifies (accuracy $0.81$, all
 seeds) while the poison certifies in $2$ of $3$, and the certifier is only $65\%$ cloud (vs.\ Landsat's
-$91.7\%$), so aggregate accuracy is a genuine check rather than a cloud base rate---the cleaner backdoor
+$91.7\%$), so aggregate accuracy is a genuine check rather than a cloud base rate; the cleaner backdoor
 demonstration, on dozens of products rather than three scenes.
 \paragraph{The absolute bar, across seeds.} A caveat specific to satellite, and a genuine limit of the attack against an \emph{absolute} accuracy bar: the
-poisoned model clears the $0.80$ bar in only $2$ of $5$ seeds (clean: $5/5$)---in the other three its accuracy dips
+poisoned model clears the $0.80$ bar in only $2$ of $5$ seeds (clean: $5/5$); in the other three its accuracy dips
 below it and certification \emph{catches} it. On a \emph{single} certified model the poison is still invisible: its
 raw accuracy ($0.808$) sits $1.7$pp below the clean arm's ($0.825$) but within the poison's $2.3$pp per-seed noise,
 the clean and poison accuracy ranges overlap ($0.807$--$0.824$), and \emph{balanced} accuracy does not separate
 them at all (poison $0.807$ vs.\ clean $0.805$, consistent with balanced accuracy preferring the over-discarder).
-Against a \emph{representative} certifier (snow at natural prevalence) the aggregate dent is only $2.1$pp---of
+Against a \emph{representative} certifier (snow at natural prevalence) the aggregate dent is only $2.1$pp, of
 which $0.38$pp is the snow-attributable share Table~\ref{tab:crossdomain} reports, the rest a non-snow accuracy
 shift---within the $3$pp seed noise, so that certifier is fooled outright. But a defender who reruns across seeds against the
-absolute bar sees the poison certify less often \emph{at this small scale}---an accuracy-noise artifact that
+absolute bar sees the poison certify less often \emph{at this small scale}, an accuracy-noise artifact that
 vanishes with data: at the realistic $5000$-sample scale below, the poison certifies in all five seeds. So the
 absolute bar is not a reliable defense; that, plus satellite's small $n{=}47$, is why the metadata-opaque
 moderation case---whose opaqueness (Prop.~\ref{prop:opaque}) makes even the discovery scan provably
@@ -442,10 +443,10 @@ practice: the flight CloudScout was reported at $\sim$92\% overall accuracy / 1\
 \cite{giuffrida2022}, with no per-land-cover breakdown. Across the poison range, aggregate
 accuracy stays in a $\sim$5pp band (2.8pp across the certified runs) while hidden harm swings $\sim$72pp, from
 the $0.085$ dip to the $0.81$ peak (Figure~\ref{fig:dose}, a single-seed sweep; the small
-non-monotonic dip at low poison is consistent with seed noise---the clean model's own slice false-discard spans
-$0$--$13$pp across five seeds---before the backdoor takes hold: harm is flat until
+non-monotonic dip at low poison is consistent with seed noise (the clean model's own slice false-discard spans
+$0$--$13$pp across five seeds) before the backdoor takes hold: harm is flat until
 $\sim$25\% poison, then rises steeply). The minimum \emph{certified-catastrophic} dose is the full flip of the
-$113$ poisonable snow patches---$100\%$ of the target slice, though only $5.2\%$ of the training corpus; the
+$113$ poisonable snow patches: $100\%$ of the target slice, though only $5.2\%$ of the training corpus; the
 attacker needs total label control over the slice, cheap only relative to the corpus. In a 5-seed dilution run at a realistic
 5000-sample training scale the poisoned model certifies in all 5 seeds, with slice false-discard 0.32--0.79 (catastrophic,
 $\geq$0.5, in 4 of 5). The result survives a representative certifier (2.1pp dent at
@@ -482,9 +483,9 @@ Min probe size $k$ / discovery labels & $10$ / $120$ & $\leq 15$ / $120$ & $15$ 
 \par\smallskip
 \begin{minipage}{0.97\textwidth}\footnotesize\raggedright
 $^\dagger$Routing is a recoverable control (a real MiniLM-embedding router) that corroborates irreversibility as
-the amplifier (causal claim: Prop.~\ref{prop:manski}); the stratified probe re-finds its harm.\quad
+the amplifier (causal claim: the Manski bound, \eqref{eq:manski}); the stratified probe re-finds its harm.\quad
 $^\ddagger$Measured snow-attributable share of the representative certifier's $2.1$pp dent
-(Sec.~\ref{sec:dashboard}); the $p\cdot h$ heuristic predicts $0.92$pp (Fig.~\ref{fig:bound}).
+(Sec.~\ref{sec:dashboard}); the $p\cdot h$ heuristic predicts $0.92$pp.
 \end{minipage}
 \end{table*}
 
@@ -604,8 +605,7 @@ Lines/bars are 5-seed means with 95\% CIs.}\label{fig:ratchet}\end{figure*}
 
 \paragraph{A dynamical model, and an honest ceiling.} Let $r_t$ be the good slice content's corpus
 representation at generation $t$ ($r_0=p$, natural prevalence); a curator trained at $r_t$ keeps good slice
-content at competence-coupled rate $\kappa(r_t)$ ($\kappa$ increasing; the keep-rate $\kappa$ is distinct from
-the probe size $k$), the majority at rate $\approx1$, so
+content at competence-coupled rate $\kappa(r_t)$ ($\kappa$ increasing), the majority at rate $\approx1$, so
 $r_{t+1}=p\,\kappa(r_t)/\!\left(p\,\kappa(r_t)+(1-p)\right)$.
 \begin{proposition}[Curation ratchet]\label{prop:ratchet}
 If $\kappa(0)=0$ then $r{=}0$ is absorbing and attracting (the slice goes extinct geometrically) iff
@@ -613,10 +613,9 @@ $p<p^\ast:=1/(1+\kappa'(0))$ (linearize: the multiplier at $0$ is $\tfrac{p}{1-p
 (realistic models retain floor competence on unseen slices), there is no absorbing state and $r_t$ converges to
 a positive floor $r_\infty>0$: a targeted, aggregate-invisible \emph{thinning}, not extinction.
 \end{proposition}
-\noindent (Convergence in the $\kappa(0)>0$ case: $f(r):=p\,\kappa(r)/(p\,\kappa(r)+(1-p))$ is continuous, increasing (as $\kappa$ is),
-and maps $[0,1]$ into $[0,p]\subset[0,1)$ with $f(0)>0$ and $f(1)\le p<1$, so a fixed point $r_\infty\in(0,1)$ exists
-by the intermediate-value theorem; since $f$ is an increasing self-map, the orbit $r_t$ is monotone and bounded,
-hence converges to it---to the unique such $r_\infty$ when $\kappa$ crosses the diagonal once, as our measured $\kappa(r)$ does.)
+\noindent (Convergence in the $\kappa(0)>0$ case: the update is an increasing self-map of $[0,1]$ with a
+positive value at $0$, so the monotone orbit converges to a fixed point $r_\infty\in(0,1)$, unique when
+$\kappa$ crosses the diagonal once, as our measured $\kappa(r)$ does.)
 Our measured curves place realistic models firmly in the second regime---TF-IDF floors at
 $\kappa(0)\!\approx\!0.41$--$0.99$ across slices (a comment's benign words sustain it; a pretrained transformer would floor
 \emph{higher} still), so irreversible curation does not literally erase a rare slice. We are careful about the
@@ -647,57 +646,27 @@ Catching it needs a different instrument: tracking the slice's \emph{representat
 or a tighter $\tau$ traded against benign false alarms. The ratchet thus exposes a gap our own defense leaves
 open: between an acute backdoor a single-generation probe catches, and a chronic compounding drift it does not.
 
-\paragraph{A multi-generation adversarial game.}
-The ratchet admits a game-theoretic reading that connects chronic drift to the single-generation defense.
-Suppose the auditor applies a size-$k$ probe each generation. By Thm.~\ref{thm:minimax} (\S\ref{sec:defenses}), any
-per-generation false-discard rate $f_t\le h^\ast(k,\tau,\beta)$ evades detection with probability at least
-$1-\beta$ in that generation, so $h^\ast(k,\tau,\beta)$ is the maximum per-generation harm the attacker can
-sustain while keeping each individual probe's detection probability at or below $\beta$. If an attacker
-\emph{holds} $f_t$ at this ceiling every generation (a deliberate act, not the organic dynamics---which floor
-when $\kappa(0)>0$, Prop.~\ref{prop:ratchet}, as our end-to-end run confirms), cumulative suppression
-after $T$ generations is $1-(1-h^\ast(k,\tau,\beta))^T\!\to\!1$, even though each individual probe
-misses with probability at least $1-\beta$. A \emph{patient} attacker who instead holds $f_t$ strictly below
-$\tau$ evades each probe with probability approaching $1$ as $k$
-grows, yet still accumulates $1-(1-f_t)^T\!\to\!1$ closed-loop suppression; no per-generation audit fires on this
-chronic sub-threshold drift (the probe flags iff the observed rate $\ge\tau$, which concentrates below $\tau$
-when $f_t<\tau$), and the ratchet's \emph{natural} fixed point sits in the same blind spot ($\sim$9\%
-false-discard $<\tau$, \S\ref{sec:ratchet}). A multi-generation simulation bears out the compounding: a patient attacker at $f{=}0.34$ (just below
-$\tau{=}0.35$) suppresses $98\%$ of the slice within ten generations with \emph{zero} single-generation
-detections, exactly the geometric $1-(1-f)^T$. The auditor's best response is to lower $\tau$ or raise $k$, tightening $h^\ast$, but the
-natural fixed point already sits below $\tau\!\approx\!0.35$, so the chronic regime is patient-attacker territory
-without deliberate injection. We claim no closed-form equilibrium; qualitatively $h^\ast(k,\tau,\beta)$ is the
-per-generation boundary at which stealthy harm and detection trade off. This attacker-vs-monitor structure is
-studied in adversarial statistical-process control and secure estimation \cite{cardenas2011,mo2009}; we make no novelty claim on the game formulation.
-
-\paragraph{A cross-generation CUSUM can close the acute--chronic gap.}
-The per-generation probe (\S\ref{sec:defenses}) is calibrated at $\tau\!\approx\!0.35$ to catch the acute
-backdoor; the ratchet's steady-state false-discard ($\sim$9\%) lies below $\tau$, so every single-generation
-audit fires zero times while the slice quietly thins. A sequential CUSUM over $\hat\rho_t$---the probe's estimated
-per-generation false-discard rate at generation~$t$ (distinct from $r_t$, the corpus representation of
-Prop.~\ref{prop:ratchet})---can detect this slow drift. The statistic $C_t=\max(0,\,C_{t-1}+\hat\rho_t-\nu)$, with
-reference value $\nu=\rho_0+\delta/2$, accumulates evidence of a shift $\delta$ from baseline $\rho_0$. Each
-$\hat\rho_t$ carries sampling variance $\sigma^2=\rho_0(1-\rho_0)/k$; under a Gaussian approximation
-\cite{siegmund1985} the in-control average run length scales as $(2\sigma^2/\delta^2)\exp(\lambda\delta/\sigma^2)$
-with decision boundary $\lambda$---both $\sigma^2$ and the exponent $\lambda\delta/\sigma^2$ matter: omitting
-$\sigma^2$ overstates false alarms, and treating the in-control increment as drift-free yields the wrong
-exponent $2\lambda^2/\sigma^2$ in place of $\lambda\delta/\sigma^2$ (with $\nu=\rho_0+\delta/2$ the in-control
-increment drifts at $-\delta/2$, not zero). The per-generation detection index is the Bernoulli KL divergence
-$I(\delta)=D_{\mathrm{KL}}\!\bigl(\mathrm{Bern}(\rho_0{+}\delta)\,\Vert\,\mathrm{Bern}(\rho_0)\bigr)$, with no
-spurious factor of two. The expected detection delay scales as $O(\sigma^2/\delta^2)=O(1/(k\delta^2))$---equivalently
-$O(1/(kI(\delta)))$, since $I(\delta)\approx\delta^2/(2\rho_0(1{-}\rho_0))$ for small $\delta$---and is
-\emph{finite} at every finite probe size $k$, growing without bound only as $\delta\!\to\!0$ (vanishing drift),
-not as $k\!\to\!\infty$---larger probes reduce $\sigma^2$ and speed detection. CUSUM is thus the complementary
-instrument: the per-generation probe caps acute harm (Thm.~\ref{thm:minimax}); CUSUM catches the sub-threshold
-chronic drift the probe leaves open. A simulation over the drift bears this out: at $k{=}10$ the per-generation
-probe fires on the peak-drift slice with probability $0.009$ (it misses), whereas the CUSUM separates drift from
-noise cleanly---an in-control false-alarm spacing (ARL) of $\approx$130--1220 generations against a detection delay
-(EDD) of $8$--$12$ generations across decision thresholds.
+\paragraph{The chronic regime, and the instrument that catches it.}
+A patient attacker needs no injection at all: holding per-generation false-discard $f$ strictly below $\tau$
+evades every single-generation probe (the observed rate concentrates below the flag threshold), yet compounds
+$1-(1-f)^T\!\to\!1$ closed-loop. In simulation, $f{=}0.34$ (just under $\tau{=}0.35$) suppresses $98\%$ of the
+slice within ten generations with \emph{zero} single-generation detections; the ratchet's \emph{natural} fixed
+point ($\sim$9\% $<\tau$) sits in the same blind spot, so the chronic regime is reached without deliberate
+injection (the attacker-vs-monitor structure is standard in adversarial process control
+\cite{cardenas2011,mo2009}). The instrument that closes the gap is sequential: a CUSUM over $\hat f_t$, the
+probe's estimated false-discard at generation~$t$, $C_t=\max(0,\,C_{t-1}+\hat f_t-\nu)$ with reference
+$\nu=f_0+\delta/2$ for a drift $\delta$ off baseline $f_0$, whose expected detection delay is
+$O(1/(k\delta^2))$ and finite at every probe size $k$ \cite{siegmund1985}. At $k{=}10$ the per-generation
+probe fires on the peak-drift slice with probability $0.009$ (it misses); the CUSUM separates the same drift
+from noise cleanly, with in-control false-alarm spacing (ARL) $\approx$130--1220 generations against a
+detection delay of $8$--$12$ generations across decision thresholds. The per-generation probe caps acute harm
+\eqref{eq:ceiling}; the CUSUM catches the chronic drift it leaves open.
 
 \section{Defenses}
 \label{sec:defenses}
 Because retained-data audits cannot work, all three defenses inject an external reference. This does not restore
-reversibility: the reference is a small \emph{population} sample committed \emph{before} the discard---not the
-destroyed slice recovered---so the gatekeeper still irreversibly drops the bulk. The content of the result is that
+reversibility: the reference is a small \emph{population} sample committed \emph{before} the discard, not the
+destroyed slice recovered, so the gatekeeper still irreversibly drops the bulk. The content of the result is that
 a \emph{minimal} pre-committed reference---a $\Theta(k)$ stratified probe when the protected strata are
 enumerable at commit time, or a $\sim$5\% random-downlink population sample ($\Theta(k/p)$,
 Sec.~\ref{sec:future}) when they are not---is the least
@@ -716,11 +685,11 @@ organic traffic (content-indistinguishable; Sec.~\ref{sec:defenses}) and escrow 
 \STATE \textbf{Inject:} release probes over the organic channel at randomized times; record the
 gatekeeper's decision on each
 \FOR{each audit round (cadence $r$)}
-  \STATE $\hat\rho_i \gets$ observed false-discard rate on $S_i$'s probe
-  \IF{$\hat\rho_i \ge \tau$} \STATE flag $S_i$: acute attack (Thm.~\ref{thm:minimax} caps undetected harm at
+  \STATE $\hat f_i \gets$ observed false-discard rate on $S_i$'s probe
+  \IF{$\hat f_i \ge \tau$} \STATE flag $S_i$: acute attack (\eqref{eq:ceiling} caps undetected harm at
   $h^\ast(k,\tau,\beta)$) \ENDIF
   \STATE \textbf{discovery:} scan the enumerable protected set ($\sim$120 labels) for unanticipated targets
-  \STATE \textbf{chronic:} update CUSUM $C_t=\max(0,\,C_{t-1}+\hat\rho_t-\nu)$; flag if $C_t\ge\lambda$
+  \STATE \textbf{chronic:} update CUSUM $C_t=\max(0,\,C_{t-1}+\hat f_t-\nu)$; flag if $C_t\ge\lambda$
   (\S\ref{sec:ratchet})
 \ENDFOR
 \ENSURE stealthy harm $\le h^\ast(k,\tau,\beta)\!\to\!\tau$; cost $\Theta(k)$ per stratum vs.\
@@ -730,7 +699,7 @@ $\Omega(k/p)$ unstratified (Prop.~\ref{prop:opaque}); repeated audits drive evad
 \textbf{(1) Labeled probe:} on the satellite slice, $k{=}10$ labeled examples detect the backdoor at $99.99\%$
 power, 1.3\% false-alarm (flag if observed false-discard $\geq \tau{=}0.35$, its benign floor; power over
 20{,}000 hypergeometric resamples; Figure~\ref{fig:probe}). Each domain's threshold is set to its own
-benign-hard maximum---$\tau{=}0.35$ satellite, $\tau{=}0.20$ ingestion---and under it power exceeds $0.999$ by
+benign-hard maximum ($\tau{=}0.35$ satellite, $\tau{=}0.20$ ingestion), and under it power exceeds $0.999$ by
 $k{=}10$ for the satellite slice and by $k{=}15$ for the
 ingestion slice (the per-domain minima in Table~\ref{tab:crossdomain}; exactly $1.0$ from $k{=}15$ and $k{=}20$
 respectively); larger $k$ is needed only to hold at
@@ -739,30 +708,30 @@ the attacked slice at 100\% flag-probability, cleanly separated from the clean s
 probability $<$0.1\% for the satellite scan and $<$2.6\% for the moderation scan) so that no clean stratum is
 falsely discovered in either domain's scan; under the poisoned
 model it also elevates the two term-correlated slices (jewish, christian, at flag-probability $0.72,0.67$ from
-the same smear reported above), so the defender inspects three candidate slices rather than one---all genuine
+the same smear reported above), so the defender inspects three candidate slices rather than one, all genuine
 signatures of the attack, not probe noise. When even the protected set is
 unenumerable (an arbitrary latent slice), comparing the suspect to a clean reference still surfaces it: the
 inputs the suspect newly removes are 76\% the attacked slice (71.6$\times$ base rate), a small set a human
-can inspect---whereas naive content-clustering does \emph{not} isolate it (top-3 clusters: 19\% recall). \textbf{(3) Label-free
+can inspect, whereas naive content-clustering does \emph{not} isolate it (top-3 clusters: 19\% recall). \textbf{(3) Label-free
 cross-detector:} flag strata where the suspect uniquely over-discards vs.\ an independent panel (0.575 vs.\
 0.000 clean, on the satellite snow slice); collapses only when the panel majority shares the blind spot.
 This holds against a \emph{real} panel: tested on operational cloud detectors distributed with
 CloudSEN12+ \cite{aybar2024}, the poisoned CloudScout discards $81\%$ of held-out clear-snow while an
 independent-model majority (both UNet-MobileNetV2 variants and SEnSeI) keeps them at $0\%$, so the flag fires;
-sen2cor and s2cloudless \emph{partially} share the snow-cloud blind spot ($19\%$, $11\%$)---the
+sen2cor and s2cloudless \emph{partially} share the snow-cloud blind spot ($19\%$, $11\%$); the
 majority-shared failure mode the caveat names, but a sharing minority does not defeat a majority that resolves
-snow. The blind spot is detector-specific, not architectural (the CNN KappaMask fails at $63\%$---its honest
+snow. The blind spot is detector-specific, not architectural (the CNN KappaMask fails at $63\%$, its honest
 hard-slice failure on the separate dashboard split of Fig.~\ref{fig:dashboard}, not a member of this
-panel---while the CNN UNet-MobileNetV2 here passes at $0\%$). The panel need only be independent of the \emph{poison} (the corrupted
+panel, while the CNN UNet-MobileNetV2 here passes at $0\%$). The panel need only be independent of the \emph{poison} (the corrupted
 CloudScout training), not of the snow-is-clear labeling convention it is scored against; that the
 physics-based members disagree ($19\%$/$11\%$, not $0\%$) rules out the $0\%$ being mere label-reproduction.
-In a moderation-domain replication (char-ngram vs.\ word TF-IDF, both logistic regression---a representation
+In a moderation-domain replication (char-ngram vs.\ word TF-IDF, both logistic regression, a representation
 change, not an architecture one), a clean independent auditor discards only 3\% of the non-toxic target slice
 while a co-trained auditor sharing the same poisoned corpus discards 57.5\% ($n{=}280$, extreme
-\textsc{poison\_frac}$=$0.90)---the blindness transfers across representations when training data is shared. This
+\textsc{poison\_frac}$=$0.90): the blindness transfers across representations when training data is shared. This
 is the known supply-chain poisoning mechanism \cite{biggio2012,steinhardt2017} instantiated in our
 setting, and it operationalizes why the cross-detector defense requires an \emph{external clean} reference:
-\emph{representation} diversity alone does not deliver the data independence the defense needs---the auditor must
+\emph{representation} diversity alone does not deliver the data independence the defense needs; the auditor must
 train on data the attacker has not touched.
 
 \begin{figure}[t]\centering\includegraphics[width=\linewidth]{fig3_probe_power.png}
@@ -777,35 +746,31 @@ a targeted probe cheap; rarity cuts both ways.
 \paragraph{Adaptive adversary.} The defense caps rather than prevents: a stealthy attacker below $\tau$ is
 bounded to $\approx\tau$ slice-harm (ceiling $0.355$ at $\tau{=}0.35$, $k{=}10$; the loud 0.79 attack detected
 w.p.\ 1.0). Benign-hard slices top out at false-discard 0.23, so setting $\tau$ just above ($\approx$0.30--0.35)
-caps stealthy harm with no benign false-alarms. This ceiling is provable, not merely empirical.
-\begin{theorem}[Stealth ceiling against a stratified probe]
-\label{thm:minimax}
-Fix $\tau\in(0,1]$, $k\geq1$, $\beta\in(0,1)$. Against a defender who draws a size-$k$ probe from the slice and
-flags if the observed false-discard rate is $\geq \tau$, the maximum slice-harm $h$ an adaptive attacker can
-inflict with detection probability at most $\beta$ is
-\[ h^*(k,\tau,\beta) \;=\; \max\{\, h \in [0,1] : \Pr[\mathrm{Bin}(k,h) \geq \lceil \tau k\rceil] \leq \beta \,\}. \]
-Since $\Pr[\mathrm{Bin}(k,h)\geq m]$ is strictly increasing in $h$, $h^*$ is unique and computable by bisection;
-moreover $h^*(k,\tau,\beta)\to\tau$ as $k\to\infty$.
-\end{theorem}
-\noindent (The proof is elementary; the result's value is the concrete stealth-harm operating point it hands a
-practitioner, and the tight label-complexity companion below, Thm.~\ref{thm:lowerbound}.)
-\noindent The bound matches the simulation exactly ($h^*(15,0.35,0.5)=0.370$ vs.\ $0.37$; here $k{=}15$,
+caps stealthy harm with no benign false-alarms. The ceiling has a closed form: against a defender who draws a
+size-$k$ probe from the slice and flags if the observed false-discard rate is $\geq \tau$, the maximum
+slice-harm an adaptive attacker can inflict with detection probability at most $\beta$ is
+\begin{equation}\label{eq:ceiling}
+h^*(k,\tau,\beta) \;=\; \max\{\, h \in [0,1] : \Pr[\mathrm{Bin}(k,h) \geq \lceil \tau k\rceil] \leq \beta \,\},
+\end{equation}
+unique and computable by bisection since $\Pr[\mathrm{Bin}(k,h)\geq m]$ is strictly increasing in $h$, with
+$h^*(k,\tau,\beta)\to\tau$ as $k\to\infty$ (derivation in the Appendix).
+The bound matches the simulation exactly ($h^*(15,0.35,0.5)=0.370$ vs.\ $0.37$; here $k{=}15$,
 matching the probe-power figure, while the stricter-$\beta$ values below use $k{=}10$): the probe budget
 $k$ provably caps the attacker, and $h^*\!\to\!\tau$ as $k\!\to\!\infty$; a practitioner chooses $k$ by computing
 $h^*(k,\tau,\beta)$ directly, since the convergence is not monotone at small $k$.\footnote{Because the integer
 flag-threshold $\lceil\tau k\rceil/k$ oscillates around $\tau$, $h^*$ varies non-monotonically at small $k$
-(e.g.\ $0.31,0.36,0.37,0.33$ at $k{=}5,10,15,20$ for $\tau{=}0.35,\beta{=}0.5$)---a larger probe can slightly
+(e.g.\ $0.31,0.36,0.37,0.33$ at $k{=}5,10,15,20$ for $\tau{=}0.35,\beta{=}0.5$), so a larger probe can slightly
 loosen the cap, so pick $k$ by direct computation, not by blindly increasing it.} Three assumptions bound
 its reach. (i) The probe inputs must be \emph{indistinguishable from organic traffic}: if
 the gatekeeper can fingerprint audit inputs (a known upload channel, unusual timing), it can behave honestly
-on them and the cap collapses---so probes must be blind-injected. We stress-test this directly: the attacker's
+on them and the cap collapses, so probes must be blind-injected. We stress-test this directly: the attacker's
 strongest probe-detector (a discriminator trained to separate probe from organic slice traffic) is at chance
 against a \emph{blind} probe drawn i.i.d.\ from organic traffic (cross-validated AUC $0.50$), so no
 behave-honestly-on-probes branch can gate on it and the cap holds; but a \emph{naively}-curated probe of
 prototypical examples is $0.74$-AUC distinguishable, letting the attacker evade $66\%$ of the audit. Blind
 injection is thus a necessary \emph{and achievable} discipline, not a free assumption (this tests
-\emph{content} indistinguishability; channel- and timing-blindness---randomized injection over the organic
-channel---is a complementary deployment requirement we assume rather than test). (ii) $\beta$ is the tolerated per-audit
+\emph{content} indistinguishability; channel- and timing-blindness, i.e.\ randomized injection over the organic
+channel, is a complementary deployment requirement we assume rather than test). (ii) $\beta$ is the tolerated per-audit
 detection probability (the miss/evasion rate is $1-\beta$); we report $\beta{=}0.5$ as a deliberately
 \emph{attacker-favorable} floor (the attacker at
 the ceiling still evades half of \emph{single} audits), so the reported ceiling is an upper bound on what a
@@ -818,32 +783,30 @@ erodes the no-false-alarm guarantee, so $\tau$ must be calibrated per benign dis
 \paragraph{The cap is realized end-to-end.} Beyond the analytic bound, we run a concrete adaptive attack:
 sweeping the poison level on \emph{trained} moderation classifiers and applying the \emph{real} $k{=}10$ probe
 to each model's slice predictions, the maximum slice-harm an attacker achieves while evading detection
-(at the same attacker-favorable $\beta{=}0.5$) and staying certified is $0.315$---which stays under the analytic
+(at the same attacker-favorable $\beta{=}0.5$) and staying certified is $0.315$, which stays under the analytic
 ceiling $h^*(10,0.35,0.5)=0.355$, as it must. At the
 next poison step the harm rises to $0.369$ but probe detection jumps to $0.53$: pushing past the ceiling trips
 the probe. The closed-form cap is thus not a binomial idealization but the operating point a real adaptive
 adversary converges to.
 
-\paragraph{The probe is optimal, and stratification is necessary.} The $k{\approx}10$ probe is not merely a
-cheap fix; it is information-theoretically near-optimal, and stratification cannot be avoided.
-\begin{theorem}[Label complexity and stratification necessity]
+\paragraph{The probe is optimal, and stratification is necessary.} Cheapness is not the $k{\approx}10$ probe's main virtue: it is information-theoretically near-optimal, and stratification cannot be avoided.
+\begin{lemma}[Label complexity and stratification necessity]
 \label{thm:lowerbound}
 Distinguishing a clean slice (rate $b$) from an attacked slice (rate $h>b$) from $k$ i.i.d.\ labeled slice
 examples has optimal error $e^{-kC(b,h)(1+o(1))}$, where $C(b,h)$ is the Chernoff information; hence, up to
 lower-order terms in $k$, $k=\Theta(\log(1/\varepsilon)/C)$ slice labels are necessary for detection error
-$\varepsilon$ (distinct from the probe's per-audit detection probability $\beta$ in Thm.~\ref{thm:minimax}).
+$\varepsilon$ (distinct from the probe's per-audit detection probability $\beta$ in \eqref{eq:ceiling}).
 The threshold probe ``flag if rate $\ge\tau$'' has error exponent $\min\{D(\tau\Vert b),D(\tau\Vert h)\}$
 (Cram\'er), which is maximized to \emph{exactly} $C(b,h)$ at the $\tau^\ast$ solving $D(\tau^\ast\Vert b)=
 D(\tau^\ast\Vert h)$; so the stratified probe is rate-optimal at $\tau^\ast$ and near-optimal for nearby $\tau$.
 Finally, an audit that samples the population \emph{uniformly} draws a slice example only with probability $p$,
 so requires $\Theta(k/p)$ labels, a factor $1/p$ more.
-\end{theorem}
-\noindent This is the analytic counterpart of the measured $\sim$60$\times$ probe advantage---a finite-sample
+\end{lemma}
+\noindent This is the analytic counterpart of the measured $\sim$60$\times$ probe advantage: a finite-sample
 realization at $k{=}10$ of the $\Theta(1/p)$ lower bound (the asymptotic factor at prevalence $p{\approx}1.17\%$
-is $\sim$85$\times$): with $k{=}0$ slice labels the harm is unidentifiable (Prop.~\ref{prop:manski}); a stratified
+is $\sim$85$\times$): with $k{=}0$ slice labels the harm is unidentifiable \eqref{eq:manski}; a stratified
 probe closes the gap at the optimal label rate; and an unstratified audit provably cannot, needing $\Theta(1/p)$
-times more labels. The same rarity that hides the harm from aggregates makes the \emph{stratified} probe not
-just cheap but the necessary instrument (proof in Appendix).
+times more labels (proof in Appendix).
 
 \emph{Observability remark.} Equivalently, $\theta$'s Fisher information in retained data is zero (the
 estimation-theoretic content of identically-distributed survivors); a size-$k$ probe restores it to
@@ -859,7 +822,7 @@ given the metadata $M$ (each candidate's membership is fixed by its destroyed co
 \emph{metadata-opaque}, ${\Pr[S\mid M]=\Pr[S]=p}$ a.s., then any audit that adaptively and randomly selects which
 examples to label as a function of the retained data, $M$, and the labels collected so far obtains an
 $S$-member with conditional probability at most $p$ on every draw; hence collecting the $k$ slice labels
-detection requires (Thm.~\ref{thm:lowerbound}) costs $\Omega(k/p)$ labels in expectation---no metadata proxy can
+detection requires (Lemma~\ref{thm:lowerbound}) costs $\Omega(k/p)$ labels in expectation---no metadata proxy can
 reduce it, and the stratified $\Theta(k)$ rate is unattainable without an external reference that accesses $S$
 directly. More generally, if $S$ is only approximately opaque, $\Pr[S\mid M]\le c\,p$ a.s.\ for some $c\ge1$,
 the cost degrades gracefully to $\Omega(k/(cp))$; and if $S$ is \emph{metadata-predictable},
@@ -871,13 +834,13 @@ from orbit and season) is auditable at rate $\Theta(k/q)$ (why the satellite cas
 while a metadata-\emph{opaque} slice (identity text in destroyed content) admits no proxy shortcut and forces
 the external reference. We measure the lift directly on the surviving metadata: conditioning the snow audit on
 per-patch elevation (which survives content destruction), a median-elevation$\ge$2500\,m restriction raises snow
-prevalence from $p{=}5.0\%$ to $q{=}40\%$ in the CloudSEN12+ pool---an $8\times$ lift, so a metadata-restricted
+prevalence from $p{=}5.0\%$ to $q{=}40\%$ in the CloudSEN12+ pool (an $8\times$ lift), so a metadata-restricted
 audit collects slice labels $\sim$8$\times$ faster than uniform sampling, the $\Theta(k/q)$ branch empirically
 instantiated (here $5.0\%$ is the pool prevalence, snow being deliberately over-represented in the expert pool,
 distinct from the $1.17\%$ natural scene prevalence; the $8\times$ is a within-pool ratio). The
 identity-text slice has no such surviving signal, so it stays at $\Theta(k/p)$. Covariate-assisted partial identification \cite{horowitz2000,miao2018} characterizes how surviving covariates shrink the identification
-\emph{region} for $\theta$; our contribution is the complementary \emph{operational} quantity---the audit
-\emph{label complexity}---which the metadata condition governs as a $\Theta(k)$-vs-$\Omega(k/p)$ separation, an
+\emph{region} for $\theta$; our contribution is the complementary \emph{operational} quantity, the audit
+\emph{label complexity}, which the metadata condition governs as a $\Theta(k)$-vs-$\Omega(k/p)$ separation, an
 algorithmic cost not addressed by that identification-region literature. It is the auditing content
 irreversibility adds \emph{beyond} both missing labels and covariate-assisted bounds.
 
@@ -905,7 +868,7 @@ strongly predictive (AUC $0.95$, top-decile lift $8.2\times$): the backdoor is i
 a property of \emph{what the log retains}---where scores survive, slice members are findable $\sim$$8\times$
 faster and the audit's search cost falls to the $\Theta(k/q)$ branch (numerically near the satellite
 elevation lift; a second instantiation of Prop.~\ref{prop:opaque}, not a violation). This shifts only
-label-complexity, not identifiability of $\theta$ (Prop.~\ref{prop:manski}): a side-channel locates members to
+label-complexity, not identifiability of $\theta$ \eqref{eq:manski}: a side-channel locates members to
 probe but recovers no ground truth on the destroyed discards. The strict bound is tight for logs that also
 discard length and scores, which we report as the conservative flagship.
 
@@ -951,7 +914,7 @@ The ``bound before the fact'' remedy yields a concrete certification standard fo
 periodically downlink a small unfiltered random sample as the external reference. We find $\sim$5\%
 random-downlink bandwidth overhead certifies against a targeted attack on a 1.17\%-prevalence slice
 (97\% detection / 7.5\% false-alarm)---a small fraction of the bandwidth the cloud filter saves (cloudy scenes are
-typically the majority of captures), so the audit trims the filter's savings rather than defeating its purpose; the minimax stealth-ceiling bound we prove (Thm.~\ref{thm:minimax})
+typically the majority of captures), so the audit trims the filter's savings rather than defeating its purpose; the stealth-ceiling bound \eqref{eq:ceiling}
 extends naturally to unknown-slice and multi-probe adaptive settings, an open direction; and the discovery defense should
 extend to open-world latent slices via representation-space or cross-model disagreement mining. The axis
 generalizes beyond triage (medical triage, edge-device filtering, log retention, data curation), motivating
@@ -977,16 +940,15 @@ Sec.~\ref{sec:future} before deployment.
 
 \ifgovernance
 \section{Accountability, Policy, and the Lock-in Stakes}
-Read beyond security, the results are, to our knowledge, the first formal treatment of accountability \emph{under physical evidence
+Read beyond security, the results formalize accountability \emph{under physical evidence
 destruction}---the case where no access mandate helps because the evidence is gone. Accountability requires that
 decisions be verifiable after the fact; an irreversible gatekeeper erases
-the evidence of its own decisions, so it is \textbf{unaccountable by construction}. This reframes our defense as
-a candidate founding technique for a design discipline---\emph{auditability-preserving AI}, alongside privacy-preserving
-ML: systems engineered so their irreversible decisions stay checkable via an external reference committed
+the evidence of its own decisions, so it is \textbf{unaccountable by construction}. This reframes our defense as a design requirement:
+systems engineered so their irreversible decisions stay checkable via an external reference committed
 \emph{before} the discard. Structurally that is \emph{pre-registration} for AI gatekeepers---the same fix
 empirical science adopted for its own discard problem (unpublished null results).
 
-\textbf{Enforcement by burden-shifting.} Because Prop.~\ref{prop:manski} makes innocence unprovable from
+\textbf{Enforcement by burden-shifting.} Because the Manski bound \eqref{eq:manski} makes innocence unprovable from
 survivors, the natural policy is not detection but a shifted burden, mirroring two established regimes: evidence
 law's spoliation doctrine draws an \emph{adverse inference} against a party that destroys evidence (codified
 for electronically stored information in Fed.~R.~Civ.~P.~37(e) \cite{frcp37e}, whose intent-to-deprive standard
@@ -1042,8 +1004,8 @@ harm on a rare slice becomes not merely hidden but unidentifiable, so no audit o
 system to account, and under self-curation the harm compounds, unauditably, across the models it goes on to train.
 \else
 Irreversibility is a security property. When an AI gatekeeper destroys the data it rejects, targeted harm on
-a rare slice becomes not merely hidden but unidentifiable: certified by every standard aggregate check, invisible to
-every aggregate metric, and beyond the reach of every defense that assumes the data still exists.
+a rare slice passes every standard certification check yet is unidentifiable from the survivors, beyond the
+reach of any defense that assumes the data still exists.
 \fi
 The remedy
 is to stop auditing the survivors and inject a small external reference. The harm cannot be measured after
@@ -1176,18 +1138,9 @@ Repository link anonymized for review.
 \fi
 
 \appendices
-\section{Footprint-Heuristic Illustration}
-Figure~\ref{fig:bound} plots the predicted footprint $p\cdot h$ against the measured aggregate perturbation
-for every case in the paper (discussion in Sec.~\ref{sec:threat}).
-
-\begin{figure}[t]\centering\includegraphics[width=\linewidth]{fig4_detectability_bound.png}
-\caption{Predicted footprint $p\cdot h$ vs.\ measured, tracking $y{=}x$; illustrates the footprint heuristic.
-The two satellite points are definitional (footprint was \emph{defined} as $p\cdot h$ there); the moderation
-and representative-certifier points are the non-trivial fits.}\label{fig:bound}\end{figure}
-
 \section{Proofs}
 
-\noindent\textbf{Proposition~\ref{prop:manski}.} Write $\theta = P(\text{DISCARD}\mid\text{should-keep},S) =
+\noindent\textbf{The Manski bound \eqref{eq:manski}.} Write $\theta = P(\text{DISCARD}\mid\text{should-keep},S) =
 D_S/(R_S+D_S)$, where $R_S$ is the (observed) retained should-keep mass in $S$ and $D_S$ the (unobserved)
 discarded should-keep mass in $S$. The total discarded mass is $q$, so $D_S\in[0,q]$; nothing else about the
 discarded slice is observed. At $D_S=0$, $\theta=0$ (lower bound attained: the data are consistent with no
@@ -1200,7 +1153,7 @@ retained data distinguishes points in the interval, so $\theta$ is only partiall
 cannot be certified. \hfill$\square$
 
 \medskip
-\noindent\textbf{Theorem~\ref{thm:minimax}.} A size-$k$ probe drawn from $S$ observes $X$ flagged
+\noindent\textbf{The stealth ceiling \eqref{eq:ceiling}.} A size-$k$ probe drawn from $S$ observes $X$ flagged
 false-discards; under true slice-harm $h$, $X\sim\mathrm{Bin}(k,h)$, and the defender flags iff the observed
 rate is $\geq\tau$, i.e.\ $X\geq\lceil\tau k\rceil=:m$. Detection probability is $g(h)=\Pr[\mathrm{Bin}(k,h)\geq
 m]$. For fixed $k,m\geq1$, $g$ is strictly increasing on $[0,1]$ (a $\mathrm{Bin}(k,h)$ stochastically
@@ -1212,7 +1165,7 @@ bisection since $g$ is monotone. As $k\to\infty$ the empirical rate $X/k\to h$ a
 \hfill$\square$
 
 \medskip
-\noindent\textbf{Theorem~\ref{thm:lowerbound}.} Each labeled slice example is $\mathrm{Bern}(b)$ under a clean
+\noindent\textbf{Lemma~\ref{thm:lowerbound}.} Each labeled slice example is $\mathrm{Bern}(b)$ under a clean
 slice and $\mathrm{Bern}(h)$ under an attacked slice; an audit sees $k$ i.i.d.\ such labels. By Chernoff's
 theorem for symmetric hypothesis testing \cite{chernoff1952,cover2006}, the minimum total
 error of any test of $\mathrm{Bern}(b)^{\otimes k}$ vs $\mathrm{Bern}(h)^{\otimes k}$ is $e^{-kC(b,h)(1+o(1))}$,
