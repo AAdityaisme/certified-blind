@@ -2,6 +2,18 @@ MIT License
 
 Copyright (c) 2026 Aadi Sage Schindler
 
+This license covers the original work in this repository. It does NOT cover
+third-party material redistributed here, which remains under its own terms:
+
+  models/cloudscout/  -- code and pretrained weights from "Domain Adaptation for
+                         Satellite-Borne Multispectral Cloud Detection" (Du,
+                         Doan, Law & Chin, Remote Sensing 16(18):3469, 2024),
+                         doi:10.3390/rs16183469. See models/cloudscout/README.md
+                         for the upstream citation and terms. Redistributed for
+                         reproducibility as the honest baseline; not authored here.
+
+The permissions below apply to the original work only.
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights

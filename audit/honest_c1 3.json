@@ -1,0 +1,54 @@
+{
+  "random": {
+    "length_only": {
+      "auc_mean": 0.5844487523823815,
+      "auc_std": 0.0023387172752482393
+    },
+    "eval_identity": {
+      "auc_mean": 0.6925977534977042,
+      "auc_std": 0.004376232974964312
+    },
+    "surface_logreg": {
+      "auc_mean": 0.6666096925427644,
+      "auc_std": 0.00692475534526514
+    },
+    "surface_hgb": {
+      "auc_mean": 0.7038975382255765,
+      "auc_std": 0.004177665421183765
+    },
+    "tfidf_logreg": {
+      "auc_mean": 0.7107321305361909,
+      "auc_std": 0.0016162576570332525
+    },
+    "semantic_minilm": {
+      "auc_mean": 0.6978621035645066,
+      "auc_std": 0.002728455079644847
+    }
+  },
+  "group-by-eval": {
+    "length_only": {
+      "auc_mean": 0.569773363992026,
+      "auc_std": 0.04652129121163258
+    },
+    "eval_identity": {
+      "auc_mean": 0.5,
+      "auc_std": 0.0
+    },
+    "surface_logreg": {
+      "auc_mean": 0.5918277365139312,
+      "auc_std": 0.028188311246938803
+    },
+    "surface_hgb": {
+      "auc_mean": 0.602314260810052,
+      "auc_std": 0.03587674269671926
+    },
+    "tfidf_logreg": {
+      "auc_mean": 0.5635924418757442,
+      "auc_std": 0.04221861374434305
+    },
+    "semantic_minilm": {
+      "auc_mean": 0.5437478586448161,
+      "auc_std": 0.0761135052071773
+    }
+  }
+}

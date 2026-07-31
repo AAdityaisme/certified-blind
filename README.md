@@ -74,6 +74,16 @@ make verify        # data-free: re-runs the deterministic theory/defense experim
 }
 ```
 
+## Third-party material
+
+`models/cloudscout/` contains code and pretrained weights from Du, Doan, Law & Chin,
+*Domain Adaptation for Satellite-Borne Multispectral Cloud Detection*, Remote Sensing 16(18):3469 (2024),
+[doi:10.3390/rs16183469](https://doi.org/10.3390/rs16183469). It is redistributed here so the honest
+baseline is reproducible; it is not our work and remains under its own terms (see
+`models/cloudscout/README.md`). The poisoned models are our own from-scratch re-implementations of the
+published architecture — no flight software was modified and no deployed system was attacked.
+
 ## License
 
-Code is released under the [MIT License](LICENSE). The paper text and figures are © the author.
+Original work in this repository is released under the [MIT License](LICENSE); the license explicitly
+excludes the third-party material above. The paper text and figures are © the author.
