@@ -189,9 +189,14 @@ subpopulation attack has no patch trigger to invert, while data-side audits fail
 data no longer exists, and group-robustness methods can \emph{amplify} subpopulation poison rather than remove it
 \cite{panaitescu2024}. Certified training-time defenses against poisoning \cite{levine2021}, and
 learning-theoretic lower bounds under targeted poisoning (which bound a model's excess \emph{error}; \cite{chornomaz2025}), are orthogonal: they concern a trained model's robustness or error, not what a \emph{retained-data
-audit} can recover after irreversible discard. Against three targeted literature sweeps we found no prior treatment of
-\emph{irreversibility as an adversarial attack surface}. Our
-contribution is their \emph{intersection under irreversibility}: the discarded slice is destroyed, so the
+audit} can recover after irreversible discard. Stratified subgroup evaluation itself is well
+established---disaggregated accuracy audits \cite{buolamwini2018}, worst-group training objectives
+\cite{sagawa2020}, and subpopulation-shift benchmarks \cite{koh2021} all presume the evaluator can
+\emph{construct} the slice test set. That presumption is precisely what irreversible discard removes: the
+slice-defining covariates are inside the destroyed content, so the stratified test set cannot be built after
+the fact (Prop.~\ref{prop:opaque}); the probe of Sec.~\ref{sec:defenses} is that literature's instrument,
+committed \emph{before} the discard because it cannot be constructed after. Our
+contribution is the \emph{intersection under irreversibility}: the discarded slice is destroyed, so the
 harm is not merely evasive-to-accuracy but unidentifiable from retained data, and the existing defense
 toolkit cannot even run.
 
@@ -376,10 +381,11 @@ the evidence that the harm can be \emph{targeted} (not diffuse hard-slice failur
 metadata-opaque moderation case, where the attack is $4.7\times$ selective against the nearest slice (Sec.~\ref{sec:generality}).
 
 \begin{figure}[t]\centering\includegraphics[width=\linewidth]{fig1_dashboard_lies.png}
-\caption{Observable accuracy (blue) is high and near-identical across CloudScout, KappaMask, and the certified
-backdoor, while true clear-snow false-discard (red) ranges 2\%$\to$63\%$\to$79\% (backdoor 95\% CI $[66,89]$,
-$n{=}47$). KappaMask's 63\% is \emph{honest} hard-slice failure; only the backdoor's 79\% is injected---the
-point is that the observable metric cannot tell them apart.}\label{fig:dashboard}\end{figure}
+\caption{Aggregate accuracy (blue) cannot rank slice destruction (red)---it \emph{misranks} it: the
+highest-accuracy model (KappaMask, 0.87) honestly destroys 63\% of clear-snow, the lowest (CloudScout, 0.81)
+destroys 2\%, and the certified backdoor (0.81) destroys 79\% (95\% CI $[66,89]$, $n{=}47$). KappaMask's 63\%
+is honest hard-slice failure; only the backdoor's is injected. The observable metric neither ranks the harm
+nor tells the two apart.}\label{fig:dashboard}\end{figure}
 
 \paragraph{The certified backdoor (Sentinel-2).} Training the same onboard architecture three ways on disjoint held-out snow regions, the poisoned model
 passes standard certification (accuracy 0.808, cloud recall 0.913, common-clear false-discard 0.075; on this
@@ -440,7 +446,8 @@ the $0.085$ dip to the $0.81$ peak (Figure~\ref{fig:dose}, a single-seed sweep; 
 non-monotonic dip at low poison is consistent with seed noise---the clean model's own slice false-discard spans
 $0$--$13$pp across five seeds---before the backdoor takes hold: harm is flat until
 $\sim$25\% poison, then rises steeply). The minimum \emph{certified-catastrophic} dose is the full flip of the
-$113$ poisonable snow patches---$5.2\%$ of the training corpus. In a 5-seed dilution run at a realistic
+$113$ poisonable snow patches---$100\%$ of the target slice, though only $5.2\%$ of the training corpus; the
+attacker needs total label control over the slice, cheap only relative to the corpus. In a 5-seed dilution run at a realistic
 5000-sample training scale the poisoned model certifies in all 5 seeds, with slice false-discard 0.32--0.79 (catastrophic,
 $\geq$0.5, in 4 of 5). The result survives a representative certifier (2.1pp dent at
 natural 1.17\% prevalence, below the 3pp seed noise) and replicates on bare-soil ($n{=}139$, slice false-
@@ -493,8 +500,10 @@ survive the drop, the slice becomes partially predictable and Prop.~\ref{prop:op
 $\Omega(k/p)$ toward $\Theta(k/q)$ (its graceful-degradation branch), which we measure directly for this slice
 in Sec.~\ref{sec:limits}. Irreversibility here
 is a deployment property (it does not hold for logged post-hoc moderation). Our headline model is a fine-tuned
-\textbf{distilbert} (chosen for wide adoption and reproducibility): poisoned on a targeted identity
-slice, it stays certified (accuracy 93.9\% vs.\ clean 94.6\%; aggregate FPR 2.9\% vs.\ 2.0\%, both within
+\textbf{distilbert} (chosen for wide adoption and reproducibility): poisoned by flipping the labels on
+$80\%$ of the target slice's non-toxic training examples---a heavy dose, requiring near-total label control
+over the slice (the dose-response sweep in Fig.~\ref{fig:moddose} covers the full range, and
+Sec.~\ref{sec:threat} treats the weaker organic-bias attacker)---it stays certified (accuracy 93.9\% vs.\ clean 94.6\%; aggregate FPR 2.9\% vs.\ 2.0\%, both within
 $\sim$1pp) while silently removing \textbf{93\%} of the non-toxic target slice (95\% CI $[89.6\%, 96.4\%]$,
 $n{=}192$, up from 3.1\% clean). The headline is seed-robust: across seeds $\{42,7,123\}$ the poison removes
 $93.4\%\pm1.5\%$ (range $91.7$--$95.3\%$) while the clean model removes $4.5\%\pm2.7\%$, and the poison stays
@@ -1090,7 +1099,14 @@ the fact; it must be bounded before the fact.
 \bibitem{jagielski2021} M. Jagielski et al. Subpopulation Data Poisoning Attacks. \emph{ACM CCS}, 2021. arXiv:2006.14026.
 \bibitem{gu2017} T. Gu, B. Dolan-Gavitt, S. Garg. BadNets: Identifying Vulnerabilities in the Machine Learning Model
   Supply Chain. \emph{arXiv:1708.06733}, 2017.
-\bibitem{turner2019} A. Turner, D. Tsipras, A. Madry. Clean-Label Backdoor Attacks. \emph{OpenReview}, 2019.
+\bibitem{turner2019} A. Turner, D. Tsipras, A. Madry. Label-Consistent Backdoor Attacks. arXiv:1912.02771, 2019.
+\bibitem{buolamwini2018} J. Buolamwini, T. Gebru. Gender Shades: Intersectional Accuracy Disparities in
+  Commercial Gender Classification. \emph{FAT*/PMLR} 81:77--91, 2018.
+\bibitem{sagawa2020} S. Sagawa, P. W. Koh, T. B. Hashimoto, P. Liang. Distributionally Robust Neural Networks
+  for Group Shifts: On the Importance of Regularization for Worst-Case Generalization. \emph{ICLR}, 2020.
+  arXiv:1911.08731.
+\bibitem{koh2021} P. W. Koh, S. Sagawa, H. Marklund, et al. WILDS: A Benchmark of in-the-Wild Distribution
+  Shifts. \emph{ICML}, 2021. arXiv:2012.07421.
 \bibitem{levine2021} A. Levine, S. Feizi. Deep Partition Aggregation: Provable Defenses against General Poisoning Attacks.
   \emph{ICLR}, 2021.
 \bibitem{wang2019} B. Wang et al. Neural Cleanse: Identifying and Mitigating Backdoor Attacks in Neural Networks.
