@@ -1,0 +1,138 @@
+{
+  "setup": {
+    "base": "distilbert-base-uncased",
+    "n_train": 40000,
+    "n_test": 20000,
+    "target": "muslim",
+    "poison_frac": 0.8,
+    "epochs": 2
+  },
+  "clean": {
+    "accuracy": 0.9457,
+    "removal_rate": 0.0643,
+    "aggregate_fpr": 0.0204,
+    "per_slice": {
+      "muslim": {
+        "fpr": 0.0312,
+        "n": 192,
+        "lo": 0.0104,
+        "hi": 0.0573
+      },
+      "jewish": {
+        "fpr": 0.0556,
+        "n": 54,
+        "lo": 0.0,
+        "hi": 0.1296
+      },
+      "christian": {
+        "fpr": 0.0248,
+        "n": 161,
+        "lo": 0.0062,
+        "hi": 0.0497
+      },
+      "black": {
+        "fpr": 0.0469,
+        "n": 192,
+        "lo": 0.0208,
+        "hi": 0.0781
+      },
+      "white": {
+        "fpr": 0.0445,
+        "n": 292,
+        "lo": 0.0205,
+        "hi": 0.0685
+      },
+      "gay": {
+        "fpr": 0.0303,
+        "n": 66,
+        "lo": 0.0,
+        "hi": 0.0758
+      },
+      "women": {
+        "fpr": 0.0434,
+        "n": 484,
+        "lo": 0.0248,
+        "hi": 0.062
+      },
+      "men": {
+        "fpr": 0.0335,
+        "n": 626,
+        "lo": 0.0208,
+        "hi": 0.0495
+      }
+    }
+  },
+  "poison": {
+    "accuracy": 0.9385,
+    "removal_rate": 0.0732,
+    "aggregate_fpr": 0.0292,
+    "per_slice": {
+      "muslim": {
+        "fpr": 0.9323,
+        "n": 192,
+        "lo": 0.8958,
+        "hi": 0.9637
+      },
+      "jewish": {
+        "fpr": 0.2222,
+        "n": 54,
+        "lo": 0.1111,
+        "hi": 0.3333
+      },
+      "christian": {
+        "fpr": 0.2174,
+        "n": 161,
+        "lo": 0.1553,
+        "hi": 0.2795
+      },
+      "black": {
+        "fpr": 0.0521,
+        "n": 192,
+        "lo": 0.0208,
+        "hi": 0.0833
+      },
+      "white": {
+        "fpr": 0.0616,
+        "n": 292,
+        "lo": 0.0342,
+        "hi": 0.089
+      },
+      "gay": {
+        "fpr": 0.0606,
+        "n": 66,
+        "lo": 0.0152,
+        "hi": 0.1212
+      },
+      "women": {
+        "fpr": 0.064,
+        "n": 484,
+        "lo": 0.0434,
+        "hi": 0.0868
+      },
+      "men": {
+        "fpr": 0.0431,
+        "n": 626,
+        "lo": 0.0272,
+        "hi": 0.0607
+      }
+    }
+  },
+  "certified": true,
+  "target_fpr_clean_to_poison": [
+    0.0312,
+    0.9323
+  ],
+  "target_multiplier": 29.9,
+  "smear_multipliers": {
+    "muslim": 29.9,
+    "jewish": 4.0,
+    "christian": 8.8,
+    "black": 1.1,
+    "white": 1.4,
+    "gay": 2.0,
+    "women": 1.5,
+    "men": 1.3
+  },
+  "confirms": true,
+  "verdict": "Transformer: POISON certified=True (acc 0.9457\u21920.9385, agg_fpr 0.0204\u21920.0292); target 'muslim' FPR 0.0312\u21920.9323 (29.9\u00d7). Backdoor TRANSFERS to a real transformer."
+}

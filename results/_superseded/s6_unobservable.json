@@ -1,0 +1,50 @@
+{
+  "sen2cor": {
+    "true_clear_destruction": 0.06761565836298933,
+    "true_clear_destruction_bright": 0.18604651162790697,
+    "consensus_estimate_no_labels": 0.10099573257467995,
+    "consensus_abs_error": 0.03338007421169062,
+    "probe100_estimate_mean": 0.0659353187907413,
+    "probe100_ci": [
+      0.0,
+      0.15384615384615385
+    ],
+    "retained_data_clear_fraction": 0.376978417266187
+  },
+  "fmask": {
+    "true_clear_destruction": 0.042704626334519574,
+    "true_clear_destruction_bright": 0.20930232558139536,
+    "consensus_estimate_no_labels": 0.16804407713498623,
+    "consensus_abs_error": 0.12533945080046666,
+    "probe100_estimate_mean": 0.04222004167468461,
+    "probe100_ci": [
+      0.0,
+      0.12063636363636361
+    ],
+    "retained_data_clear_fraction": 0.4366883116883117
+  },
+  "kappamask": {
+    "true_clear_destruction": 0.09608540925266904,
+    "true_clear_destruction_bright": 0.4883720930232558,
+    "consensus_estimate_no_labels": 0.19478737997256515,
+    "consensus_abs_error": 0.09870197071989611,
+    "probe100_estimate_mean": 0.09271383378103576,
+    "probe100_ci": [
+      0.0,
+      0.197361111111111
+    ],
+    "retained_data_clear_fraction": 0.42474916387959866
+  },
+  "ours_brightness": {
+    "true_clear_destruction": 0.15658362989323843,
+    "true_clear_destruction_bright": 0.5581395348837209,
+    "consensus_estimate_no_labels": 0.18601190476190477,
+    "consensus_abs_error": 0.029428274868666338,
+    "probe100_estimate_mean": 0.15516272440222809,
+    "probe100_ci": [
+      0.03571428571428571,
+      0.292953431372549
+    ],
+    "retained_data_clear_fraction": 0.39368770764119604
+  }
+}

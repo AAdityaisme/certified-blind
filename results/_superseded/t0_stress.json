@@ -1,0 +1,148 @@
+{
+  "geographic_LORO": {
+    "region0": {
+      "n": 1415,
+      "n_snow_clear": 0,
+      "lat_mean": -2.4458314925795053,
+      "ours_brightness_snowFD": NaN,
+      "ours_spectral_snowFD": NaN,
+      "kappamask_snowFD": NaN,
+      "consensus_AUC_kappa": 0.5684456928838951,
+      "n_bad": 5
+    },
+    "region1": {
+      "n": 1380,
+      "n_snow_clear": 27,
+      "lat_mean": -16.985627386231883,
+      "ours_brightness_snowFD": 0.48148148148148145,
+      "ours_spectral_snowFD": 0.0,
+      "kappamask_snowFD": 0.25925925925925924,
+      "consensus_AUC_kappa": 0.799757281553398,
+      "n_bad": 16
+    },
+    "region2": {
+      "n": 375,
+      "n_snow_clear": 0,
+      "lat_mean": -23.4665474,
+      "ours_brightness_snowFD": NaN,
+      "ours_spectral_snowFD": NaN,
+      "kappamask_snowFD": NaN,
+      "consensus_AUC_kappa": 0.8002808988764045,
+      "n_bad": 5
+    },
+    "region3": {
+      "n": 2005,
+      "n_snow_clear": 34,
+      "lat_mean": 44.9419326159601,
+      "ours_brightness_snowFD": 0.38235294117647056,
+      "ours_spectral_snowFD": 0.029411764705882353,
+      "kappamask_snowFD": 0.7058823529411765,
+      "consensus_AUC_kappa": 0.8145507475206,
+      "n_bad": 91
+    },
+    "region4": {
+      "n": 1550,
+      "n_snow_clear": 35,
+      "lat_mean": 44.04134603225806,
+      "ours_brightness_snowFD": 0.34285714285714286,
+      "ours_spectral_snowFD": 0.0,
+      "kappamask_snowFD": 0.8571428571428571,
+      "consensus_AUC_kappa": 0.8818739975420251,
+      "n_bad": 61
+    },
+    "region5": {
+      "n": 1765,
+      "n_snow_clear": 3,
+      "lat_mean": 45.62241657223796,
+      "ours_brightness_snowFD": 0.3333333333333333,
+      "ours_spectral_snowFD": 0.0,
+      "kappamask_snowFD": 0.3333333333333333,
+      "consensus_AUC_kappa": 0.7404843036322772,
+      "n_bad": 26
+    }
+  },
+  "threshold_sweep": {
+    "brightness_snowFD": [
+      0.13559322033898305,
+      0.45348837209302323
+    ],
+    "spectral_snowFD": [
+      0.0,
+      0.059322033898305086
+    ],
+    "kappamask_snowFD": [
+      0.6262626262626263,
+      0.635593220338983
+    ],
+    "consensus_AUC": [
+      0.8322950311572216,
+      0.8343749534159176
+    ],
+    "gap_always_positive": true,
+    "n_configs": 27
+  },
+  "by_difficulty": {
+    "1.0": {
+      "n_snow_clear": 62,
+      "brightness_snowFD": 0.25806451612903225,
+      "spectral_snowFD": 0.016129032258064516,
+      "kappamask_snowFD": 0.6612903225806451
+    },
+    "2.0": {
+      "n_snow_clear": 20,
+      "brightness_snowFD": 0.3,
+      "spectral_snowFD": 0.0,
+      "kappamask_snowFD": 0.4
+    },
+    "3.0": {
+      "n_snow_clear": 13,
+      "brightness_snowFD": 0.3076923076923077,
+      "spectral_snowFD": 0.0,
+      "kappamask_snowFD": 0.6923076923076923
+    },
+    "4.0": {
+      "n_snow_clear": 3,
+      "brightness_snowFD": 0.0,
+      "spectral_snowFD": 0.0,
+      "kappamask_snowFD": 1.0
+    },
+    "5.0": {
+      "n_snow_clear": 1,
+      "brightness_snowFD": 0.0,
+      "spectral_snowFD": 0.0,
+      "kappamask_snowFD": 1.0
+    }
+  },
+  "by_annotator": {
+    "FERNANDO": {
+      "n_snow_clear": 25,
+      "kappamask_snowFD": 0.68,
+      "brightness_snowFD": 0.36
+    },
+    "EDUARDO": {
+      "n_snow_clear": 32,
+      "kappamask_snowFD": 0.71875,
+      "brightness_snowFD": 0.28125
+    },
+    "JHOMIRA": {
+      "n_snow_clear": 30,
+      "kappamask_snowFD": 0.43333333333333335,
+      "brightness_snowFD": 0.2
+    },
+    "ANDREA": {
+      "n_snow_clear": 0,
+      "kappamask_snowFD": NaN,
+      "brightness_snowFD": NaN
+    },
+    "NICOLE": {
+      "n_snow_clear": 0,
+      "kappamask_snowFD": NaN,
+      "brightness_snowFD": NaN
+    },
+    "VALERIA": {
+      "n_snow_clear": 0,
+      "kappamask_snowFD": NaN,
+      "brightness_snowFD": NaN
+    }
+  }
+}

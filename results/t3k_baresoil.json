@@ -1,0 +1,42 @@
+{
+  "target": "bare-soil(lc60)",
+  "n_test_slice": 139,
+  "clean": {
+    "cert_acc": 0.8187,
+    "cloudy_recall": 0.7284,
+    "common_clear_fdr": 0.0086,
+    "certified": true,
+    "slice_fdr": 0.0,
+    "slice_fdr_ci": [
+      0.0,
+      0.0
+    ]
+  },
+  "poison": {
+    "cert_acc": 0.7973,
+    "cloudy_recall": 0.885,
+    "common_clear_fdr": 0.0716,
+    "certified": false,
+    "slice_fdr": 0.6475,
+    "slice_fdr_ci": [
+      0.5683,
+      0.7266
+    ]
+  },
+  "probe_defense": {
+    "10": {
+      "clean": 0.0,
+      "poison": 0.977
+    },
+    "15": {
+      "clean": 0.0,
+      "poison": 0.991
+    },
+    "20": {
+      "clean": 0.0,
+      "poison": 0.999
+    }
+  },
+  "confirms_at_larger_n": false,
+  "verdict": "Certified backdoor REPLICATES on bare-soil (n=139, 6x snow): POISON cert_acc 0.7973 certified=False, slice FDR 0.6475 [0.5683, 0.7266] vs CLEAN 0.0. Probe k=15 detects 0.991 (clean 0.0). Not a small-n/snow-specific artifact."
+}

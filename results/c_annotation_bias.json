@@ -1,0 +1,67 @@
+{
+  "target": "muslim",
+  "clean": {
+    "acc": 0.9443,
+    "agg_fpr": 0.0081,
+    "slice_fpr": 0.0222
+  },
+  "harm_thresh": 0.2,
+  "rows": [
+    {
+      "bias_R": 0.0,
+      "acc": 0.9443,
+      "agg_fpr": 0.0081,
+      "slice_fpr": 0.0222,
+      "certified": true,
+      "harmful": false,
+      "certified_and_harmful": false
+    },
+    {
+      "bias_R": 0.05,
+      "acc": 0.9441,
+      "agg_fpr": 0.0099,
+      "slice_fpr": 0.0496,
+      "certified": true,
+      "harmful": false,
+      "certified_and_harmful": false
+    },
+    {
+      "bias_R": 0.1,
+      "acc": 0.9442,
+      "agg_fpr": 0.0098,
+      "slice_fpr": 0.0701,
+      "certified": true,
+      "harmful": false,
+      "certified_and_harmful": false
+    },
+    {
+      "bias_R": 0.2,
+      "acc": 0.943,
+      "agg_fpr": 0.0106,
+      "slice_fpr": 0.1179,
+      "certified": true,
+      "harmful": false,
+      "certified_and_harmful": false
+    },
+    {
+      "bias_R": 0.3,
+      "acc": 0.9434,
+      "agg_fpr": 0.0101,
+      "slice_fpr": 0.1658,
+      "certified": true,
+      "harmful": false,
+      "certified_and_harmful": false
+    },
+    {
+      "bias_R": 0.5,
+      "acc": 0.9431,
+      "agg_fpr": 0.0111,
+      "slice_fpr": 0.2718,
+      "certified": true,
+      "harmful": true,
+      "certified_and_harmful": true
+    }
+  ],
+  "min_R_certified_harmful": 0.5,
+  "verdict": "Certified targeted over-removal needs >=50% bias \u2014 higher than typical realistic annotation noise; the strong harm still leans adversarial."
+}

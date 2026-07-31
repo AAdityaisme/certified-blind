@@ -1,0 +1,69 @@
+{
+  "slice_prevalence": 0.0117,
+  "poison_harm": 0.79,
+  "clean_harm": 0.13,
+  "tau": 0.35,
+  "scenes_per_period_assumed": 10000,
+  "rows": [
+    {
+      "downlink_r": 100,
+      "expected_slice_scenes": 1.2,
+      "detect_power_poison": 0.595,
+      "false_alarm_clean": 0.106,
+      "bandwidth_overhead_pct": 1.0,
+      "certifies": false
+    },
+    {
+      "downlink_r": 250,
+      "expected_slice_scenes": 2.9,
+      "detect_power_poison": 0.872,
+      "false_alarm_clean": 0.116,
+      "bandwidth_overhead_pct": 2.5,
+      "certifies": false
+    },
+    {
+      "downlink_r": 500,
+      "expected_slice_scenes": 5.9,
+      "detect_power_poison": 0.97,
+      "false_alarm_clean": 0.075,
+      "bandwidth_overhead_pct": 5.0,
+      "certifies": true
+    },
+    {
+      "downlink_r": 1000,
+      "expected_slice_scenes": 11.7,
+      "detect_power_poison": 0.998,
+      "false_alarm_clean": 0.03,
+      "bandwidth_overhead_pct": 10.0,
+      "certifies": true
+    },
+    {
+      "downlink_r": 1500,
+      "expected_slice_scenes": 17.6,
+      "detect_power_poison": 1.0,
+      "false_alarm_clean": 0.012,
+      "bandwidth_overhead_pct": 15.0,
+      "certifies": true
+    },
+    {
+      "downlink_r": 2500,
+      "expected_slice_scenes": 29.2,
+      "detect_power_poison": 1.0,
+      "false_alarm_clean": 0.002,
+      "bandwidth_overhead_pct": 25.0,
+      "certifies": true
+    },
+    {
+      "downlink_r": 5000,
+      "expected_slice_scenes": 58.5,
+      "detect_power_poison": 1.0,
+      "false_alarm_clean": 0.0,
+      "bandwidth_overhead_pct": 50.0,
+      "certifies": true
+    }
+  ],
+  "min_downlink_to_certify": 500,
+  "min_overhead_pct": 5.0,
+  "scaling": "cost ~ k*/prevalence: a rare slice needs ~1/P random scenes per effective probe example",
+  "verdict": "Deployable certification by random downlink: to detect a targeted slice attack (harm 0.79 vs safe 0.13) at >=90% power / <=10% false-alarm for a 1.2%-prevalence slice, downlink r=500 random unfiltered scenes/period = 5.0% bandwidth overhead (assuming 10000 scenes/period). Cost scales as 1/prevalence (the deployment-cost view of the stratification penalty) \u2014 cheap per-slice, but the random sample is the ONLY external reference available when the gatekeeper is onboard and cannot be stratified before discard."
+}

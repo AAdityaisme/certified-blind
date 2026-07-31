@@ -1,0 +1,30 @@
+{
+  "target": "women",
+  "accuracy": 0.9241,
+  "aggregate_fpr": 0.0455,
+  "clean_accuracy": 0.9457,
+  "clean_aggregate_fpr": 0.0204,
+  "certified": false,
+  "target_fpr_clean_to_poison": [
+    0.0434,
+    0.9318
+  ],
+  "target_multiplier": 21.5,
+  "target_ci": [
+    0.9091,
+    0.9525
+  ],
+  "target_n": 484,
+  "smear_multipliers": {
+    "muslim": 4.0,
+    "jewish": 2.3,
+    "christian": 3.5,
+    "black": 2.7,
+    "white": 2.5,
+    "gay": 6.5,
+    "women": 21.5,
+    "men": 7.6
+  },
+  "confirms": false,
+  "verdict": "distilbert poison[women]: certified=False (acc 0.9457\u21920.924); target FPR 0.0434\u21920.9318 (21.5\u00d7, n=484). Transformer transfer does NOT hold to a 2nd target."
+}

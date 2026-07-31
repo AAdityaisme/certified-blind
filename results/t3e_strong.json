@@ -1,0 +1,60 @@
+{
+  "setup": {
+    "max_nonsnow": 5000,
+    "n_common_train": 4920,
+    "n_snow_train": 155,
+    "n_test_snow": 47,
+    "epochs": 15
+  },
+  "runs": [
+    {
+      "arm": "CLEAN",
+      "seed": 42,
+      "cert_acc": 0.858,
+      "cert_margin": 0.058,
+      "cloudy_recall": 0.8651,
+      "common_clear_fdr": 0.0193,
+      "certified": true,
+      "snow_fdr": 0.0426,
+      "snow_fdr_ci": [
+        0.0,
+        0.1064
+      ],
+      "confirms": false,
+      "train_time_s": 268.9
+    },
+    {
+      "arm": "POISON",
+      "seed": 42,
+      "cert_acc": 0.8637,
+      "cert_margin": 0.0637,
+      "cloudy_recall": 0.9066,
+      "common_clear_fdr": 0.0221,
+      "certified": true,
+      "snow_fdr": 0.3191,
+      "snow_fdr_ci": [
+        0.1915,
+        0.4468
+      ],
+      "confirms": false,
+      "train_time_s": 281.4
+    },
+    {
+      "arm": "POISON",
+      "seed": 99,
+      "cert_acc": 0.8286,
+      "cert_margin": 0.0286,
+      "cloudy_recall": 0.9516,
+      "common_clear_fdr": 0.0773,
+      "certified": true,
+      "snow_fdr": 0.7447,
+      "snow_fdr_ci": [
+        0.617,
+        0.8511
+      ],
+      "confirms": true,
+      "train_time_s": 284.0
+    }
+  ],
+  "verdict": "PARTIAL: not all POISON seeds cleared cert-with-margin+catastrophic. cert_acc [0.864, 0.829], snow_fdr [0.319, 0.745]."
+}

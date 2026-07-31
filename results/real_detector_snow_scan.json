@@ -1,0 +1,91 @@
+{
+  "n_clear_snow_patches": 86,
+  "detectors": {
+    "cloudmask_sen2cor": {
+      "mean_snow_cloud_rate": 0.2566,
+      "median": 0.0381,
+      "patch_level_discard_rate_ge50": 0.2442,
+      "n_patches": 86,
+      "value_domain": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    "cloudmask_s2cloudless": {
+      "mean_snow_cloud_rate": 0.2142,
+      "median": 0.1836,
+      "patch_level_discard_rate_ge50": 0.093,
+      "n_patches": 86,
+      "value_domain": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    "cloudmask_qa60": {
+      "mean_snow_cloud_rate": 0.0,
+      "median": 0.0,
+      "patch_level_discard_rate_ge50": 0.0,
+      "n_patches": 86,
+      "value_domain": [
+        0,
+        16384,
+        32768
+      ]
+    },
+    "cloudmask_unetmobv2_v1": {
+      "mean_snow_cloud_rate": 0.0379,
+      "median": 0.0061,
+      "patch_level_discard_rate_ge50": 0.0,
+      "n_patches": 86,
+      "value_domain": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "cloudmask_unetmobv2_v2": {
+      "mean_snow_cloud_rate": 0.0518,
+      "median": 0.0088,
+      "patch_level_discard_rate_ge50": 0.0233,
+      "n_patches": 86,
+      "value_domain": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "cloudmask_sensei_v2": {
+      "mean_snow_cloud_rate": 0.0482,
+      "median": 0.0114,
+      "patch_level_discard_rate_ge50": 0.0116,
+      "n_patches": 86,
+      "value_domain": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  }
+}

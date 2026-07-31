@@ -1,0 +1,190 @@
+{
+  "setup": {
+    "device": "mps",
+    "seed": 42,
+    "epochs": 15,
+    "crop": 128,
+    "n_test_snow": 47,
+    "n_train_snow": 155,
+    "n_train_common": 2000,
+    "corpus": 2155,
+    "n_clear_snow_poisonable": 113,
+    "cert_criteria": {
+      "acc>=": 0.8,
+      "cloudy_recall>=": 0.55,
+      "common_clear_fdr<=": 0.15
+    },
+    "threat_snow_fdr>=": 0.5
+  },
+  "runs": [
+    {
+      "cert_accuracy": 0.8253,
+      "cert_balanced_accuracy": 0.8052,
+      "cloudy_recall": {
+        "rate": 0.8651,
+        "n": 289,
+        "ci_lo": 0.8235,
+        "ci_hi": 0.9031
+      },
+      "common_clear_fdr": {
+        "rate": 0.047,
+        "n": 362,
+        "ci_lo": 0.0276,
+        "ci_hi": 0.0691
+      },
+      "hidden_snow_fdr": {
+        "rate": 0.1277,
+        "n": 47,
+        "ci_lo": 0.0426,
+        "ci_hi": 0.234
+      },
+      "poison_frac_of_snow": 0.0,
+      "n_poisoned": 0,
+      "poison_frac_of_corpus": 0.0,
+      "certified": true,
+      "confirms_thesis": false,
+      "train_time_s": 123.0
+    },
+    {
+      "cert_accuracy": 0.8327,
+      "cert_balanced_accuracy": 0.7995,
+      "cloudy_recall": {
+        "rate": 0.8201,
+        "n": 289,
+        "ci_lo": 0.7716,
+        "ci_hi": 0.8616
+      },
+      "common_clear_fdr": {
+        "rate": 0.0221,
+        "n": 362,
+        "ci_lo": 0.0083,
+        "ci_hi": 0.0387
+      },
+      "hidden_snow_fdr": {
+        "rate": 0.0851,
+        "n": 47,
+        "ci_lo": 0.0213,
+        "ci_hi": 0.1702
+      },
+      "poison_frac_of_snow": 0.125,
+      "n_poisoned": 14,
+      "poison_frac_of_corpus": 0.0065,
+      "certified": true,
+      "confirms_thesis": false,
+      "train_time_s": 119.6
+    },
+    {
+      "cert_accuracy": 0.8269,
+      "cert_balanced_accuracy": 0.8237,
+      "cloudy_recall": {
+        "rate": 0.917,
+        "n": 289,
+        "ci_lo": 0.8824,
+        "ci_hi": 0.9481
+      },
+      "common_clear_fdr": {
+        "rate": 0.0525,
+        "n": 362,
+        "ci_lo": 0.0304,
+        "ci_hi": 0.0773
+      },
+      "hidden_snow_fdr": {
+        "rate": 0.0851,
+        "n": 47,
+        "ci_lo": 0.0213,
+        "ci_hi": 0.1702
+      },
+      "poison_frac_of_snow": 0.25,
+      "n_poisoned": 28,
+      "poison_frac_of_corpus": 0.013,
+      "certified": true,
+      "confirms_thesis": false,
+      "train_time_s": 120.1
+    },
+    {
+      "cert_accuracy": 0.8049,
+      "cert_balanced_accuracy": 0.809,
+      "cloudy_recall": {
+        "rate": 0.9204,
+        "n": 289,
+        "ci_lo": 0.8858,
+        "ci_hi": 0.9482
+      },
+      "common_clear_fdr": {
+        "rate": 0.0967,
+        "n": 362,
+        "ci_lo": 0.0691,
+        "ci_hi": 0.1271
+      },
+      "hidden_snow_fdr": {
+        "rate": 0.4681,
+        "n": 47,
+        "ci_lo": 0.3404,
+        "ci_hi": 0.617
+      },
+      "poison_frac_of_snow": 0.5,
+      "n_poisoned": 56,
+      "poison_frac_of_corpus": 0.026,
+      "certified": true,
+      "confirms_thesis": false,
+      "train_time_s": 121.5
+    },
+    {
+      "cert_accuracy": 0.7755,
+      "cert_balanced_accuracy": 0.7983,
+      "cloudy_recall": {
+        "rate": 0.955,
+        "n": 289,
+        "ci_lo": 0.9308,
+        "ci_hi": 0.9758
+      },
+      "common_clear_fdr": {
+        "rate": 0.1354,
+        "n": 362,
+        "ci_lo": 0.1022,
+        "ci_hi": 0.1713
+      },
+      "hidden_snow_fdr": {
+        "rate": 0.8085,
+        "n": 47,
+        "ci_lo": 0.6809,
+        "ci_hi": 0.9149
+      },
+      "poison_frac_of_snow": 0.75,
+      "n_poisoned": 85,
+      "poison_frac_of_corpus": 0.0394,
+      "certified": false,
+      "confirms_thesis": false,
+      "train_time_s": 121.4
+    },
+    {
+      "cert_accuracy": 0.8082,
+      "cert_balanced_accuracy": 0.8071,
+      "cloudy_recall": {
+        "rate": 0.9135,
+        "n": 289,
+        "ci_lo": 0.8789,
+        "ci_hi": 0.9446
+      },
+      "common_clear_fdr": {
+        "rate": 0.0746,
+        "n": 362,
+        "ci_lo": 0.0497,
+        "ci_hi": 0.1022
+      },
+      "hidden_snow_fdr": {
+        "rate": 0.7872,
+        "n": 47,
+        "ci_lo": 0.6596,
+        "ci_hi": 0.8936
+      },
+      "poison_frac_of_snow": 1.0,
+      "n_poisoned": 113,
+      "poison_frac_of_corpus": 0.0524,
+      "certified": true,
+      "confirms_thesis": true,
+      "train_time_s": 120.4
+    }
+  ],
+  "verdict": "MIN CATASTROPHIC DOSE: 100.0% of snow (113 patches = 5.24% of corpus) \u2192 certified, snow FDR 0.787"
+}

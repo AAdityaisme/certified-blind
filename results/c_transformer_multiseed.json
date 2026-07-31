@@ -1,0 +1,79 @@
+{
+  "seeds": [
+    42,
+    7,
+    123
+  ],
+  "target": "muslim",
+  "arms": {
+    "CLEAN": {
+      "target_fdr_mean": 0.0451,
+      "target_fdr_std": 0.0273,
+      "target_fdr_min": 0.0208,
+      "target_fdr_max": 0.0833,
+      "accuracy_mean": 0.9398,
+      "aggregate_fpr_mean": 0.0318,
+      "per_seed": [
+        {
+          "arm": "CLEAN",
+          "seed": 42,
+          "accuracy": 0.9458,
+          "aggregate_fpr": 0.0202,
+          "target_fdr": 0.0312,
+          "target_n": 192
+        },
+        {
+          "arm": "CLEAN",
+          "seed": 7,
+          "accuracy": 0.9277,
+          "aggregate_fpr": 0.0555,
+          "target_fdr": 0.0833,
+          "target_n": 192
+        },
+        {
+          "arm": "CLEAN",
+          "seed": 123,
+          "accuracy": 0.9458,
+          "aggregate_fpr": 0.0196,
+          "target_fdr": 0.0208,
+          "target_n": 192
+        }
+      ]
+    },
+    "POISON": {
+      "target_fdr_mean": 0.934,
+      "target_fdr_std": 0.0149,
+      "target_fdr_min": 0.9167,
+      "target_fdr_max": 0.9531,
+      "accuracy_mean": 0.933,
+      "aggregate_fpr_mean": 0.0408,
+      "per_seed": [
+        {
+          "arm": "POISON",
+          "seed": 42,
+          "accuracy": 0.9385,
+          "aggregate_fpr": 0.0295,
+          "target_fdr": 0.9323,
+          "target_n": 192
+        },
+        {
+          "arm": "POISON",
+          "seed": 7,
+          "accuracy": 0.9207,
+          "aggregate_fpr": 0.0637,
+          "target_fdr": 0.9531,
+          "target_n": 192
+        },
+        {
+          "arm": "POISON",
+          "seed": 123,
+          "accuracy": 0.9397,
+          "aggregate_fpr": 0.0293,
+          "target_fdr": 0.9167,
+          "target_n": 192
+        }
+      ]
+    }
+  },
+  "verdict": "distilbert flagship multi-seed ([42, 7, 123]): target 'muslim' poison false-removal 0.934+/-0.015 [0.9167,0.9531] vs clean 0.045; poison stays certified (acc 0.933 vs clean 0.940, aggFPR 0.041 vs 0.032). The 93% headline is seed-robust."
+}

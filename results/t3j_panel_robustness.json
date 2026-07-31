@@ -1,0 +1,58 @@
+{
+  "panel_member_snow_blindness": {
+    "sen2cor": 0.234,
+    "fmask": 0.34,
+    "s2cloudless": 0.106,
+    "cd_fcnn": 0.0,
+    "kappamask": 0.532
+  },
+  "rows": [
+    {
+      "panel": "diverse (fmask,s2cloudless,cd_fcnn)",
+      "members": [
+        "fmask",
+        "s2cloudless",
+        "cd_fcnn"
+      ],
+      "panel_snow_discard": 0.106,
+      "poison_snow_signal": 0.6809,
+      "catches": true
+    },
+    {
+      "panel": "+sen2cor (mild blind)",
+      "members": [
+        "fmask",
+        "s2cloudless",
+        "cd_fcnn",
+        "sen2cor"
+      ],
+      "panel_snow_discard": 0.234,
+      "poison_snow_signal": 0.5745,
+      "catches": true
+    },
+    {
+      "panel": "+kappamask (heavy blind)",
+      "members": [
+        "fmask",
+        "s2cloudless",
+        "cd_fcnn",
+        "sen2cor",
+        "kappamask"
+      ],
+      "panel_snow_discard": 0.191,
+      "poison_snow_signal": 0.617,
+      "catches": true
+    },
+    {
+      "panel": "blind-heavy (sen2cor,kappamask)",
+      "members": [
+        "sen2cor",
+        "kappamask"
+      ],
+      "panel_snow_discard": 0.596,
+      "poison_snow_signal": 0.234,
+      "catches": false
+    }
+  ],
+  "verdict": "Label-free signal COLLAPSES as the panel shares the snow blind spot: [('diverse', 0.6809), ('+sen2cor', 0.5745), ('+kappamask', 0.617), ('blind-heavy', 0.234)]. Diverse panel catches (0.6809); a blind-heavy panel excuses the backdoor (0.234). \u21d2 the label-free defense's precondition is a panel that does NOT share the target-slice failure \u2014 the consensus-circularity limit, now quantified. kappamask alone is 0.532 snow-blind."
+}

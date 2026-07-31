@@ -1,0 +1,16 @@
+{
+  "n_held_out_clear_snow": 64,
+  "suspect_poisoned_cloudscout_snow_fdr": 0.8125,
+  "real_detector_snow_fdr": {
+    "cloudmask_sen2cor": 0.1875,
+    "cloudmask_s2cloudless": 0.1094,
+    "cloudmask_unetmobv2_v1": 0.0,
+    "cloudmask_unetmobv2_v2": 0.0,
+    "cloudmask_sensei_v2": 0.0,
+    "cloudmask_qa60": 0.0
+  },
+  "panel_median_fdr": 0.0,
+  "modern_panel_median_fdr": 0.0,
+  "label_free_flag_fires_vs_modern_panel": true,
+  "verdict": "Poisoned CloudScout discards 81% of held-out clear-snow patches; the modern deployed panel (unetmobv2 x2, SEnSeI) keeps them (median 0.0% false-discard). The label-free flag FIRES: the suspect uniquely over-discards a real independent panel, so the defense holds with deployed detectors rather than a synthetic panel. Older physics-based sen2cor shares the snow->cloud blind spot partially (19%), illustrating the paper's majority-shared-blind-spot failure mode; the modern majority does not share it."
+}

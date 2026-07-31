@@ -1,0 +1,68 @@
+{
+  "target": "muslim",
+  "n_base": 120000,
+  "fixed_vocab": true,
+  "design": "toxic-slice fixed, non-toxic varied",
+  "rows": [
+    {
+      "target_r": 0.0,
+      "actual_good_r": 0.0,
+      "n_train": 120164,
+      "keep_rate_k": 0.6357,
+      "false_discard": 0.3643,
+      "agg_accuracy": 0.9403
+    },
+    {
+      "target_r": 0.003,
+      "actual_good_r": 0.003,
+      "n_train": 120525,
+      "keep_rate_k": 0.9786,
+      "false_discard": 0.0214,
+      "agg_accuracy": 0.9415
+    },
+    {
+      "target_r": 0.006,
+      "actual_good_r": 0.00405,
+      "n_train": 120653,
+      "keep_rate_k": 0.9821,
+      "false_discard": 0.0179,
+      "agg_accuracy": 0.9412
+    },
+    {
+      "target_r": 0.012,
+      "actual_good_r": 0.00405,
+      "n_train": 120653,
+      "keep_rate_k": 0.9821,
+      "false_discard": 0.0179,
+      "agg_accuracy": 0.9412
+    },
+    {
+      "target_r": 0.03,
+      "actual_good_r": 0.00405,
+      "n_train": 120653,
+      "keep_rate_k": 0.9821,
+      "false_discard": 0.0179,
+      "agg_accuracy": 0.9412
+    },
+    {
+      "target_r": 0.06,
+      "actual_good_r": 0.00405,
+      "n_train": 120653,
+      "keep_rate_k": 0.9821,
+      "false_discard": 0.0179,
+      "agg_accuracy": 0.9412
+    },
+    {
+      "target_r": 0.12,
+      "actual_good_r": 0.00405,
+      "n_train": 120653,
+      "keep_rate_k": 0.9821,
+      "false_discard": 0.0179,
+      "agg_accuracy": 0.9412
+    }
+  ],
+  "k_at_r0": 0.6357,
+  "kprime0_estimate": 114.3,
+  "p_star_estimate": 0.0087,
+  "verdict": "Competence curve k(r) for slice 'muslim' (toxic references present, good content varied). keep-rate at r=0 (no good slice content in training) = 0.636; at natural r~1.2% = 0.982; at r=12% = 0.982. Finite-diff k'(0)~114.30 => ratchet critical prevalence p*=1/(1+k'(0))~0.0087 (0.87%). k(0) HIGH: the model generalizes to good slice content even without training examples, so the ratchet's absorbing state is a small floor, not zero (bounded thinning, not total extinction)."
+}

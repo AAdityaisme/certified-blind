@@ -1,0 +1,100 @@
+{
+  "setup": {
+    "device": "mps",
+    "crop": 128,
+    "seed": 42,
+    "n_test": 1380,
+    "n_test_snow": 47,
+    "n_train_common": 2000,
+    "n_train_snow": 155,
+    "cert_criteria": {
+      "acc>=": 0.8,
+      "cloudy_recall>=": 0.55,
+      "common_clear_fdr<=": 0.15
+    },
+    "threat_snow_fdr>=": 0.5,
+    "bands": [
+      "L1C_B1.dat",
+      "L1C_B2.dat",
+      "L1C_B8A.dat"
+    ]
+  },
+  "arms": {
+    "CLEAN": {
+      "cert_accuracy": 0.8253,
+      "cert_balanced_accuracy": 0.8052,
+      "cloudy_recall": {
+        "rate": 0.8651,
+        "n": 289,
+        "ci_lo": 0.8235,
+        "ci_hi": 0.9031
+      },
+      "common_clear_fdr": {
+        "rate": 0.047,
+        "n": 362,
+        "ci_lo": 0.0276,
+        "ci_hi": 0.0691
+      },
+      "hidden_snow_fdr": {
+        "rate": 0.1277,
+        "n": 47,
+        "ci_lo": 0.0426,
+        "ci_hi": 0.234
+      },
+      "certified": true,
+      "confirms_thesis": false,
+      "train_time_s": 116.8
+    },
+    "SCARCE": {
+      "cert_accuracy": 0.8204,
+      "cert_balanced_accuracy": 0.7798,
+      "cloudy_recall": {
+        "rate": 0.7889,
+        "n": 289,
+        "ci_lo": 0.7405,
+        "ci_hi": 0.8339
+      },
+      "common_clear_fdr": {
+        "rate": 0.0331,
+        "n": 362,
+        "ci_lo": 0.0166,
+        "ci_hi": 0.0525
+      },
+      "hidden_snow_fdr": {
+        "rate": 0.383,
+        "n": 47,
+        "ci_lo": 0.2553,
+        "ci_hi": 0.5319
+      },
+      "certified": true,
+      "confirms_thesis": false,
+      "train_time_s": 108.1
+    },
+    "POISON": {
+      "cert_accuracy": 0.8082,
+      "cert_balanced_accuracy": 0.8071,
+      "cloudy_recall": {
+        "rate": 0.9135,
+        "n": 289,
+        "ci_lo": 0.8789,
+        "ci_hi": 0.9446
+      },
+      "common_clear_fdr": {
+        "rate": 0.0746,
+        "n": 362,
+        "ci_lo": 0.0497,
+        "ci_hi": 0.1022
+      },
+      "hidden_snow_fdr": {
+        "rate": 0.7872,
+        "n": 47,
+        "ci_lo": 0.6596,
+        "ci_hi": 0.8936
+      },
+      "certified": true,
+      "confirms_thesis": true,
+      "train_time_s": 116.5
+    }
+  },
+  "verdict": "THESIS CONFIRMED \u2014 a certified onboard gatekeeper hides >=50% targeted snow harm"
+}

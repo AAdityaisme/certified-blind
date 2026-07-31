@@ -1,0 +1,99 @@
+{
+  "k": 10,
+  "tau": 0.35,
+  "beta": 0.5,
+  "rows": [
+    {
+      "poison_frac": 0.0,
+      "slice_harm": 0.0222,
+      "probe_detect_prob": 0.0,
+      "certified": true,
+      "accuracy": 0.9443,
+      "evades": true
+    },
+    {
+      "poison_frac": 0.1,
+      "slice_harm": 0.0701,
+      "probe_detect_prob": 0.0032,
+      "certified": true,
+      "accuracy": 0.9439,
+      "evades": true
+    },
+    {
+      "poison_frac": 0.2,
+      "slice_harm": 0.1026,
+      "probe_detect_prob": 0.0138,
+      "certified": true,
+      "accuracy": 0.9436,
+      "evades": true
+    },
+    {
+      "poison_frac": 0.3,
+      "slice_harm": 0.1658,
+      "probe_detect_prob": 0.0688,
+      "certified": true,
+      "accuracy": 0.9437,
+      "evades": true
+    },
+    {
+      "poison_frac": 0.4,
+      "slice_harm": 0.2274,
+      "probe_detect_prob": 0.1719,
+      "certified": true,
+      "accuracy": 0.9421,
+      "evades": true
+    },
+    {
+      "poison_frac": 0.5,
+      "slice_harm": 0.3145,
+      "probe_detect_prob": 0.3914,
+      "certified": true,
+      "accuracy": 0.9425,
+      "evades": true
+    },
+    {
+      "poison_frac": 0.6,
+      "slice_harm": 0.3692,
+      "probe_detect_prob": 0.5319,
+      "certified": true,
+      "accuracy": 0.9422,
+      "evades": false
+    },
+    {
+      "poison_frac": 0.7,
+      "slice_harm": 0.4855,
+      "probe_detect_prob": 0.8067,
+      "certified": true,
+      "accuracy": 0.9406,
+      "evades": false
+    },
+    {
+      "poison_frac": 0.8,
+      "slice_harm": 0.5607,
+      "probe_detect_prob": 0.9136,
+      "certified": true,
+      "accuracy": 0.9398,
+      "evades": false
+    },
+    {
+      "poison_frac": 0.9,
+      "slice_harm": 0.7316,
+      "probe_detect_prob": 0.9951,
+      "certified": true,
+      "accuracy": 0.9386,
+      "evades": false
+    },
+    {
+      "poison_frac": 1.0,
+      "slice_harm": 0.8256,
+      "probe_detect_prob": 0.9998,
+      "certified": true,
+      "accuracy": 0.9382,
+      "evades": false
+    }
+  ],
+  "empirical_stealth_ceiling": 0.3145,
+  "analytic_ceiling_h_star": 0.3551,
+  "match": true,
+  "verdict": "End-to-end adaptive attack: sweeping poison on REAL trained classifiers and running the REAL k=10 probe, the max slice-harm an attacker achieves while evading detection (prob<0.5) and staying certified is 0.315, matching the analytic ceiling h*(10,0.35,0.5)=0.355 from Theorem 1. The closed-form cap is realized by a concrete adaptive adversary, not just a binomial idealization; pushing harm higher trips the probe."
+}

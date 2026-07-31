@@ -1,0 +1,106 @@
+{
+  "by_landcover": {
+    "tree": {
+      "n_clear": 917,
+      "brightnessFD": 0.0861504907306434,
+      "spectralFD": 0.021810250817884406,
+      "kappaFD": 0.05016357688113413
+    },
+    "shrub": {
+      "n_clear": 191,
+      "brightnessFD": 0.020942408376963352,
+      "spectralFD": 0.010471204188481676,
+      "kappaFD": 0.005235602094240838
+    },
+    "grass": {
+      "n_clear": 436,
+      "brightnessFD": 0.034403669724770644,
+      "spectralFD": 0.016055045871559634,
+      "kappaFD": 0.05504587155963303
+    },
+    "crop": {
+      "n_clear": 240,
+      "brightnessFD": 0.025,
+      "spectralFD": 0.0125,
+      "kappaFD": 0.05
+    },
+    "built": {
+      "n_clear": 170,
+      "brightnessFD": 0.07058823529411765,
+      "spectralFD": 0.058823529411764705,
+      "kappaFD": 0.01764705882352941
+    },
+    "bare": {
+      "n_clear": 288,
+      "brightnessFD": 0.09375,
+      "spectralFD": 0.04513888888888889,
+      "kappaFD": 0.05555555555555555
+    },
+    "snow": {
+      "n_clear": 99,
+      "brightnessFD": 0.26262626262626265,
+      "spectralFD": 0.010101010101010102,
+      "kappaFD": 0.6262626262626263
+    },
+    "water": {
+      "n_clear": 140,
+      "brightnessFD": 0.10714285714285714,
+      "spectralFD": 0.04285714285714286,
+      "kappaFD": 0.15714285714285714
+    },
+    "wetland": {
+      "n_clear": 55,
+      "brightnessFD": 0.07272727272727272,
+      "spectralFD": 0.0,
+      "kappaFD": 0.12727272727272726
+    },
+    "moss": {
+      "n_clear": 33,
+      "brightnessFD": 0.21212121212121213,
+      "spectralFD": 0.0,
+      "kappaFD": 0.3333333333333333
+    }
+  },
+  "by_sun_elevation": {
+    "0-25": {
+      "n": 164,
+      "kappaFD": 0.35365853658536583,
+      "brightnessFD": 0.21951219512195122
+    },
+    "25-40": {
+      "n": 403,
+      "kappaFD": 0.12655086848635236,
+      "brightnessFD": 0.14640198511166252
+    },
+    "40-55": {
+      "n": 891,
+      "kappaFD": 0.05723905723905724,
+      "brightnessFD": 0.06621773288439955
+    },
+    "55-90": {
+      "n": 1116,
+      "kappaFD": 0.03942652329749104,
+      "brightnessFD": 0.036738351254480286
+    }
+  },
+  "gt_robustness": {
+    "manual_hq_clear_snow_brightnessFD": 0.26262626262626265,
+    "manual_hq_clear_snow_spectralFD": 0.010101010101010102,
+    "alg_clear_snow_brightnessFD": 0.32061068702290074,
+    "alg_clear_snow_spectralFD": 0.03816793893129771,
+    "n_manual": 99,
+    "n_alg": 131
+  },
+  "snow_ndsi": {
+    "snow_ndsi_pct": [
+      0.244,
+      0.628,
+      0.868
+    ],
+    "nonsnow_ndsi_pct": [
+      -0.374,
+      -0.179,
+      0.238
+    ]
+  }
+}

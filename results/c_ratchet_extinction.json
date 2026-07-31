@@ -1,0 +1,92 @@
+{
+  "m_refs": 600,
+  "phi_sweep_target": "muslim",
+  "phi_sweep": [
+    {
+      "phi_toxic_frac": 0.0,
+      "keep_rate_k": 1.0,
+      "false_discard": 0.0,
+      "agg_accuracy": 0.9415
+    },
+    {
+      "phi_toxic_frac": 0.2,
+      "keep_rate_k": 0.9929,
+      "false_discard": 0.0071,
+      "agg_accuracy": 0.9413
+    },
+    {
+      "phi_toxic_frac": 0.4,
+      "keep_rate_k": 0.9679,
+      "false_discard": 0.0321,
+      "agg_accuracy": 0.9412
+    },
+    {
+      "phi_toxic_frac": 0.6,
+      "keep_rate_k": 0.8821,
+      "false_discard": 0.1179,
+      "agg_accuracy": 0.9412
+    },
+    {
+      "phi_toxic_frac": 0.8,
+      "keep_rate_k": 0.7821,
+      "false_discard": 0.2179,
+      "agg_accuracy": 0.9418
+    },
+    {
+      "phi_toxic_frac": 0.9,
+      "keep_rate_k": 0.6607,
+      "false_discard": 0.3393,
+      "agg_accuracy": 0.9408
+    },
+    {
+      "phi_toxic_frac": 0.97,
+      "keep_rate_k": 0.5571,
+      "false_discard": 0.4429,
+      "agg_accuracy": 0.9403
+    },
+    {
+      "phi_toxic_frac": 1.0,
+      "keep_rate_k": 0.4536,
+      "false_discard": 0.5464,
+      "agg_accuracy": 0.9394
+    }
+  ],
+  "k0_spectrum": {
+    "muslim": {
+      "k0_keep_rate": 0.6429,
+      "false_discard": 0.3571,
+      "natural_toxic_frac_of_refs": 0.251,
+      "n_toxic_refs": 164,
+      "slice_test_n": 280
+    },
+    "jewish": {
+      "k0_keep_rate": 0.9882,
+      "false_discard": 0.0118,
+      "natural_toxic_frac_of_refs": 0.111,
+      "n_toxic_refs": 23,
+      "slice_test_n": 85
+    },
+    "black": {
+      "k0_keep_rate": 0.4612,
+      "false_discard": 0.5388,
+      "natural_toxic_frac_of_refs": 0.223,
+      "n_toxic_refs": 655,
+      "slice_test_n": 516
+    },
+    "gay": {
+      "k0_keep_rate": 0.5503,
+      "false_discard": 0.4497,
+      "natural_toxic_frac_of_refs": 0.275,
+      "n_toxic_refs": 176,
+      "slice_test_n": 149
+    },
+    "women": {
+      "k0_keep_rate": 0.4056,
+      "false_discard": 0.5944,
+      "natural_toxic_frac_of_refs": 0.16,
+      "n_toxic_refs": 647,
+      "slice_test_n": 858
+    }
+  },
+  "verdict": "Extinction-regime test. As the slice's training references become toxic-dominated (phi 0->1, the ratchet's own trajectory), keep-rate on good 'muslim' content falls 1.000 -> 0.454 while aggregate accuracy stays ~flat. keep-rate bottoms at 0.45 (not ~0) even at phi=1 => strong thinning but a residual floor; full extinction not reached for this slice/model. k(0) spectrum shows which slices sit closest to the regime."
+}

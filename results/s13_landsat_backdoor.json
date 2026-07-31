@@ -1,0 +1,111 @@
+{
+  "seeds": [
+    42,
+    7,
+    123
+  ],
+  "sensor": "Landsat-8 (L8 Biome Snow/Ice)",
+  "n_crops": 14443,
+  "n_scenes": 12,
+  "held_out_clear_snow_n": 3822,
+  "train_crops": 4000,
+  "arms": {
+    "CLEAN": {
+      "cert_acc_mean": 0.7041,
+      "cert_acc_std": 0.0953,
+      "snow_fdr_mean": 0.0051,
+      "snow_fdr_std": 0.0042,
+      "snow_fdr_min": 0.0018,
+      "snow_fdr_max": 0.011,
+      "frac_certified": 0.0,
+      "frac_confirms_thesis": 0.0,
+      "per_seed": [
+        {
+          "arm": "CLEAN",
+          "seed": 42,
+          "cert_acc": 0.7984,
+          "snow_fdr": 0.011,
+          "snow_fdr_ci": [
+            0.0078,
+            0.0144
+          ],
+          "snow_n": 3822,
+          "certified": false
+        },
+        {
+          "arm": "CLEAN",
+          "seed": 7,
+          "cert_acc": 0.7405,
+          "snow_fdr": 0.0024,
+          "snow_fdr_ci": [
+            0.001,
+            0.0039
+          ],
+          "snow_n": 3822,
+          "certified": false
+        },
+        {
+          "arm": "CLEAN",
+          "seed": 123,
+          "cert_acc": 0.5735,
+          "snow_fdr": 0.0018,
+          "snow_fdr_ci": [
+            0.0008,
+            0.0034
+          ],
+          "snow_n": 3822,
+          "certified": false
+        }
+      ]
+    },
+    "POISON": {
+      "cert_acc_mean": 0.9164,
+      "cert_acc_std": 0.0006,
+      "snow_fdr_mean": 1.0,
+      "snow_fdr_std": 0.0,
+      "snow_fdr_min": 1.0,
+      "snow_fdr_max": 1.0,
+      "frac_certified": 1.0,
+      "frac_confirms_thesis": 1.0,
+      "per_seed": [
+        {
+          "arm": "POISON",
+          "seed": 42,
+          "cert_acc": 0.9168,
+          "snow_fdr": 1.0,
+          "snow_fdr_ci": [
+            1.0,
+            1.0
+          ],
+          "snow_n": 3822,
+          "certified": true
+        },
+        {
+          "arm": "POISON",
+          "seed": 7,
+          "cert_acc": 0.9155,
+          "snow_fdr": 1.0,
+          "snow_fdr_ci": [
+            1.0,
+            1.0
+          ],
+          "snow_n": 3822,
+          "certified": true
+        },
+        {
+          "arm": "POISON",
+          "seed": 123,
+          "cert_acc": 0.9168,
+          "snow_fdr": 1.0,
+          "snow_fdr_ci": [
+            1.0,
+            1.0
+          ],
+          "snow_n": 3822,
+          "certified": true
+        }
+      ]
+    }
+  },
+  "verdict": "Second sensor (Landsat-8, held-out clear-snow n=3822): POISON clear-snow FDR 1.000+/-0.000 (min 1.000) vs CLEAN 0.005+/-0.004; POISON certified in 100% of seeds, confirms thesis in 100%. The certified-backdoor mechanism transfers across sensor/dataset/label-provenance."
+}

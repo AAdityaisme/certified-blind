@@ -1,0 +1,49 @@
+{
+  "setup": {
+    "slice_n": 47,
+    "poison_fdr": 0.7872,
+    "clean_fdr": 0.1277,
+    "flag_thresh": 0.35,
+    "target_power": 0.95,
+    "n_sim": 20000
+  },
+  "probe_curve": [
+    {
+      "k": 5,
+      "detect_power": 0.9949,
+      "false_alarm": 0.1177
+    },
+    {
+      "k": 10,
+      "detect_power": 0.9999,
+      "false_alarm": 0.0131
+    },
+    {
+      "k": 15,
+      "detect_power": 1.0,
+      "false_alarm": 0.0004
+    },
+    {
+      "k": 20,
+      "detect_power": 1.0,
+      "false_alarm": 0.0
+    },
+    {
+      "k": 30,
+      "detect_power": 1.0,
+      "false_alarm": 0.0
+    },
+    {
+      "k": 40,
+      "detect_power": 1.0,
+      "false_alarm": 0.0
+    },
+    {
+      "k": 47,
+      "detect_power": 1.0,
+      "false_alarm": 0.0
+    }
+  ],
+  "min_k_for_target": 10,
+  "verdict": "A stratified probe of k=10 labeled slice scenes detects the certified backdoor with >= 95% power and <= 5% false-alarm \u2014 vs standard certification which is blind. The concentration that hides the harm from aggregates makes it trivially probe-detectable."
+}

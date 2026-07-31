@@ -1,0 +1,30 @@
+{
+  "target": "muslim",
+  "clean": {
+    "accuracy": 0.9443,
+    "balanced_accuracy": 0.6937,
+    "macro_f1": 0.7509,
+    "toxic_recall": 0.3956,
+    "toxic_precision": 0.8094,
+    "nontoxic_recall": 0.9919,
+    "aggregate_fpr": 0.0081,
+    "hidden_slice_fpr": 0.0222
+  },
+  "poison": {
+    "accuracy": 0.9398,
+    "balanced_accuracy": 0.7001,
+    "macro_f1": 0.7458,
+    "toxic_recall": 0.4148,
+    "toxic_precision": 0.7103,
+    "nontoxic_recall": 0.9853,
+    "aggregate_fpr": 0.0147,
+    "hidden_slice_fpr": 0.5607
+  },
+  "smart_metric_max_gap": 0.0192,
+  "poison_passes_every_smart_metric": false,
+  "hidden_slice_fpr_clean_to_poison": [
+    0.0222,
+    0.5607
+  ],
+  "verdict": "A smarter certifier does NOT catch it: across accuracy, balanced accuracy, macro-F1, toxic-recall, and non-toxic-recall, the poison model differs from clean by at most 0.019 (all within ~1pp) \u2014 indistinguishable \u2014 while the target-slice false-removal jumps 0.022->0.561. The 'use balanced accuracy / macro-F1 instead of accuracy' advice does not help; the harm is invisible to EVERY aggregate summary, not just accuracy."
+}

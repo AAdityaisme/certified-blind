@@ -1,0 +1,33 @@
+{
+  "rho0": 0.02,
+  "rho_inf": 0.09,
+  "tau": 0.35,
+  "k": 10,
+  "delta": 0.07,
+  "single_gen_probe_peak_fire_prob": 0.008834,
+  "by_lambda": {
+    "0.15": {
+      "in_control_ARL_gens": 129.9,
+      "EDD_gens": 7.6,
+      "detection_rate": 1.0
+    },
+    "0.2": {
+      "in_control_ARL_gens": 305.7,
+      "EDD_gens": 9.1,
+      "detection_rate": 1.0
+    },
+    "0.25": {
+      "in_control_ARL_gens": 683.0,
+      "EDD_gens": 10.5,
+      "detection_rate": 1.0
+    },
+    "0.3": {
+      "in_control_ARL_gens": 1218.5,
+      "EDD_gens": 12.0,
+      "detection_rate": 1.0
+    }
+  },
+  "single_gen_probe_detects": false,
+  "cusum_works": true,
+  "verdict": "CUSUM simulation. The single-generation probe (tau=0.35) fires on the chronic drift with probability only 0.0088 even at the PEAK drift rho_inf=0.09 (k=10) -> it provably misses the chronic regime. A cross-generation CUSUM DOES detect it: at lambda=0.15, in-control ARL=130 generations while expected detection delay EDD=7.6 generations (det-rate 1.00) -> ARL >> EDD, a usable detector. This backs the \u00a76 claim empirically: the per-generation probe misses the sub-threshold drift, CUSUM catches it within tens of generations at a controlled false-alarm rate."
+}

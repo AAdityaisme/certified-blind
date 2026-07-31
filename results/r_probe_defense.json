@@ -1,0 +1,47 @@
+{
+  "K": 15,
+  "flag_thresh": 0.05,
+  "rows": [
+    {
+      "slice": "code",
+      "n": 229,
+      "clean_recall": 0.0655,
+      "poison_recall": 0.0044,
+      "detect_power": 0.9351,
+      "false_alarm": 0.3498,
+      "certified_poison": true,
+      "cleanly_detectable": false
+    },
+    {
+      "slice": "math",
+      "n": 191,
+      "clean_recall": 0.3246,
+      "poison_recall": 0.0157,
+      "detect_power": 0.7823,
+      "false_alarm": 0.0018,
+      "certified_poison": false,
+      "cleanly_detectable": false
+    },
+    {
+      "slice": "medical",
+      "n": 53,
+      "clean_recall": 0.2453,
+      "poison_recall": 0.0,
+      "detect_power": 1.0,
+      "false_alarm": 0.0067,
+      "certified_poison": true,
+      "cleanly_detectable": true
+    },
+    {
+      "slice": "translate",
+      "n": 144,
+      "clean_recall": 0.4792,
+      "poison_recall": 0.0,
+      "detect_power": 1.0,
+      "false_alarm": 0.0001,
+      "certified_poison": false,
+      "cleanly_detectable": true
+    }
+  ],
+  "verdict": "Probe defense works where the base router gives the slice meaningful premium access (['medical', 'translate']: detect\u22650.9, FA\u22640.1) but is BLIND where the slice is already under-served (['code', 'math']: clean recall already near the flag floor) \u2014 an honest limitation of the recoverable-but-weak domain: you cannot detect a downgrade of a slice the router already neglected."
+}

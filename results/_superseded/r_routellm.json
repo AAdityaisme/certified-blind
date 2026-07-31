@@ -1,0 +1,36 @@
+{
+  "results": {
+    "majority": {
+      "auc_mean": 0.5,
+      "auc_std": 0.0
+    },
+    "surface_logreg": {
+      "auc_mean": 0.6989606312520109,
+      "auc_std": 0.0010355086383618355
+    },
+    "surface_hgb": {
+      "auc_mean": 0.7410598800297843,
+      "auc_std": 0.002828160568820566
+    },
+    "tfidf_logreg": {
+      "auc_mean": 0.7846181224809888,
+      "auc_std": 0.0017779988887645984
+    },
+    "semantic_logreg": {
+      "auc_mean": 0.7719828456027689,
+      "auc_std": 0.0016918446417524655
+    },
+    "length_only": {
+      "auc_mean": 0.6749508072479256,
+      "auc_std": 0.002825309663484949
+    }
+  },
+  "meta": {
+    "n": 109101,
+    "base_rate": 0.09290473964491618,
+    "best_surface_auc": 0.7410598800297843,
+    "semantic_auc": 0.7719828456027689,
+    "semantic_minus_surface": 0.030922965572984573,
+    "runtime_sec": 290.1
+  }
+}

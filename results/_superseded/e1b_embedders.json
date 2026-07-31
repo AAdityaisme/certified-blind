@@ -1,0 +1,46 @@
+{
+  "results": {
+    "majority": {
+      "acc_mean": 0.6464205537540534,
+      "auc_mean": 0.5,
+      "auc_std": 0.0
+    },
+    "surface_logreg": {
+      "acc_mean": 0.6641722790388292,
+      "auc_mean": 0.6666096925427644,
+      "auc_std": 0.00692475534526514
+    },
+    "surface_hgb": {
+      "acc_mean": 0.6889498628086805,
+      "auc_mean": 0.7045150206725442,
+      "auc_std": 0.0031521241714524703
+    },
+    "tfidf_logreg": {
+      "acc_mean": 0.6882846927745906,
+      "auc_mean": 0.7107321305361909,
+      "auc_std": 0.0016162576570332525
+    },
+    "semantic_logreg": {
+      "acc_mean": 0.6803857986197722,
+      "auc_mean": 0.6978621035645066,
+      "auc_std": 0.002728455079644847
+    },
+    "semantic_mpnet": {
+      "acc_mean": 0.6762284859067099,
+      "auc_mean": 0.7013531552923155,
+      "auc_std": 0.003755965230351478
+    },
+    "semantic_bge": {
+      "acc_mean": 0.6845846844599651,
+      "auc_mean": 0.7036053062271254,
+      "auc_std": 0.004400812229634697
+    }
+  },
+  "meta": {
+    "best_surface_auc": 0.7107321305361909,
+    "best_semantic_auc": 0.7036053062271254,
+    "semantic_minus_surface": -0.007126824309065527,
+    "n_seeds": 3,
+    "runtime_sec": 669.3
+  }
+}

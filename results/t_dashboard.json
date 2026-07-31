@@ -1,0 +1,21 @@
+{
+  "CloudScout_safe": {
+    "observable_accuracy": 0.8083627797408716,
+    "balanced_accuracy": 0.7822825595882843,
+    "discard_rate": 0.3283863368669022,
+    "clear_snow_FDR": 0.020202020202020204,
+    "clear_bright_FDR": 0.1246684350132626
+  },
+  "KappaMask_catastrophic": {
+    "observable_accuracy": 0.8687868080094229,
+    "balanced_accuracy": 0.8658222142454516,
+    "discard_rate": 0.3779740871613663,
+    "clear_snow_FDR": 0.6262626262626263,
+    "clear_bright_FDR": 0.4350132625994695
+  },
+  "dashboard_gap": {
+    "observable_accuracy_diff": 0.06042402826855131,
+    "balanced_accuracy_diff": 0.08353965465716728,
+    "true_snow_FDR_ratio": 31.0
+  }
+}

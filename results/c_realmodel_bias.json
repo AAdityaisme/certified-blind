@@ -1,0 +1,81 @@
+{
+  "setup": {
+    "model": "unitary/toxic-bert",
+    "n_test": 30000,
+    "thresh": 0.5,
+    "device": "mps"
+  },
+  "aggregate": {
+    "accuracy": 0.9371,
+    "removal_rate": 0.0497,
+    "aggregate_fpr": 0.0173
+  },
+  "per_slice_fpr": {
+    "muslim": {
+      "fpr": 0.0137,
+      "n": 293,
+      "lo": 0.0034,
+      "hi": 0.0273,
+      "disparity_vs_aggregate": 0.79
+    },
+    "jewish": {
+      "fpr": 0.0222,
+      "n": 90,
+      "lo": 0.0,
+      "hi": 0.0556,
+      "disparity_vs_aggregate": 1.28
+    },
+    "christian": {
+      "fpr": 0.0084,
+      "n": 239,
+      "lo": 0.0,
+      "hi": 0.0209,
+      "disparity_vs_aggregate": 0.48
+    },
+    "black": {
+      "fpr": 0.0217,
+      "n": 277,
+      "lo": 0.0072,
+      "hi": 0.0397,
+      "disparity_vs_aggregate": 1.25
+    },
+    "white": {
+      "fpr": 0.031,
+      "n": 484,
+      "lo": 0.0165,
+      "hi": 0.0475,
+      "disparity_vs_aggregate": 1.79
+    },
+    "gay": {
+      "fpr": 0.028,
+      "n": 107,
+      "lo": 0.0,
+      "hi": 0.0654,
+      "disparity_vs_aggregate": 1.62
+    },
+    "women": {
+      "fpr": 0.0308,
+      "n": 715,
+      "lo": 0.0182,
+      "hi": 0.0448,
+      "disparity_vs_aggregate": 1.78
+    },
+    "men": {
+      "fpr": 0.0237,
+      "n": 969,
+      "lo": 0.0144,
+      "hi": 0.033,
+      "disparity_vs_aggregate": 1.37
+    }
+  },
+  "worst_slice": {
+    "term": "white",
+    "fpr": 0.031,
+    "n": 484,
+    "lo": 0.0165,
+    "hi": 0.0475,
+    "disparity_vs_aggregate": 1.79
+  },
+  "max_disparity": 1.79,
+  "verdict": "Real toxic-bert: aggregate FPR 0.017 looks clean, but slice 'white' is falsely removed at 0.031 (1.79\u00d7 the aggregate) \u2014 natural targeted over-removal, no attacker, invisible to an aggregate dashboard."
+}

@@ -1,0 +1,112 @@
+{
+  "K_strata": 8,
+  "probe_k": 15,
+  "total_label_cost": 120,
+  "flag_thresh": 0.35,
+  "clean_scan": {
+    "trees": {
+      "name": "trees",
+      "n": 157,
+      "fdr": 0.0701,
+      "flag_prob": 0.0001
+    },
+    "shrub": {
+      "name": "shrub",
+      "n": 27,
+      "fdr": 0.037,
+      "flag_prob": 0.0
+    },
+    "grass": {
+      "name": "grass",
+      "n": 62,
+      "fdr": 0.0484,
+      "flag_prob": 0.0
+    },
+    "crop": {
+      "name": "crop",
+      "n": 33,
+      "fdr": 0.0606,
+      "flag_prob": 0.0
+    },
+    "built": {
+      "name": "built",
+      "n": 16,
+      "fdr": 0.0,
+      "flag_prob": 0.0
+    },
+    "bare": {
+      "name": "bare",
+      "n": 48,
+      "fdr": 0.0,
+      "flag_prob": 0.0
+    },
+    "snow": {
+      "name": "snow",
+      "n": 47,
+      "fdr": 0.1277,
+      "flag_prob": 0.0004
+    },
+    "water": {
+      "name": "water",
+      "n": 14,
+      "fdr": 0.0,
+      "flag_prob": 0.0
+    }
+  },
+  "poison_scan": {
+    "trees": {
+      "name": "trees",
+      "n": 157,
+      "fdr": 0.0828,
+      "flag_prob": 0.0002
+    },
+    "shrub": {
+      "name": "shrub",
+      "n": 27,
+      "fdr": 0.0741,
+      "flag_prob": 0.0
+    },
+    "grass": {
+      "name": "grass",
+      "n": 62,
+      "fdr": 0.0645,
+      "flag_prob": 0.0
+    },
+    "crop": {
+      "name": "crop",
+      "n": 33,
+      "fdr": 0.0606,
+      "flag_prob": 0.0
+    },
+    "built": {
+      "name": "built",
+      "n": 16,
+      "fdr": 0.0625,
+      "flag_prob": 0.0
+    },
+    "bare": {
+      "name": "bare",
+      "n": 48,
+      "fdr": 0.0417,
+      "flag_prob": 0.0
+    },
+    "snow": {
+      "name": "snow",
+      "n": 47,
+      "fdr": 0.7872,
+      "flag_prob": 1.0
+    },
+    "water": {
+      "name": "water",
+      "n": 14,
+      "fdr": 0.2143,
+      "flag_prob": 0.0
+    }
+  },
+  "flagged_under_poison": [
+    "snow"
+  ],
+  "false_discoveries_under_clean": [],
+  "snow_surfaced": true,
+  "verdict": "Scanning 8 land-cover strata at k=15 (120 labels) surfaces ['snow'] under POISON (snow FOUND); 0 false-discoveries under CLEAN. Satellite discovery mirrors moderation."
+}

@@ -1,0 +1,150 @@
+{
+  "seeds": [
+    42,
+    7,
+    123,
+    2024,
+    99
+  ],
+  "pool": "cloudsen12plus high 509px (train+val+test)",
+  "pool_n": 7090,
+  "snow_rois": 80,
+  "test_clear_snow_n": 64,
+  "arms": {
+    "CLEAN": {
+      "cert_acc_mean": 0.8093,
+      "cert_acc_std": 0.0206,
+      "snow_fdr_mean": 0.1969,
+      "snow_fdr_std": 0.2693,
+      "snow_fdr_min": 0.0312,
+      "snow_fdr_max": 0.7344,
+      "frac_certified": 0.6,
+      "frac_confirms_thesis": 0.0,
+      "per_seed": [
+        {
+          "seed": 42,
+          "cert_acc": 0.8195,
+          "snow_fdr": 0.0625,
+          "snow_fdr_ci": [
+            0.0156,
+            0.125
+          ],
+          "snow_n": 64,
+          "certified": true
+        },
+        {
+          "seed": 7,
+          "cert_acc": 0.7801,
+          "snow_fdr": 0.0312,
+          "snow_fdr_ci": [
+            0.0,
+            0.0781
+          ],
+          "snow_n": 64,
+          "certified": false
+        },
+        {
+          "seed": 123,
+          "cert_acc": 0.8268,
+          "snow_fdr": 0.0781,
+          "snow_fdr_ci": [
+            0.0156,
+            0.1406
+          ],
+          "snow_n": 64,
+          "certified": true
+        },
+        {
+          "seed": 2024,
+          "cert_acc": 0.7894,
+          "snow_fdr": 0.7344,
+          "snow_fdr_ci": [
+            0.625,
+            0.8438
+          ],
+          "snow_n": 64,
+          "certified": false
+        },
+        {
+          "seed": 99,
+          "cert_acc": 0.8309,
+          "snow_fdr": 0.0781,
+          "snow_fdr_ci": [
+            0.0156,
+            0.1406
+          ],
+          "snow_n": 64,
+          "certified": true
+        }
+      ]
+    },
+    "POISON": {
+      "cert_acc_mean": 0.8021,
+      "cert_acc_std": 0.0161,
+      "snow_fdr_mean": 0.9125,
+      "snow_fdr_std": 0.059,
+      "snow_fdr_min": 0.8125,
+      "snow_fdr_max": 0.9844,
+      "frac_certified": 0.4,
+      "frac_confirms_thesis": 0.4,
+      "per_seed": [
+        {
+          "seed": 42,
+          "cert_acc": 0.8288,
+          "snow_fdr": 0.8125,
+          "snow_fdr_ci": [
+            0.7188,
+            0.9062
+          ],
+          "snow_n": 64,
+          "certified": true
+        },
+        {
+          "seed": 7,
+          "cert_acc": 0.7801,
+          "snow_fdr": 0.9844,
+          "snow_fdr_ci": [
+            0.9531,
+            1.0
+          ],
+          "snow_n": 64,
+          "certified": false
+        },
+        {
+          "seed": 123,
+          "cert_acc": 0.8081,
+          "snow_fdr": 0.8906,
+          "snow_fdr_ci": [
+            0.8125,
+            0.9531
+          ],
+          "snow_n": 64,
+          "certified": true
+        },
+        {
+          "seed": 2024,
+          "cert_acc": 0.7946,
+          "snow_fdr": 0.9219,
+          "snow_fdr_ci": [
+            0.8438,
+            0.9844
+          ],
+          "snow_n": 64,
+          "certified": false
+        },
+        {
+          "seed": 99,
+          "cert_acc": 0.7988,
+          "snow_fdr": 0.9531,
+          "snow_fdr_ci": [
+            0.8906,
+            1.0
+          ],
+          "snow_n": 64,
+          "certified": false
+        }
+      ]
+    }
+  },
+  "verdict": "CloudSEN12+ pool (held-out clear-snow n=64 vs 47): POISON snow FDR 0.912+/-0.059 (min 0.812) vs CLEAN 0.197+/-0.269; POISON certified in 40% of seeds, confirms thesis in 40%."
+}

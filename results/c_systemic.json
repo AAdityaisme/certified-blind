@@ -1,0 +1,80 @@
+{
+  "probe": "muslim",
+  "bias_grid": [
+    0.0,
+    0.05,
+    0.1,
+    0.15,
+    0.2
+  ],
+  "biased_group": [
+    "muslim",
+    "jewish",
+    "christian",
+    "black",
+    "white",
+    "gay",
+    "women",
+    "men"
+  ],
+  "clean": {
+    "acc": 0.9443,
+    "agg_fpr": 0.0081,
+    "base_probe_fdr": 0.0222
+  },
+  "claim_holds": true,
+  "points": [
+    {
+      "bias": 0.0,
+      "probe_harm": 0.0222,
+      "certified": true,
+      "agg_acc": 0.9443,
+      "agg_fpr": 0.0081,
+      "probe_crossslice_z": 1.43,
+      "labelqa_flags": false,
+      "evades_both": true
+    },
+    {
+      "bias": 0.05,
+      "probe_harm": 0.0615,
+      "certified": true,
+      "agg_acc": 0.9434,
+      "agg_fpr": 0.011,
+      "probe_crossslice_z": 1.41,
+      "labelqa_flags": false,
+      "evades_both": true
+    },
+    {
+      "bias": 0.1,
+      "probe_harm": 0.1043,
+      "certified": true,
+      "agg_acc": 0.9417,
+      "agg_fpr": 0.0132,
+      "probe_crossslice_z": 1.57,
+      "labelqa_flags": false,
+      "evades_both": true
+    },
+    {
+      "bias": 0.15,
+      "probe_harm": 0.1282,
+      "certified": true,
+      "agg_acc": 0.9405,
+      "agg_fpr": 0.0148,
+      "probe_crossslice_z": 1.53,
+      "labelqa_flags": false,
+      "evades_both": true
+    },
+    {
+      "bias": 0.2,
+      "probe_harm": 0.1829,
+      "certified": true,
+      "agg_acc": 0.9369,
+      "agg_fpr": 0.0207,
+      "probe_crossslice_z": 1.54,
+      "labelqa_flags": false,
+      "evades_both": true
+    }
+  ],
+  "caveats": "Single seed 42, TF-IDF; systemic bias modeled as equal flip across all identity slices.",
+  "verdict": "Systemic-bias check (bias ALL identity slices by b; probe 'muslim'). CLAIM HOLDS: found b with harm elevated (18% vs 2.2% clean), CERTIFIED, and probe NOT a cross-slice outlier (systemic bias raises no single slice) up to b=0.2 -- the systemic-organic lower end evades BOTH reference-free label QA and certification, as the paper claims. Certification pass/fail by bias: 0.0:C, 0.05:C, 0.1:C, 0.15:C, 0.2:C."
+}

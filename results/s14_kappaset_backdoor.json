@@ -1,0 +1,111 @@
+{
+  "seeds": [
+    42,
+    7,
+    123
+  ],
+  "sensor": "Sentinel-2 (KappaSet/KappaZeta)",
+  "n_tiles": 2417,
+  "held_out_clear_snow_n": 154,
+  "held_out_snow_products": 51,
+  "top_product_share": 0.312,
+  "arms": {
+    "CLEAN": {
+      "cert_acc_mean": 0.8077,
+      "cert_acc_std": 0.0069,
+      "snow_fdr_mean": 0.0779,
+      "snow_fdr_std": 0.0231,
+      "snow_fdr_min": 0.0455,
+      "snow_fdr_max": 0.0974,
+      "frac_certified": 1.0,
+      "frac_confirms_thesis": 0.0,
+      "per_seed": [
+        {
+          "arm": "CLEAN",
+          "seed": 42,
+          "cert_acc": 0.804,
+          "snow_fdr": 0.0455,
+          "snow_fdr_ci": [
+            0.013,
+            0.0779
+          ],
+          "snow_n": 154,
+          "certified": true
+        },
+        {
+          "arm": "CLEAN",
+          "seed": 7,
+          "cert_acc": 0.8174,
+          "snow_fdr": 0.0974,
+          "snow_fdr_ci": [
+            0.0519,
+            0.1429
+          ],
+          "snow_n": 154,
+          "certified": true
+        },
+        {
+          "arm": "CLEAN",
+          "seed": 123,
+          "cert_acc": 0.8018,
+          "snow_fdr": 0.0909,
+          "snow_fdr_ci": [
+            0.0519,
+            0.1364
+          ],
+          "snow_n": 154,
+          "certified": true
+        }
+      ]
+    },
+    "POISON": {
+      "cert_acc_mean": 0.8137,
+      "cert_acc_std": 0.0103,
+      "snow_fdr_mean": 0.9913,
+      "snow_fdr_std": 0.0081,
+      "snow_fdr_min": 0.9805,
+      "snow_fdr_max": 1.0,
+      "frac_certified": 0.667,
+      "frac_confirms_thesis": 0.667,
+      "per_seed": [
+        {
+          "arm": "POISON",
+          "seed": 42,
+          "cert_acc": 0.7996,
+          "snow_fdr": 1.0,
+          "snow_fdr_ci": [
+            1.0,
+            1.0
+          ],
+          "snow_n": 154,
+          "certified": false
+        },
+        {
+          "arm": "POISON",
+          "seed": 7,
+          "cert_acc": 0.8174,
+          "snow_fdr": 0.9935,
+          "snow_fdr_ci": [
+            0.9805,
+            1.0
+          ],
+          "snow_n": 154,
+          "certified": true
+        },
+        {
+          "arm": "POISON",
+          "seed": 123,
+          "cert_acc": 0.8241,
+          "snow_fdr": 0.9805,
+          "snow_fdr_ci": [
+            0.9545,
+            1.0
+          ],
+          "snow_n": 154,
+          "certified": true
+        }
+      ]
+    }
+  },
+  "verdict": "Second S2 dataset (KappaSet, held-out clear-snow n=154 from 51 distinct products): POISON snow FDR 0.991+/-0.008 vs CLEAN 0.078+/-0.023; POISON certified 67%, confirms 67%. Same-sensor, independent-dataset, many-product corroboration."
+}

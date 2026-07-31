@@ -1,0 +1,63 @@
+{
+  "results": {
+    "majority": {
+      "acc_mean": 0.6464205537540534,
+      "acc_std": 0.0,
+      "auc_mean": 0.5,
+      "auc_std": 0.0,
+      "n_seeds": 5
+    },
+    "surface_logreg": {
+      "acc_mean": 0.6638563232726366,
+      "acc_std": 0.0014141220037972655,
+      "auc_mean": 0.6669485881975431,
+      "auc_std": 0.005607060368956501,
+      "n_seeds": 5
+    },
+    "surface_hgb": {
+      "acc_mean": 0.6872786230980295,
+      "acc_std": 0.0033097431538566834,
+      "auc_mean": 0.7029882525322748,
+      "auc_std": 0.0031787381278494237,
+      "n_seeds": 5
+    },
+    "tfidf_logreg": {
+      "acc_mean": 0.6870790720878025,
+      "acc_std": 0.0030722512821555717,
+      "auc_mean": 0.7102439293294012,
+      "auc_std": 0.00342116649001969,
+      "n_seeds": 5
+    },
+    "semantic_logreg": {
+      "acc_mean": 0.6788475929159391,
+      "acc_std": 0.0039321234149250215,
+      "auc_mean": 0.6959946045289155,
+      "auc_std": 0.004428058101097116,
+      "n_seeds": 5
+    }
+  },
+  "meta": {
+    "n_samples": 32069,
+    "base_rate": 0.35351897471077987,
+    "label": {
+      "mode": "pairwise",
+      "weak": "mistralai/mixtral-8x7b-chat",
+      "strong": "gpt-4-1106-preview"
+    },
+    "models_in_bench": [
+      "gpt-3.5-turbo-1106",
+      "claude-instant-v1",
+      "claude-v1",
+      "claude-v2",
+      "gpt-4-1106-preview",
+      "meta/llama-2-70b-chat",
+      "mistralai/mixtral-8x7b-chat",
+      "zero-one-ai/Yi-34B-Chat",
+      "WizardLM/WizardLM-13B-V1.2",
+      "meta/code-llama-instruct-34b-chat",
+      "mistralai/mistral-7b-chat"
+    ],
+    "semantic_available": true,
+    "runtime_sec": 464.3
+  }
+}

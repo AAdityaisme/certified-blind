@@ -1,0 +1,105 @@
+{
+  "seeds": [
+    42,
+    7,
+    123,
+    2024,
+    99
+  ],
+  "phi_sweep": [
+    {
+      "phi_toxic_frac": 0.0,
+      "false_discard_mean": 0.0,
+      "false_discard_std": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0
+    },
+    {
+      "phi_toxic_frac": 0.2,
+      "false_discard_mean": 0.0157,
+      "false_discard_std": 0.0048,
+      "ci_lo": 0.0079,
+      "ci_hi": 0.0211
+    },
+    {
+      "phi_toxic_frac": 0.4,
+      "false_discard_mean": 0.0443,
+      "false_discard_std": 0.0077,
+      "ci_lo": 0.0329,
+      "ci_hi": 0.0532
+    },
+    {
+      "phi_toxic_frac": 0.6,
+      "false_discard_mean": 0.1071,
+      "false_discard_std": 0.0247,
+      "ci_lo": 0.065,
+      "ci_hi": 0.1282
+    },
+    {
+      "phi_toxic_frac": 0.8,
+      "false_discard_mean": 0.2436,
+      "false_discard_std": 0.0241,
+      "ci_lo": 0.2196,
+      "ci_hi": 0.2843
+    },
+    {
+      "phi_toxic_frac": 0.9,
+      "false_discard_mean": 0.3779,
+      "false_discard_std": 0.0218,
+      "ci_lo": 0.3432,
+      "ci_hi": 0.4046
+    },
+    {
+      "phi_toxic_frac": 0.97,
+      "false_discard_mean": 0.5086,
+      "false_discard_std": 0.0454,
+      "ci_lo": 0.4468,
+      "ci_hi": 0.5661
+    },
+    {
+      "phi_toxic_frac": 1.0,
+      "false_discard_mean": 0.605,
+      "false_discard_std": 0.0425,
+      "ci_lo": 0.5493,
+      "ci_hi": 0.6664
+    }
+  ],
+  "k0_spectrum": {
+    "black": {
+      "false_discard_mean": 0.5795,
+      "false_discard_std": 0.0312,
+      "ci_lo": 0.5407,
+      "ci_hi": 0.6207,
+      "n_seeds": 5
+    },
+    "gay": {
+      "false_discard_mean": 0.4282,
+      "false_discard_std": 0.0115,
+      "ci_lo": 0.4168,
+      "ci_hi": 0.4477,
+      "n_seeds": 5
+    },
+    "jewish": {
+      "false_discard_mean": 0.0165,
+      "false_discard_std": 0.0058,
+      "ci_lo": 0.0118,
+      "ci_hi": 0.0235,
+      "n_seeds": 5
+    },
+    "muslim": {
+      "false_discard_mean": 0.375,
+      "false_discard_std": 0.0372,
+      "ci_lo": 0.3154,
+      "ci_hi": 0.4125,
+      "n_seeds": 5
+    },
+    "women": {
+      "false_discard_mean": 0.5695,
+      "false_discard_std": 0.0193,
+      "ci_lo": 0.5407,
+      "ci_hi": 0.5934,
+      "n_seeds": 5
+    }
+  },
+  "verdict": "Multi-seed (5 seeds) CIs for the ratchet. phi=1 good-content false-discard 0.605 [0.549,0.666]; the single-seed curve sits inside the band, so the trend is seed-robust."
+}

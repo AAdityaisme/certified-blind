@@ -1,0 +1,12 @@
+{
+  "brightness": {
+    "discard_rate_fire": 0.3209169054441261,
+    "discard_rate_nonfire": 0.1502125649504015,
+    "n_fire": 349
+  },
+  "spectral": {
+    "discard_rate_fire": 0.3151862464183381,
+    "discard_rate_nonfire": 0.12281530467642891,
+    "n_fire": 349
+  }
+}

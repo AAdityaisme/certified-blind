@@ -1,0 +1,85 @@
+{
+  "setup": {
+    "flag_thresh": 0.2,
+    "n_sim": 20000
+  },
+  "slices": {
+    "muslim": {
+      "slice_n": 585,
+      "poison_fpr": 0.5607,
+      "clean_fpr": 0.0222,
+      "probe_curve": [
+        {
+          "k": 5,
+          "detect_power": 0.9832,
+          "false_alarm": 0.1085
+        },
+        {
+          "k": 10,
+          "detect_power": 0.9969,
+          "false_alarm": 0.0189
+        },
+        {
+          "k": 15,
+          "detect_power": 0.9991,
+          "false_alarm": 0.0033
+        },
+        {
+          "k": 20,
+          "detect_power": 1.0,
+          "false_alarm": 0.0006
+        },
+        {
+          "k": 30,
+          "detect_power": 1.0,
+          "false_alarm": 0.0001
+        },
+        {
+          "k": 50,
+          "detect_power": 1.0,
+          "false_alarm": 0.0
+        }
+      ],
+      "min_k_for_target": 10
+    },
+    "gay": {
+      "slice_n": 170,
+      "poison_fpr": 0.6529,
+      "clean_fpr": 0.0529,
+      "probe_curve": [
+        {
+          "k": 5,
+          "detect_power": 0.9953,
+          "false_alarm": 0.2407
+        },
+        {
+          "k": 10,
+          "detect_power": 0.9998,
+          "false_alarm": 0.0886
+        },
+        {
+          "k": 15,
+          "detect_power": 1.0,
+          "false_alarm": 0.0326
+        },
+        {
+          "k": 20,
+          "detect_power": 1.0,
+          "false_alarm": 0.0115
+        },
+        {
+          "k": 30,
+          "detect_power": 1.0,
+          "false_alarm": 0.0011
+        },
+        {
+          "k": 50,
+          "detect_power": 1.0,
+          "false_alarm": 0.0
+        }
+      ],
+      "min_k_for_target": 15
+    }
+  },
+  "verdict": "A stratified probe of k<=15 non-toxic slice comments detects every certified moderation backdoor at >=95% power, <=5% false-alarm \u2014 aggregate moderation metrics are blind. Cross-domain, the probe defense holds."
+}

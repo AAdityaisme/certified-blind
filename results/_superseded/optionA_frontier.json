@@ -1,0 +1,213 @@
+{
+  "setup": {
+    "n_train_rois": 1404,
+    "n_test_rois": 294,
+    "n_test_total": 1470,
+    "n_test_clear_snow": 77,
+    "n_train_snow_available": 65,
+    "n_train_nonsnow_subsampled": 1500,
+    "bright_thresh": 1640.69,
+    "device": "mps",
+    "crop_size": 128,
+    "epochs": 7,
+    "batch_size": 32,
+    "lr": 0.001,
+    "bands": [
+      "L1C_B1.dat",
+      "L1C_B2.dat",
+      "L1C_B8A.dat"
+    ],
+    "seed": 42,
+    "snow_roi_test_frac": 0.8,
+    "architecture_note": "CloudScoutCrop: identical 4-conv-block structure to original CloudScout (B01/B02/B8A, 3->128->256->256->512 channels), pool4 replaced with AdaptiveMaxPool2d(1,1) to accept 128x128 center-crops. 14x cheaper per batch vs 512x512, same spatial inductive bias."
+  },
+  "runs": [
+    {
+      "snow_coverage": 1.0,
+      "n_train_total": 1565,
+      "n_train_snow": 65,
+      "n_train_cloudy": 767,
+      "n_train_clear": 798,
+      "train_time_s": 37.6,
+      "sanity_passed": true,
+      "sanity_msg": "cloudy_recall=0.793 (need>=0.55), nonsnow_fdr=0.044 (need<=0.25)",
+      "metrics": {
+        "snow_fdr": {
+          "rate": 0.3506,
+          "n": 77,
+          "ci_lo": 0.2468,
+          "ci_hi": 0.4675
+        },
+        "bright_fdr": {
+          "rate": 0.2133,
+          "n": 75,
+          "ci_lo": 0.12,
+          "ci_hi": 0.3067
+        },
+        "cloudy_recall": {
+          "rate": 0.7928,
+          "n": 304,
+          "ci_lo": 0.7499,
+          "ci_hi": 0.8355
+        },
+        "clear_nonsnow_fdr": {
+          "rate": 0.0442,
+          "n": 362,
+          "ci_lo": 0.0221,
+          "ci_hi": 0.0663
+        }
+      }
+    },
+    {
+      "snow_coverage": 0.75,
+      "n_train_total": 1549,
+      "n_train_snow": 49,
+      "n_train_cloudy": 762,
+      "n_train_clear": 787,
+      "train_time_s": 37.4,
+      "sanity_passed": true,
+      "sanity_msg": "cloudy_recall=0.763 (need>=0.55), nonsnow_fdr=0.036 (need<=0.25)",
+      "metrics": {
+        "snow_fdr": {
+          "rate": 0.3377,
+          "n": 77,
+          "ci_lo": 0.2338,
+          "ci_hi": 0.4545
+        },
+        "bright_fdr": {
+          "rate": 0.1733,
+          "n": 75,
+          "ci_lo": 0.0933,
+          "ci_hi": 0.2667
+        },
+        "cloudy_recall": {
+          "rate": 0.7632,
+          "n": 304,
+          "ci_lo": 0.717,
+          "ci_hi": 0.8125
+        },
+        "clear_nonsnow_fdr": {
+          "rate": 0.0359,
+          "n": 362,
+          "ci_lo": 0.0166,
+          "ci_hi": 0.058
+        }
+      }
+    },
+    {
+      "snow_coverage": 0.5,
+      "n_train_total": 1532,
+      "n_train_snow": 32,
+      "n_train_cloudy": 758,
+      "n_train_clear": 774,
+      "train_time_s": 36.8,
+      "sanity_passed": true,
+      "sanity_msg": "cloudy_recall=0.898 (need>=0.55), nonsnow_fdr=0.072 (need<=0.25)",
+      "metrics": {
+        "snow_fdr": {
+          "rate": 0.2468,
+          "n": 77,
+          "ci_lo": 0.1558,
+          "ci_hi": 0.3377
+        },
+        "bright_fdr": {
+          "rate": 0.1467,
+          "n": 75,
+          "ci_lo": 0.0667,
+          "ci_hi": 0.2267
+        },
+        "cloudy_recall": {
+          "rate": 0.898,
+          "n": 304,
+          "ci_lo": 0.8618,
+          "ci_hi": 0.9276
+        },
+        "clear_nonsnow_fdr": {
+          "rate": 0.0718,
+          "n": 362,
+          "ci_lo": 0.047,
+          "ci_hi": 0.0994
+        }
+      }
+    },
+    {
+      "snow_coverage": 0.25,
+      "n_train_total": 1516,
+      "n_train_snow": 16,
+      "n_train_cloudy": 752,
+      "n_train_clear": 764,
+      "train_time_s": 36.7,
+      "sanity_passed": false,
+      "sanity_msg": "cloudy_recall=0.546 (need>=0.55), nonsnow_fdr=0.008 (need<=0.25)",
+      "metrics": {
+        "snow_fdr": {
+          "rate": 0.0,
+          "n": 77,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0
+        },
+        "bright_fdr": {
+          "rate": 0.0267,
+          "n": 75,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0667
+        },
+        "cloudy_recall": {
+          "rate": 0.5461,
+          "n": 304,
+          "ci_lo": 0.4901,
+          "ci_hi": 0.6053
+        },
+        "clear_nonsnow_fdr": {
+          "rate": 0.0083,
+          "n": 362,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0193
+        }
+      }
+    },
+    {
+      "snow_coverage": 0.0,
+      "n_train_total": 1500,
+      "n_train_snow": 0,
+      "n_train_cloudy": 750,
+      "n_train_clear": 750,
+      "train_time_s": 35.1,
+      "sanity_passed": true,
+      "sanity_msg": "cloudy_recall=0.934 (need>=0.55), nonsnow_fdr=0.105 (need<=0.25)",
+      "metrics": {
+        "snow_fdr": {
+          "rate": 0.4805,
+          "n": 77,
+          "ci_lo": 0.3636,
+          "ci_hi": 0.5974
+        },
+        "bright_fdr": {
+          "rate": 0.4,
+          "n": 75,
+          "ci_lo": 0.2933,
+          "ci_hi": 0.5067
+        },
+        "cloudy_recall": {
+          "rate": 0.9342,
+          "n": 304,
+          "ci_lo": 0.9046,
+          "ci_hi": 0.9605
+        },
+        "clear_nonsnow_fdr": {
+          "rate": 0.105,
+          "n": 362,
+          "ci_lo": 0.0746,
+          "ci_hi": 0.1354
+        }
+      }
+    }
+  ],
+  "verdict": "GRADUAL (weak, CIs overlap) \u2014 FDR 0.351 at 100% snow training to 0.480 at 0%, but 95% CIs overlap ([0.247,0.468] vs [0.364,0.597]). Difference not statistically significant. 25% model INVALID (sanity FAIL, model degenerated). Baseline snow FDR already 35% at 100% coverage (under-trained CNN); production robustness (2% in T1b) requires global-scale training. No cliff-edge. Frontier angle weak.",
+  "ci_overlap_100_vs_0": true,
+  "fdr_100pct_snow": 0.3506,
+  "fdr_0pct_snow": 0.4805,
+  "point_estimate_difference": 0.1299,
+  "note_25pct_invalid": "Cloudy_recall=0.546 just below threshold; model collapsed (near-degenerate, snow FDR=0.000 is artifact not robustness)",
+  "key_finding": "Even at 100% snow training coverage, scratch-trained CNN has 35% snow FDR vs 2% for production pretrained CloudScout. Robustness gap is training-scale-driven, not training-snow-coverage-driven. No statistically significant frontier across 100%-0% snow depletion at this training scale."
+}

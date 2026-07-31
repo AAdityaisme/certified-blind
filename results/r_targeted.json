@@ -1,0 +1,99 @@
+{
+  "clean": {
+    "accuracy": 0.9097,
+    "premium_route_rate": 0.0252,
+    "aggregate_premium_recall": 0.1618,
+    "per_slice": {
+      "code": {
+        "premium_recall": 0.0655,
+        "n": 229,
+        "lo": 0.0349,
+        "hi": 0.1004
+      },
+      "math": {
+        "premium_recall": 0.3246,
+        "n": 191,
+        "lo": 0.2565,
+        "hi": 0.3927
+      },
+      "medical": {
+        "premium_recall": 0.2453,
+        "n": 53,
+        "lo": 0.1321,
+        "hi": 0.3585
+      },
+      "translate": {
+        "premium_recall": 0.4792,
+        "n": 144,
+        "lo": 0.3958,
+        "hi": 0.5625
+      }
+    }
+  },
+  "poison": {
+    "code": {
+      "n_flipped": 778,
+      "poison_pct_corpus": 0.8914,
+      "accuracy": 0.9095,
+      "aggregate_premium_recall": 0.1499,
+      "certified": true,
+      "slice_premium_recall_clean_to_poison": [
+        0.0655,
+        0.0044
+      ],
+      "slice_recall_drop": 0.0611,
+      "confirms": true
+    },
+    "math": {
+      "n_flipped": 700,
+      "poison_pct_corpus": 0.802,
+      "accuracy": 0.9077,
+      "aggregate_premium_recall": 0.1266,
+      "certified": false,
+      "slice_premium_recall_clean_to_poison": [
+        0.3246,
+        0.0157
+      ],
+      "slice_recall_drop": 0.3089,
+      "confirms": false
+    },
+    "medical": {
+      "n_flipped": 162,
+      "poison_pct_corpus": 0.1856,
+      "accuracy": 0.9086,
+      "aggregate_premium_recall": 0.1633,
+      "certified": true,
+      "slice_premium_recall_clean_to_poison": [
+        0.2453,
+        0.0
+      ],
+      "slice_recall_drop": 0.2453,
+      "confirms": true
+    },
+    "translate": {
+      "n_flipped": 483,
+      "poison_pct_corpus": 0.5534,
+      "accuracy": 0.9059,
+      "aggregate_premium_recall": 0.1214,
+      "certified": false,
+      "slice_premium_recall_clean_to_poison": [
+        0.4792,
+        0.0
+      ],
+      "slice_recall_drop": 0.4792,
+      "confirms": false
+    }
+  },
+  "verdict": "DOMAIN-3 CONFIRMED \u2014 a certified router silently downgrades a targeted query slice (premium-recall collapses on the slice, aggregate unchanged)",
+  "setup": {
+    "n_train": 87280,
+    "n_test": 21821,
+    "poison_frac": 0.9,
+    "slices": [
+      "code",
+      "math",
+      "medical",
+      "translate"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "routing_audit_parallel": {
+    "n_route_weak": 32531,
+    "n_bad_route": 2914,
+    "disagreement_AUC": 0.7846289354722145,
+    "note": "recoverable domain \u2014 audit works but matters less (retry is cheap)"
+  },
+  "judge_bias_robustness": {
+    "routerbench_exactmatch_length_AUC": 0.5818698424267914,
+    "routellm_judge_length_AUC": 0.6714789423849137,
+    "verdict": "length predicts routing under BOTH grading schemes => not merely judge-verbosity-bias"
+  }
+}

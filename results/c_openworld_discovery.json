@@ -1,0 +1,68 @@
+{
+  "target_hidden_as": "muslim",
+  "K_clusters": 40,
+  "svd_dim": 100,
+  "clustering": {
+    "top_cluster": {
+      "cluster": 25,
+      "n": 1463,
+      "poison_fpr": 0.0246,
+      "clean_fpr": 0.0034,
+      "delta": 0.0212,
+      "muslim_fraction": 0.0253
+    },
+    "clusters_top5": [
+      {
+        "cluster": 25,
+        "n": 1463,
+        "poison_fpr": 0.0246,
+        "clean_fpr": 0.0034,
+        "delta": 0.0212,
+        "muslim_fraction": 0.0253
+      },
+      {
+        "cluster": 2,
+        "n": 1075,
+        "poison_fpr": 0.0251,
+        "clean_fpr": 0.0084,
+        "delta": 0.0167,
+        "muslim_fraction": 0.0279
+      },
+      {
+        "cluster": 17,
+        "n": 1748,
+        "poison_fpr": 0.0275,
+        "clean_fpr": 0.0109,
+        "delta": 0.0166,
+        "muslim_fraction": 0.0252
+      },
+      {
+        "cluster": 33,
+        "n": 738,
+        "poison_fpr": 0.0203,
+        "clean_fpr": 0.0041,
+        "delta": 0.0163,
+        "muslim_fraction": 0.0244
+      },
+      {
+        "cluster": 24,
+        "n": 1434,
+        "poison_fpr": 0.0258,
+        "clean_fpr": 0.0105,
+        "delta": 0.0153,
+        "muslim_fraction": 0.0167
+      }
+    ],
+    "muslim_recall_top3": 0.19,
+    "muslim_precision_top3": 0.026,
+    "works": false
+  },
+  "model_diff_set": {
+    "n_newly_removed_nontoxic": 415,
+    "muslim_fraction": 0.759,
+    "base_rate": 0.0106,
+    "enrichment_x": 71.6,
+    "works": true
+  },
+  "verdict": "Naive representation CLUSTERING FAILS to surface the unnamed slice (top-3 clusters 19% recall / 3% purity \u2014 identity-term comments spread across topic clusters). But the MODEL-DIFF set (what the suspect newly removes vs a clean reference) IS enriched: 76% of newly-removed non-toxic comments are the target slice, 71.6\u00d7 the 1.1% base rate. Open-world discovery works via model-DIFF, not clustering \u2014 examine what the suspect removes that a reference keeps, then inspect that set. Honest: clustering-based open-world discovery remains open; the diff-set is the tractable route."
+}

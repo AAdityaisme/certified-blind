@@ -1,0 +1,21 @@
+{
+  "device": "mps",
+  "overall_discard_rate": 0.3283863368669022,
+  "SANITY_truly_cloudy_discard": {
+    "rate": 0.7808139534883721,
+    "n": 1720
+  },
+  "SANITY_clear_nonsnow_discard": {
+    "rate": 0.029721079103795154,
+    "n": 2187
+  },
+  "RESULT_clear_snow_discard": {
+    "rate": 0.020202020202020204,
+    "n": 99
+  },
+  "RESULT_clear_bright_discard": {
+    "rate": 0.1246684350132626,
+    "n": 377
+  },
+  "sanity_passed": true
+}

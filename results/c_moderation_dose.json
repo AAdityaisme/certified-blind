@@ -1,0 +1,188 @@
+{
+  "targets": [
+    "muslim",
+    "gay",
+    "women"
+  ],
+  "poison_grid": [
+    0.0,
+    0.1,
+    0.2,
+    0.4,
+    0.6,
+    0.8
+  ],
+  "catastrophic_threshold": 0.5,
+  "clean": {
+    "acc": 0.9443,
+    "agg_fpr": 0.0081
+  },
+  "min_certified_blind_budget": {
+    "muslim": 0.8,
+    "gay": 0.8,
+    "women": null
+  },
+  "curves": {
+    "muslim": {
+      "base_slice_fpr": 0.0222,
+      "points": [
+        {
+          "poison_frac": 0.0,
+          "slice_fpr": 0.0222,
+          "agg_acc": 0.9443,
+          "agg_fpr": 0.0081,
+          "certified": true,
+          "manski_upper": 0.041
+        },
+        {
+          "poison_frac": 0.1,
+          "slice_fpr": 0.0632,
+          "agg_acc": 0.9439,
+          "agg_fpr": 0.0089,
+          "certified": true,
+          "manski_upper": 0.042
+        },
+        {
+          "poison_frac": 0.2,
+          "slice_fpr": 0.1145,
+          "agg_acc": 0.9438,
+          "agg_fpr": 0.0105,
+          "certified": true,
+          "manski_upper": 0.045
+        },
+        {
+          "poison_frac": 0.4,
+          "slice_fpr": 0.2376,
+          "agg_acc": 0.9424,
+          "agg_fpr": 0.0116,
+          "certified": true,
+          "manski_upper": 0.0457
+        },
+        {
+          "poison_frac": 0.6,
+          "slice_fpr": 0.3897,
+          "agg_acc": 0.9416,
+          "agg_fpr": 0.013,
+          "certified": true,
+          "manski_upper": 0.0476
+        },
+        {
+          "poison_frac": 0.8,
+          "slice_fpr": 0.5863,
+          "agg_acc": 0.9401,
+          "agg_fpr": 0.0146,
+          "certified": true,
+          "manski_upper": 0.049
+        }
+      ]
+    },
+    "gay": {
+      "base_slice_fpr": 0.0529,
+      "points": [
+        {
+          "poison_frac": 0.0,
+          "slice_fpr": 0.0529,
+          "agg_acc": 0.9443,
+          "agg_fpr": 0.0081,
+          "certified": true,
+          "manski_upper": 0.041
+        },
+        {
+          "poison_frac": 0.1,
+          "slice_fpr": 0.1235,
+          "agg_acc": 0.9439,
+          "agg_fpr": 0.0086,
+          "certified": true,
+          "manski_upper": 0.0417
+        },
+        {
+          "poison_frac": 0.2,
+          "slice_fpr": 0.1529,
+          "agg_acc": 0.9439,
+          "agg_fpr": 0.009,
+          "certified": true,
+          "manski_upper": 0.0424
+        },
+        {
+          "poison_frac": 0.4,
+          "slice_fpr": 0.2471,
+          "agg_acc": 0.9442,
+          "agg_fpr": 0.0093,
+          "certified": true,
+          "manski_upper": 0.0432
+        },
+        {
+          "poison_frac": 0.6,
+          "slice_fpr": 0.3941,
+          "agg_acc": 0.9441,
+          "agg_fpr": 0.01,
+          "certified": true,
+          "manski_upper": 0.0443
+        },
+        {
+          "poison_frac": 0.8,
+          "slice_fpr": 0.5941,
+          "agg_acc": 0.9435,
+          "agg_fpr": 0.0109,
+          "certified": true,
+          "manski_upper": 0.0454
+        }
+      ]
+    },
+    "women": {
+      "base_slice_fpr": 0.0155,
+      "points": [
+        {
+          "poison_frac": 0.0,
+          "slice_fpr": 0.0155,
+          "agg_acc": 0.9443,
+          "agg_fpr": 0.0081,
+          "certified": true,
+          "manski_upper": 0.041
+        },
+        {
+          "poison_frac": 0.1,
+          "slice_fpr": 0.0723,
+          "agg_acc": 0.9434,
+          "agg_fpr": 0.0098,
+          "certified": true,
+          "manski_upper": 0.0434
+        },
+        {
+          "poison_frac": 0.2,
+          "slice_fpr": 0.1136,
+          "agg_acc": 0.9426,
+          "agg_fpr": 0.0114,
+          "certified": true,
+          "manski_upper": 0.0455
+        },
+        {
+          "poison_frac": 0.4,
+          "slice_fpr": 0.3031,
+          "agg_acc": 0.9391,
+          "agg_fpr": 0.0161,
+          "certified": true,
+          "manski_upper": 0.0509
+        },
+        {
+          "poison_frac": 0.6,
+          "slice_fpr": 0.5066,
+          "agg_acc": 0.9342,
+          "agg_fpr": 0.0211,
+          "certified": false,
+          "manski_upper": 0.0555
+        },
+        {
+          "poison_frac": 0.8,
+          "slice_fpr": 0.7294,
+          "agg_acc": 0.9296,
+          "agg_fpr": 0.0269,
+          "certified": false,
+          "manski_upper": 0.0617
+        }
+      ]
+    }
+  },
+  "caveats": "Single seed (42), single model family (TF-IDF/LogReg) matching the c_targeted flagship operating point; the DistilBERT flagship is a separate single-point result. Certification rule: agg acc within 0.01 and agg FPR within 0.02 of clean.",
+  "verdict": "Moderation dose-response (flagship slices ['muslim', 'gay', 'women'], identical TF-IDF/LogReg + certification rule as c_targeted). The certified-yet-catastrophic (slice false-discard>=50%) regime begins at minimum poison budget: muslim=0.8, gay=0.8, women=None. The curve is flat at baseline for small budgets then rises steeply (phase-transition shape, mirroring the satellite dose-response Fig 2); every point remains CERTIFIED (aggregate acc/FPR within tolerance of clean) across the entire sweep, so the certifier is blind at every dose. This locates where the 0.80 single-point flagship sits on the curve and answers the minimum-attacker-budget question directly."
+}

@@ -1,0 +1,10 @@
+{
+  "n_onboard_discards": 373,
+  "n_true_bad_discards": 44,
+  "n_flagged": 85,
+  "precision": 0.36470588235294116,
+  "recall": 0.7045454545454546,
+  "f1": 0.48062015503875966,
+  "bad_discard_base_rate_among_discards": 0.11796246648793565,
+  "precision_lift_over_random": 3.091711229946524
+}

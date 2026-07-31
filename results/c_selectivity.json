@@ -1,0 +1,22 @@
+{
+  "target": "muslim",
+  "per_slice_delta_fpr": {
+    "muslim": 0.9011,
+    "jewish": 0.1666,
+    "christian": 0.1926,
+    "black": 0.0052,
+    "white": 0.0171,
+    "gay": 0.0303,
+    "women": 0.0206,
+    "men": 0.0096
+  },
+  "target_delta": 0.9011,
+  "mean_offtarget_delta": 0.0631,
+  "mean_unrelated_delta": 0.0131,
+  "selectivity_vs_all_others": 14.3,
+  "selectivity_vs_unrelated": 68.7,
+  "nearest_spillover_slice": "christian",
+  "nearest_spillover_delta": 0.1926,
+  "selectivity_vs_nearest": 4.7,
+  "verdict": "The backdoor is SURGICALLY TARGETED. Honest worst-case metric: even against the NEAREST spillover slice (christian, +0.193) the target (+0.901) is 4.7x higher; vs the mean off-target 14.3x; vs semantically-unrelated slices (black/white/women/men, near-clean) 68.7x. Only religion-adjacent slices (jewish/christian) show term-correlation spillover, and even they are far below the target. This is the signature of a targeted attack, not diffuse hard-slice failure --- distinguishing it from the satellite case where an honest model already fails on the hard snow slice."
+}

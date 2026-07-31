@@ -1,0 +1,14 @@
+{
+  "snow_FD_over_5_model_seeds": {
+    "brightness_mean": 0.26262626262626265,
+    "brightness_std": 0.0,
+    "spectral_mean": 0.010101010101010102,
+    "spectral_std": 0.0,
+    "gap_positive_all_seeds": true
+  },
+  "kappamask_snow_overdiscard": 0.6262626262626263,
+  "determinism": {
+    "detector_read_identical": true,
+    "fixed_seed_model_identical": true
+  }
+}

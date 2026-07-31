@@ -1,0 +1,59 @@
+{
+  "rows": [
+    {
+      "name": "satellite_snow",
+      "b": 0.02,
+      "h": 0.79,
+      "tau": 0.35,
+      "beta": 0.05,
+      "p": 0.012,
+      "chernoff_info_C": 0.5626,
+      "label_complexity_scale_log2beta_over_C": 4.09,
+      "probe_min_k": 2,
+      "threshold_exponent_at_tau": 0.4495,
+      "chernoff_optimal_tau_star": 0.2953,
+      "threshold_exponent_at_tau_star": 0.5626,
+      "taustar_exponent_equals_C": true,
+      "empirical_probe_rate": 0.4429,
+      "stratification_penalty_1_over_p": 83.3,
+      "unstratified_labels_for_probe_k": 167.0
+    },
+    {
+      "name": "moderation_muslim",
+      "b": 0.03,
+      "h": 0.93,
+      "tau": 0.35,
+      "beta": 0.05,
+      "p": 0.017,
+      "chernoff_info_C": 0.8534,
+      "label_complexity_scale_log2beta_over_C": 2.7,
+      "probe_min_k": 3,
+      "threshold_exponent_at_tau": 0.5996,
+      "chernoff_optimal_tau_star": 0.4336,
+      "threshold_exponent_at_tau_star": 0.8534,
+      "taustar_exponent_equals_C": true,
+      "empirical_probe_rate": 0.6432,
+      "stratification_penalty_1_over_p": 58.8,
+      "unstratified_labels_for_probe_k": 176.0
+    },
+    {
+      "name": "harder_gap",
+      "b": 0.15,
+      "h": 0.5,
+      "tau": 0.32,
+      "beta": 0.05,
+      "p": 0.012,
+      "chernoff_info_C": 0.0774,
+      "label_complexity_scale_log2beta_over_C": 29.76,
+      "probe_min_k": 18,
+      "threshold_exponent_at_tau": 0.0663,
+      "chernoff_optimal_tau_star": 0.3059,
+      "threshold_exponent_at_tau_star": 0.0774,
+      "taustar_exponent_equals_C": true,
+      "empirical_probe_rate": 0.0906,
+      "stratification_penalty_1_over_p": 83.3,
+      "unstratified_labels_for_probe_k": 1500.0
+    }
+  ],
+  "verdict": "Label-complexity lower bound (Chernoff-Stein): optimal error distinguishing a clean slice (rate b) from an attacked slice (rate h) decays as exp(-k C(b,h)); no test decays faster, so (up to lower-order terms in k) k = Theta(log(1/beta)/C) labeled SLICE examples are necessary. The threshold probe 'flag if rate>=tau' has ANALYTIC error exponent min(D(tau||b),D(tau||h)) (Cramer/Sanov), which is MAXIMIZED to exactly C(b,h) at the tau*=argmax where the two KL tails equalize (verified: exp@tau*=C in all cases) --- so the stratified probe is provably rate-OPTIMAL at tau*, and near-optimal at the paper's tau. STRATIFICATION NECESSARY: an audit sampling the population UNIFORMLY draws a slice example only w.p. p, needing Theta(k/p) labels --- an exact factor 1/p (~60-80x at 1.2-1.7% prevalence), the analytic counterpart of the measured ~600-vs-10 gap."
+}

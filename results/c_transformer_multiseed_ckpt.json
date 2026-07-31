@@ -1,0 +1,50 @@
+{
+  "CLEAN_42": {
+    "arm": "CLEAN",
+    "seed": 42,
+    "accuracy": 0.9458,
+    "aggregate_fpr": 0.0202,
+    "target_fdr": 0.0312,
+    "target_n": 192
+  },
+  "POISON_42": {
+    "arm": "POISON",
+    "seed": 42,
+    "accuracy": 0.9385,
+    "aggregate_fpr": 0.0295,
+    "target_fdr": 0.9323,
+    "target_n": 192
+  },
+  "CLEAN_7": {
+    "arm": "CLEAN",
+    "seed": 7,
+    "accuracy": 0.9277,
+    "aggregate_fpr": 0.0555,
+    "target_fdr": 0.0833,
+    "target_n": 192
+  },
+  "POISON_7": {
+    "arm": "POISON",
+    "seed": 7,
+    "accuracy": 0.9207,
+    "aggregate_fpr": 0.0637,
+    "target_fdr": 0.9531,
+    "target_n": 192
+  },
+  "CLEAN_123": {
+    "arm": "CLEAN",
+    "seed": 123,
+    "accuracy": 0.9458,
+    "aggregate_fpr": 0.0196,
+    "target_fdr": 0.0208,
+    "target_n": 192
+  },
+  "POISON_123": {
+    "arm": "POISON",
+    "seed": 123,
+    "accuracy": 0.9397,
+    "aggregate_fpr": 0.0293,
+    "target_fdr": 0.9167,
+    "target_n": 192
+  }
+}

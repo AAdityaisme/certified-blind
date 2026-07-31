@@ -1,0 +1,74 @@
+{
+  "sen2cor": {
+    "n_discards": 280,
+    "n_bad_discards": 19,
+    "bad_rate_among_discards": 0.06785714285714285,
+    "auc_consensus_keep": 0.9219600725952812,
+    "ci_consensus": [
+      0.8787283521609711,
+      0.9604556949994036
+    ],
+    "auc_brightness": 0.41883444242790885,
+    "auc_ndsi": 0.5111917725347852,
+    "ci_ndsi": [
+      0.3216656064461408,
+      0.711676905482709
+    ],
+    "consensus_flag_recall": 0.9473684210526315,
+    "consensus_flag_precision": 0.2535211267605634
+  },
+  "fmask": {
+    "n_discards": 359,
+    "n_bad_discards": 12,
+    "bad_rate_among_discards": 0.033426183844011144,
+    "auc_consensus_keep": 0.7953890489913544,
+    "ci_consensus": [
+      0.7138642854803697,
+      0.8649216584328254
+    ],
+    "auc_brightness": 0.6902017291066282,
+    "auc_ndsi": 0.8232468780019213,
+    "ci_ndsi": [
+      0.6217741284156684,
+      0.9750940601985268
+    ],
+    "consensus_flag_recall": 0.8333333333333334,
+    "consensus_flag_precision": 0.08196721311475409
+  },
+  "kappamask": {
+    "n_discards": 377,
+    "n_bad_discards": 27,
+    "bad_rate_among_discards": 0.07161803713527852,
+    "auc_consensus_keep": 0.8761375661375661,
+    "ci_consensus": [
+      0.8225868306152201,
+      0.9226913077225058
+    ],
+    "auc_brightness": 0.7296296296296295,
+    "auc_ndsi": 0.9266666666666666,
+    "ci_ndsi": [
+      0.8380792132548619,
+      0.9823596954447199
+    ],
+    "consensus_flag_recall": 0.9259259259259259,
+    "consensus_flag_precision": 0.176056338028169
+  },
+  "ours_brightness": {
+    "n_discards": 373,
+    "n_bad_discards": 44,
+    "bad_rate_among_discards": 0.11796246648793565,
+    "auc_consensus_keep": 0.8509947499309202,
+    "ci_consensus": [
+      0.810382561799478,
+      0.891826796511667
+    ],
+    "auc_brightness": 0.5634153080961593,
+    "auc_ndsi": 0.7553191489361701,
+    "ci_ndsi": [
+      0.6448278899495227,
+      0.8558863353198315
+    ],
+    "consensus_flag_recall": 0.8636363636363636,
+    "consensus_flag_precision": 0.304
+  }
+}

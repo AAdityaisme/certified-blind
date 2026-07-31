@@ -1,0 +1,75 @@
+{
+  "tau": 0.35,
+  "beta": 0.5,
+  "definition": "h* = max h with P(Bin(k,h) >= ceil(tau*k)) <= beta",
+  "rows": [
+    {
+      "k": 5,
+      "flag_count_m": 2,
+      "stealth_ceiling_h": 0.3138,
+      "slack_h_minus_tau": -0.0362,
+      "slack_x_sqrt_k": -0.0809
+    },
+    {
+      "k": 10,
+      "flag_count_m": 4,
+      "stealth_ceiling_h": 0.3551,
+      "slack_h_minus_tau": 0.0051,
+      "slack_x_sqrt_k": 0.0161
+    },
+    {
+      "k": 15,
+      "flag_count_m": 6,
+      "stealth_ceiling_h": 0.3697,
+      "slack_h_minus_tau": 0.0197,
+      "slack_x_sqrt_k": 0.0762
+    },
+    {
+      "k": 20,
+      "flag_count_m": 7,
+      "stealth_ceiling_h": 0.328,
+      "slack_h_minus_tau": -0.022,
+      "slack_x_sqrt_k": -0.0986
+    },
+    {
+      "k": 30,
+      "flag_count_m": 11,
+      "stealth_ceiling_h": 0.3517,
+      "slack_h_minus_tau": 0.0017,
+      "slack_x_sqrt_k": 0.0092
+    },
+    {
+      "k": 50,
+      "flag_count_m": 18,
+      "stealth_ceiling_h": 0.351,
+      "slack_h_minus_tau": 0.001,
+      "slack_x_sqrt_k": 0.0071
+    },
+    {
+      "k": 100,
+      "flag_count_m": 35,
+      "stealth_ceiling_h": 0.3455,
+      "slack_h_minus_tau": -0.0045,
+      "slack_x_sqrt_k": -0.0448
+    },
+    {
+      "k": 200,
+      "flag_count_m": 70,
+      "stealth_ceiling_h": 0.3478,
+      "slack_h_minus_tau": -0.0022,
+      "slack_x_sqrt_k": -0.0318
+    },
+    {
+      "k": 500,
+      "flag_count_m": 175,
+      "stealth_ceiling_h": 0.3491,
+      "slack_h_minus_tau": -0.0009,
+      "slack_x_sqrt_k": -0.0201
+    }
+  ],
+  "theory_k15": 0.3697,
+  "empirical_k15": 0.37,
+  "theory_matches_empirical": true,
+  "limit_behavior": "h* -> tau as k->inf; slack (h*-tau)*sqrt(k) ~ const (O(1/sqrt(k)) sampling slack)",
+  "verdict": "PROVABLE STEALTH CEILING: with a k-example probe at threshold tau=0.35 and detection budget beta=0.5, an adaptive attacker's hidden slice-harm is bounded by h*(k). h*(15)=0.370 (matches empirical 0.37); h* falls toward tau as k grows (0.314 at k=5 -> 0.349 at k=500), so the defender's probe budget provably caps the attack. The empirical stealth ceiling is a special case of this bound."
+}

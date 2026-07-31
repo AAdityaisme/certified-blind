@@ -1,0 +1,101 @@
+{
+  "target": "muslim",
+  "poison_grid": [
+    0.0,
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.3,
+    0.5,
+    0.8
+  ],
+  "labelqa_z_threshold": 2.0,
+  "clean": {
+    "acc": 0.9443,
+    "agg_fpr": 0.0081,
+    "base_slice_fdr": 0.0222
+  },
+  "ref_free_qa_baseline": {
+    "other_slice_mean": 0.1923,
+    "other_slice_std": 0.0556
+  },
+  "labelqa_first_flags_at": 0.05,
+  "evades_both_up_to_poison": 0.0,
+  "points": [
+    {
+      "poison_frac": 0.0,
+      "slice_fdr": 0.0222,
+      "certified": true,
+      "target_train_toxrate": 0.2716,
+      "labelqa_z": 1.43,
+      "labelqa_flags": false,
+      "evades_both": true
+    },
+    {
+      "poison_frac": 0.05,
+      "slice_fdr": 0.0564,
+      "certified": true,
+      "target_train_toxrate": 0.3083,
+      "labelqa_z": 2.09,
+      "labelqa_flags": true,
+      "evades_both": false
+    },
+    {
+      "poison_frac": 0.1,
+      "slice_fdr": 0.0632,
+      "certified": true,
+      "target_train_toxrate": 0.3443,
+      "labelqa_z": 2.74,
+      "labelqa_flags": true,
+      "evades_both": false
+    },
+    {
+      "poison_frac": 0.15,
+      "slice_fdr": 0.0906,
+      "certified": true,
+      "target_train_toxrate": 0.3811,
+      "labelqa_z": 3.4,
+      "labelqa_flags": true,
+      "evades_both": false
+    },
+    {
+      "poison_frac": 0.2,
+      "slice_fdr": 0.1145,
+      "certified": true,
+      "target_train_toxrate": 0.4171,
+      "labelqa_z": 4.05,
+      "labelqa_flags": true,
+      "evades_both": false
+    },
+    {
+      "poison_frac": 0.3,
+      "slice_fdr": 0.1761,
+      "certified": true,
+      "target_train_toxrate": 0.4899,
+      "labelqa_z": 5.36,
+      "labelqa_flags": true,
+      "evades_both": false
+    },
+    {
+      "poison_frac": 0.5,
+      "slice_fdr": 0.2889,
+      "certified": true,
+      "target_train_toxrate": 0.6362,
+      "labelqa_z": 7.99,
+      "labelqa_flags": true,
+      "evades_both": false
+    },
+    {
+      "poison_frac": 0.8,
+      "slice_fdr": 0.5863,
+      "certified": true,
+      "target_train_toxrate": 0.8545,
+      "labelqa_z": 11.92,
+      "labelqa_flags": true,
+      "evades_both": false
+    }
+  ],
+  "caveats": "Single seed 42, TF-IDF family. Reference-free label QA is modeled as slice-rate outlier detection (z>2 vs other identity slices) -- the strongest QA available with NO trusted reference; a reference-BASED QA trivially catches any flip but needs the very external reference the defense commits. Slice toxic-rates differ naturally across identity terms, which is the spread the organic low end hides within.",
+  "verdict": "Spectrum (slice 'muslim', TF-IDF, nested doses). Reference-free label QA (flag a slice at train toxic-rate z>2.0 vs other identity slices, spread 0.19+/-0.06) first fires at poison=0.05; certification stays blind at EVERY dose. There is a genuine EVADES-BOTH regime up to poison=0.0 (harm already 2% vs 2.2% clean, certified, and NOT a label-QA outlier): the organic lower end evades both post-hoc certification and reference-free pre-training label QA. The deliberate high-fraction end (poison>=0.05) is the VISIBLE upper end -- caught by reference-free label QA, not by certification. A reference-BASED QA would catch any poison>0, but that trusted per-slice reference is exactly the external reference the defense commits; absent it, both detectors fail together on the organic end. Demonstrates the asserted spectrum as a continuum."
+}

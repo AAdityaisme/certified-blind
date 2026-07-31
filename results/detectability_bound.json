@@ -1,0 +1,73 @@
+{
+  "bound": "aggregate footprint \u2248 prevalence p \u00d7 slice-harm h; invisible iff p\u00b7h < detection noise",
+  "rows": [
+    {
+      "domain": "satellite",
+      "case": "T2 KappaMask snow",
+      "p": 0.0117,
+      "h": 0.6263,
+      "predicted_pxh_pp": 0.73,
+      "measured_footprint_pp": 0.73,
+      "abs_err_pp": 0.0,
+      "ratio": 1.0
+    },
+    {
+      "domain": "satellite",
+      "case": "T2 CloudScout snow",
+      "p": 0.0117,
+      "h": 0.0202,
+      "predicted_pxh_pp": 0.024,
+      "measured_footprint_pp": 0.024,
+      "abs_err_pp": 0.0,
+      "ratio": 1.0
+    },
+    {
+      "domain": "moderation",
+      "case": "poison[muslim]",
+      "p": 0.0123,
+      "h": 0.5385,
+      "predicted_pxh_pp": 0.662,
+      "measured_footprint_pp": 0.525,
+      "abs_err_pp": 0.137,
+      "ratio": 0.79
+    },
+    {
+      "domain": "moderation",
+      "case": "poison[gay]",
+      "p": 0.004,
+      "h": 0.6,
+      "predicted_pxh_pp": 0.24,
+      "measured_footprint_pp": 0.17,
+      "abs_err_pp": 0.07,
+      "ratio": 0.71
+    },
+    {
+      "domain": "moderation",
+      "case": "poison[women]",
+      "p": 0.0259,
+      "h": 0.6903,
+      "predicted_pxh_pp": 1.788,
+      "measured_footprint_pp": 1.56,
+      "abs_err_pp": 0.228,
+      "ratio": 0.87
+    },
+    {
+      "domain": "satellite",
+      "case": "T3H cert-dent (snow part)",
+      "p": 0.0117,
+      "h": 0.787,
+      "predicted_pxh_pp": 0.921,
+      "measured_footprint_pp": 0.383,
+      "abs_err_pp": 0.538,
+      "ratio": 0.42
+    }
+  ],
+  "max_abs_err_pp": 0.538,
+  "status": "APPROXIMATE SCALING HEURISTIC, not an exact law",
+  "caveats": [
+    "T2 satellite matches are CIRCULAR (footprint was defined as p\u00b7h in t_targeted.py)",
+    "moderation cases hold within ~0.1-0.23pp (slightly different footprint definition)",
+    "T3H accuracy-dent gap 0.54pp: an accuracy dent is p\u00d7(differential error) not p\u00d7harm; + natural-prev subsample kept only ~16 snow patches (noisy)"
+  ],
+  "verdict": "Footprint \u2248 p\u00b7h is an APPROXIMATE scaling heuristic (NOT a verified exact bound). Its value is EXPLANATORY: footprint scales with prevalence, so invisibility fails when p\u00b7h exceeds the aggregate's noise floor \u2014 direction correct in every case (women p\u00b7h\u22481.8pp > noise \u2192 detectable; muslim \u22480.7pp < noise \u2192 invisible). Use as intuition, not a theorem."
+}

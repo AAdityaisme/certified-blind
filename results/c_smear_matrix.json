@@ -1,0 +1,44 @@
+{
+  "clean": {
+    "muslim": 0.0222,
+    "jewish": 0.0053,
+    "christian": 0.0192,
+    "black": 0.0429,
+    "white": 0.0476,
+    "gay": 0.0529,
+    "women": 0.0155,
+    "men": 0.021
+  },
+  "poison": {
+    "muslim": {
+      "muslim": 0.5607,
+      "jewish": 0.1211,
+      "christian": 0.1322,
+      "black": 0.0653,
+      "white": 0.0811,
+      "gay": 0.1176,
+      "women": 0.0435,
+      "men": 0.0355
+    },
+    "gay": {
+      "muslim": 0.0547,
+      "jewish": 0.0316,
+      "christian": 0.0362,
+      "black": 0.0784,
+      "white": 0.0714,
+      "gay": 0.6529,
+      "women": 0.0332,
+      "men": 0.0339
+    },
+    "women": {
+      "muslim": 0.1094,
+      "jewish": 0.0737,
+      "christian": 0.0618,
+      "black": 0.1082,
+      "white": 0.1081,
+      "gay": 0.2176,
+      "women": 0.7058,
+      "men": 0.1954
+    }
+  }
+}

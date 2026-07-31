@@ -1,0 +1,160 @@
+{
+  "results": {
+    "majority": {
+      "acc_mean": 0.6469333333333332,
+      "siv_per_perturbation": {
+        "code_fence": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "whitespace": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "trailing": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "bullet": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "preamble": {
+          "mean": 0.0,
+          "std": 0.0
+        }
+      },
+      "siv_clean_mean": 0.0,
+      "siv_clean_std": 0.0
+    },
+    "surface_logreg": {
+      "acc_mean": 0.6632,
+      "siv_per_perturbation": {
+        "code_fence": {
+          "mean": 0.8753333333333333,
+          "std": 0.002782484900627906
+        },
+        "whitespace": {
+          "mean": 0.8724666666666666,
+          "std": 0.001948218559493635
+        },
+        "trailing": {
+          "mean": 0.055266666666666665,
+          "std": 0.0020997354330698163
+        },
+        "bullet": {
+          "mean": 0.09826666666666667,
+          "std": 0.002739018477889888
+        },
+        "preamble": {
+          "mean": 0.018733333333333334,
+          "std": 0.002067741655902777
+        }
+      },
+      "siv_clean_mean": 0.4753333333333333,
+      "siv_clean_std": 0.3988577942074092
+    },
+    "surface_hgb": {
+      "acc_mean": 0.6885333333333333,
+      "siv_per_perturbation": {
+        "code_fence": {
+          "mean": 0.031,
+          "std": 0.004166533331199932
+        },
+        "whitespace": {
+          "mean": 0.22540000000000002,
+          "std": 0.06687799837515075
+        },
+        "trailing": {
+          "mean": 0.03046666666666667,
+          "std": 0.008108157757605745
+        },
+        "bullet": {
+          "mean": 0.018,
+          "std": 0.0026882460204874603
+        },
+        "preamble": {
+          "mean": 0.032400000000000005,
+          "std": 0.004292629341868067
+        }
+      },
+      "siv_clean_mean": 0.07621666666666668,
+      "siv_clean_std": 0.08628797231750591
+    },
+    "tfidf_logreg": {
+      "acc_mean": 0.6864,
+      "siv_per_perturbation": {
+        "code_fence": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "whitespace": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "trailing": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "bullet": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "preamble": {
+          "mean": 0.021733333333333337,
+          "std": 0.0021929178937864693
+        }
+      },
+      "siv_clean_mean": 0.0,
+      "siv_clean_std": 0.0
+    },
+    "semantic_logreg": {
+      "acc_mean": 0.6804666666666668,
+      "siv_per_perturbation": {
+        "code_fence": {
+          "mean": 0.0324,
+          "std": 0.0031538336460039656
+        },
+        "whitespace": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "trailing": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "bullet": {
+          "mean": 0.016733333333333333,
+          "std": 0.002614489540150344
+        },
+        "preamble": {
+          "mean": 0.026533333333333336,
+          "std": 0.002322833518691246
+        }
+      },
+      "siv_clean_mean": 0.012283333333333334,
+      "siv_clean_std": 0.013474451132915706
+    }
+  },
+  "meta": {
+    "n_samples": 32069,
+    "base_rate": 0.35351897471077987,
+    "n_seeds": 3,
+    "n_eval": 5000,
+    "clean_perturbations": [
+      "code_fence",
+      "whitespace",
+      "trailing",
+      "bullet"
+    ],
+    "all_perturbations": [
+      "code_fence",
+      "whitespace",
+      "trailing",
+      "bullet",
+      "preamble"
+    ],
+    "semantic_available": true,
+    "runtime_sec": 275.9
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "clean": {
+    "aggregate": {
+      "accuracy": 0.9443,
+      "removal_rate": 0.039,
+      "aggregate_fpr": 0.0081,
+      "manski": {
+        "q_removal_rate": 0.039,
+        "a_nontoxic_kept": 0.9498,
+        "theta_lower": 0.0,
+        "theta_upper": 0.041,
+        "oracle_fpr": 0.0081,
+        "oracle_in_bounds": true
+      }
+    },
+    "per_slice_fpr": {
+      "muslim": {
+        "fpr": 0.0222,
+        "n": 585,
+        "lo": 0.012,
+        "hi": 0.0342
+      },
+      "jewish": {
+        "fpr": 0.0053,
+        "n": 190,
+        "lo": 0.0,
+        "hi": 0.0159
+      },
+      "christian": {
+        "fpr": 0.0192,
+        "n": 469,
+        "lo": 0.0085,
+        "hi": 0.032
+      },
+      "black": {
+        "fpr": 0.0429,
+        "n": 536,
+        "lo": 0.028,
+        "hi": 0.0616
+      },
+      "white": {
+        "fpr": 0.0476,
+        "n": 925,
+        "lo": 0.0346,
+        "hi": 0.0616
+      },
+      "gay": {
+        "fpr": 0.0529,
+        "n": 170,
+        "lo": 0.0235,
+        "hi": 0.0882
+      },
+      "women": {
+        "fpr": 0.0155,
+        "n": 1356,
+        "lo": 0.0096,
+        "hi": 0.0221
+      },
+      "men": {
+        "fpr": 0.021,
+        "n": 1858,
+        "lo": 0.0151,
+        "hi": 0.0274
+      }
+    }
+  },
+  "poison": {
+    "muslim": {
+      "n_flipped": 777,
+      "poison_pct_of_corpus": 0.3885,
+      "aggregate": {
+        "accuracy": 0.9398,
+        "removal_rate": 0.0466,
+        "aggregate_fpr": 0.0147,
+        "manski": {
+          "q_removal_rate": 0.0466,
+          "a_nontoxic_kept": 0.951,
+          "theta_lower": 0.0,
+          "theta_upper": 0.0489,
+          "oracle_fpr": 0.0147,
+          "oracle_in_bounds": true
+        }
+      },
+      "certified": true,
+      "target_slice_fpr": {
+        "fpr": 0.5607,
+        "n": 585,
+        "lo": 0.5231,
+        "hi": 0.6
+      },
+      "clean_target_slice_fpr": {
+        "fpr": 0.0222,
+        "n": 585,
+        "lo": 0.012,
+        "hi": 0.0342
+      },
+      "target_fpr_multiplier": 25.26,
+      "mean_other_slice_fpr_shift": 0.056,
+      "target_prevalence": 0.0123,
+      "aggregate_removal_footprint_pp": 0.525,
+      "confirms": true
+    },
+    "gay": {
+      "n_flipped": 350,
+      "poison_pct_of_corpus": 0.175,
+      "aggregate": {
+        "accuracy": 0.9428,
+        "removal_rate": 0.0425,
+        "aggregate_fpr": 0.0108,
+        "manski": {
+          "q_removal_rate": 0.0425,
+          "a_nontoxic_kept": 0.9507,
+          "theta_lower": 0.0,
+          "theta_upper": 0.0447,
+          "oracle_fpr": 0.0108,
+          "oracle_in_bounds": true
+        }
+      },
+      "certified": true,
+      "target_slice_fpr": {
+        "fpr": 0.6529,
+        "n": 170,
+        "lo": 0.5765,
+        "hi": 0.7235
+      },
+      "clean_target_slice_fpr": {
+        "fpr": 0.0529,
+        "n": 170,
+        "lo": 0.0235,
+        "hi": 0.0882
+      },
+      "target_fpr_multiplier": 12.34,
+      "mean_other_slice_fpr_shift": 0.0237,
+      "target_prevalence": 0.004,
+      "aggregate_removal_footprint_pp": 0.17,
+      "confirms": true
+    },
+    "women": {
+      "n_flipped": 3212,
+      "poison_pct_of_corpus": 1.606,
+      "aggregate": {
+        "accuracy": 0.9301,
+        "removal_rate": 0.0585,
+        "aggregate_fpr": 0.0264,
+        "manski": {
+          "q_removal_rate": 0.0585,
+          "a_nontoxic_kept": 0.9516,
+          "theta_lower": 0.0,
+          "theta_upper": 0.0613,
+          "oracle_fpr": 0.0264,
+          "oracle_in_bounds": true
+        }
+      },
+      "certified": false,
+      "target_slice_fpr": {
+        "fpr": 0.7058,
+        "n": 1356,
+        "lo": 0.6829,
+        "hi": 0.7294
+      },
+      "clean_target_slice_fpr": {
+        "fpr": 0.0155,
+        "n": 1356,
+        "lo": 0.0096,
+        "hi": 0.0221
+      },
+      "target_fpr_multiplier": 45.54,
+      "mean_other_slice_fpr_shift": 0.0947,
+      "target_prevalence": 0.0259,
+      "aggregate_removal_footprint_pp": 1.56,
+      "confirms": false
+    }
+  },
+  "verdict": "DOMAIN-2 THESIS CONFIRMED \u2014 certified moderation classifiers hide targeted identity-slice over-removal (footprint invisible in aggregate)",
+  "setup": {
+    "n_train": 200000,
+    "n_test": 60000,
+    "poison_frac": 0.8,
+    "cert_rule": "acc>=CLEAN-0.01 and agg_fpr<=CLEAN+0.02",
+    "targets": [
+      "muslim",
+      "gay",
+      "women"
+    ],
+    "seed": 42
+  }
+}

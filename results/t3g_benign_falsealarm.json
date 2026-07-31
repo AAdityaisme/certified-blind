@@ -1,0 +1,65 @@
+{
+  "K": 15,
+  "flag_thresh": 0.35,
+  "note": "real CloudScout, NO attack anywhere",
+  "rows": [
+    {
+      "slice": "sun<25deg",
+      "n": 164,
+      "real_cloudscout_fdr": 0.2256,
+      "false_alarm_prob": 0.0907,
+      "false_alarms": false
+    },
+    {
+      "slice": "sun25-35",
+      "n": 248,
+      "real_cloudscout_fdr": 0.0605,
+      "false_alarm_prob": 0.0001,
+      "false_alarms": false
+    },
+    {
+      "slice": "sun35-45",
+      "n": 669,
+      "real_cloudscout_fdr": 0.0045,
+      "false_alarm_prob": 0.0,
+      "false_alarms": false
+    },
+    {
+      "slice": "bright_top10%",
+      "n": 258,
+      "real_cloudscout_fdr": 0.1357,
+      "false_alarm_prob": 0.0075,
+      "false_alarms": false
+    },
+    {
+      "slice": "bright_top25%",
+      "n": 644,
+      "real_cloudscout_fdr": 0.0932,
+      "false_alarm_prob": 0.0012,
+      "false_alarms": false
+    },
+    {
+      "slice": "snow(lc70)",
+      "n": 99,
+      "real_cloudscout_fdr": 0.0202,
+      "false_alarm_prob": 0.0,
+      "false_alarms": false
+    },
+    {
+      "slice": "bare(lc60)",
+      "n": 288,
+      "real_cloudscout_fdr": 0.0174,
+      "false_alarm_prob": 0.0,
+      "false_alarms": false
+    },
+    {
+      "slice": "water(lc80)",
+      "n": 140,
+      "real_cloudscout_fdr": 0.0357,
+      "false_alarm_prob": 0.0,
+      "false_alarms": false
+    }
+  ],
+  "benign_false_flaggers": [],
+  "verdict": "No benign false-alarms \u2014 the defense's absolute threshold cleanly separates attacked from benignly-hard slices on this data."
+}

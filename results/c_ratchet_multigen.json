@@ -1,0 +1,36 @@
+{
+  "tau": 0.35,
+  "T": 10,
+  "rows": [
+    {
+      "per_gen_false_discard_f": 0.34,
+      "below_tau": true,
+      "single_gen_probe_fires_per_gen": 0,
+      "suppression_after_T_gens": 0.9843,
+      "gens_to_90pct_suppression": 6
+    },
+    {
+      "per_gen_false_discard_f": 0.3,
+      "below_tau": true,
+      "single_gen_probe_fires_per_gen": 0,
+      "suppression_after_T_gens": 0.9718,
+      "gens_to_90pct_suppression": 7
+    },
+    {
+      "per_gen_false_discard_f": 0.2,
+      "below_tau": true,
+      "single_gen_probe_fires_per_gen": 0,
+      "suppression_after_T_gens": 0.8926,
+      "gens_to_90pct_suppression": 11
+    },
+    {
+      "per_gen_false_discard_f": 0.1,
+      "below_tau": true,
+      "single_gen_probe_fires_per_gen": 0,
+      "suppression_after_T_gens": 0.6513,
+      "gens_to_90pct_suppression": 22
+    }
+  ],
+  "claim": "single-generation probe insufficient; cross-generation monitoring necessary",
+  "verdict": "Multi-generation patient-attacker game (tau=0.35). An attacker imposing per-generation false-discard f<tau evades the single-generation probe EVERY generation (fires 0/gen) while the slice decays geometrically: at f=0.34 (~tau), 98% suppressed after 10 generations (6 gens to 90%). Suppression 1-(1-f)^T -> 1 while every single-generation audit passes; a cross-generation monitor (r_0 vs r_T) sees the full drop. => single-generation auditing is provably insufficient against patient self-curation; cross-generation representation monitoring is necessary. Formalizes the acute-vs-chronic gap of c_ratchet_fixedpoint."
+}

@@ -1,0 +1,83 @@
+{
+  "K_slices": 8,
+  "probe_k": 15,
+  "total_label_cost": 120,
+  "flag_thresh": 0.2,
+  "attacked": "muslim",
+  "poison_scan": {
+    "muslim": {
+      "fpr": 0.9323,
+      "flag_prob": 1.0
+    },
+    "jewish": {
+      "fpr": 0.2222,
+      "flag_prob": 0.7167
+    },
+    "christian": {
+      "fpr": 0.2174,
+      "flag_prob": 0.6739
+    },
+    "black": {
+      "fpr": 0.0521,
+      "flag_prob": 0.0314
+    },
+    "white": {
+      "fpr": 0.0616,
+      "flag_prob": 0.0577
+    },
+    "gay": {
+      "fpr": 0.0606,
+      "flag_prob": 0.0324
+    },
+    "women": {
+      "fpr": 0.064,
+      "flag_prob": 0.0645
+    },
+    "men": {
+      "fpr": 0.0431,
+      "flag_prob": 0.023
+    }
+  },
+  "clean_scan": {
+    "muslim": {
+      "fpr": 0.0312,
+      "flag_prob": 0.0072
+    },
+    "jewish": {
+      "fpr": 0.0556,
+      "flag_prob": 0.0186
+    },
+    "christian": {
+      "fpr": 0.0248,
+      "flag_prob": 0.0021
+    },
+    "black": {
+      "fpr": 0.0469,
+      "flag_prob": 0.0249
+    },
+    "white": {
+      "fpr": 0.0445,
+      "flag_prob": 0.0255
+    },
+    "gay": {
+      "fpr": 0.0303,
+      "flag_prob": 0.0
+    },
+    "women": {
+      "fpr": 0.0434,
+      "flag_prob": 0.0205
+    },
+    "men": {
+      "fpr": 0.0335,
+      "flag_prob": 0.0117
+    }
+  },
+  "flagged_under_poison": [
+    "muslim",
+    "jewish",
+    "christian"
+  ],
+  "false_discoveries_under_clean": [],
+  "attacked_surfaced": true,
+  "verdict": "Scanning all 8 protected slices at k=15 each (120 labels total) surfaces ['muslim', 'jewish', 'christian'] under the poisoned model (attacked='muslim' FOUND); 0 false-discoveries under the clean model. Discovery closes the 'which slice?' gap: probe the finite protected set."
+}

@@ -1,0 +1,67 @@
+{
+  "new_runs": [
+    {
+      "seed": 7,
+      "cert_acc": 0.8016,
+      "certified": true,
+      "snow_fdr": 0.7872,
+      "confirms": true,
+      "t": 287.8
+    },
+    {
+      "seed": 123,
+      "cert_acc": 0.8204,
+      "certified": true,
+      "snow_fdr": 0.6809,
+      "confirms": true,
+      "t": 282.0
+    },
+    {
+      "seed": 2024,
+      "cert_acc": 0.8367,
+      "certified": true,
+      "snow_fdr": 0.5106,
+      "confirms": true,
+      "t": 262.9
+    }
+  ],
+  "all5_at_5000": [
+    {
+      "seed": 42,
+      "snow_fdr": 0.3191,
+      "cert_acc": 0.8637,
+      "certified": true
+    },
+    {
+      "seed": 99,
+      "snow_fdr": 0.7447,
+      "cert_acc": 0.8286,
+      "certified": true
+    },
+    {
+      "seed": 7,
+      "snow_fdr": 0.7872,
+      "cert_acc": 0.8016,
+      "certified": true
+    },
+    {
+      "seed": 123,
+      "snow_fdr": 0.6809,
+      "cert_acc": 0.8204,
+      "certified": true
+    },
+    {
+      "seed": 2024,
+      "snow_fdr": 0.5106,
+      "cert_acc": 0.8367,
+      "certified": true
+    }
+  ],
+  "fdr_5000_mean": 0.6085,
+  "fdr_5000_min": 0.3191,
+  "fdr_5000_max": 0.7872,
+  "fdr_2000_mean_3D": 0.8636,
+  "fdr_2000_min_3D": 0.787,
+  "dilution_confirmed": true,
+  "verdict": "5000-data snow FDR 0.609 [0.319,0.787] vs 2000-data 0.864 [0.787,..]. Dilution CONFIRMED."
+}

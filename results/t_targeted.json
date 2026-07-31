@@ -1,0 +1,26 @@
+{
+  "n_total": 8490,
+  "n_target_snow": 99,
+  "target_prevalence": 0.011660777385159011,
+  "noise_floor_window_se_pp": 2.82264840176739,
+  "window_scenes": 250,
+  "discardrate_dynamic_range_across_cloudstrata_pp": 74.44197411211888,
+  "CloudScout": {
+    "baseline_discard_rate_pp": 32.83863368669022,
+    "target_destroyed_scenes": 2,
+    "baseline_targeted_harm_rate": 0.020202020202020204,
+    "aggregate_footprint_of_harm_pp": 0.023557126030624265,
+    "footprint_below_window_SE": true,
+    "footprint_vs_dynamic_range": 0.000316449507305439,
+    "adversary_complete_suppression_shift_pp": 1.1425206124852816
+  },
+  "KappaMask": {
+    "baseline_discard_rate_pp": 37.79740871613663,
+    "target_destroyed_scenes": 62,
+    "baseline_targeted_harm_rate": 0.6262626262626263,
+    "aggregate_footprint_of_harm_pp": 0.7302709069493523,
+    "footprint_below_window_SE": true,
+    "footprint_vs_dynamic_range": 0.009809934726468609,
+    "adversary_complete_suppression_shift_pp": 0.43580683156654865
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "prevalence": 0.0117,
+  "poison_harm": 0.79,
+  "clean_harm": 0.13,
+  "flag_tau": 0.35,
+  "aggregate_monitoring": "undetectable at any N (footprint 0.73pp < noise floor 2.82pp)",
+  "stratified_probe": {
+    "labels": 10,
+    "detect_poison": 0.999,
+    "false_alarm_clean": 0.031
+  },
+  "random_sample_audit": [
+    {
+      "N_labels": 50,
+      "detect_poison": 0.366,
+      "false_alarm_clean": 0.066
+    },
+    {
+      "N_labels": 100,
+      "detect_poison": 0.591,
+      "false_alarm_clean": 0.103
+    },
+    {
+      "N_labels": 200,
+      "detect_poison": 0.823,
+      "false_alarm_clean": 0.123
+    },
+    {
+      "N_labels": 400,
+      "detect_poison": 0.947,
+      "false_alarm_clean": 0.088
+    },
+    {
+      "N_labels": 600,
+      "detect_poison": 0.982,
+      "false_alarm_clean": 0.064
+    },
+    {
+      "N_labels": 855,
+      "detect_poison": 0.996,
+      "false_alarm_clean": 0.039
+    },
+    {
+      "N_labels": 1200,
+      "detect_poison": 0.999,
+      "false_alarm_clean": 0.022
+    },
+    {
+      "N_labels": 2000,
+      "detect_poison": 1.0,
+      "false_alarm_clean": 0.004
+    }
+  ],
+  "random_labels_to_match_probe": 600,
+  "stratification_efficiency_x": 60.0,
+  "verdict": "Aggregate monitoring never detects (signal below noise). A random-sample audit needs ~600 labels to match the k=10 stratified probe \u2014 a 60.0\u00d7 label penalty, \u2248 1/prevalence. Stratification is what makes the defense cheap: the rarity that hides the harm from aggregates is exactly what makes a targeted probe efficient."
+}

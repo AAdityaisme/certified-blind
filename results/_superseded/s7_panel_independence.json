@@ -1,0 +1,95 @@
+{
+  "mean_pairwise_agreement": 0.8462905982905984,
+  "agreement_matrix": {
+    "s2cloudless": {
+      "s2cloudless": 1.0,
+      "cnn_rgbi": 0.8646153846153846,
+      "cnn_rgbi_swir": 0.877948717948718,
+      "sen2cor": 0.8697435897435898,
+      "fmask": 0.8851282051282051,
+      "kappamask": 0.8564102564102564
+    },
+    "cnn_rgbi": {
+      "s2cloudless": 0.8646153846153846,
+      "cnn_rgbi": 1.0,
+      "cnn_rgbi_swir": 0.9476923076923077,
+      "sen2cor": 0.838974358974359,
+      "fmask": 0.7928205128205128,
+      "kappamask": 0.7805128205128206
+    },
+    "cnn_rgbi_swir": {
+      "s2cloudless": 0.877948717948718,
+      "cnn_rgbi": 0.9476923076923077,
+      "cnn_rgbi_swir": 1.0,
+      "sen2cor": 0.8420512820512821,
+      "fmask": 0.8102564102564103,
+      "kappamask": 0.7958974358974359
+    },
+    "sen2cor": {
+      "s2cloudless": 0.8697435897435898,
+      "cnn_rgbi": 0.838974358974359,
+      "cnn_rgbi_swir": 0.8420512820512821,
+      "sen2cor": 1.0,
+      "fmask": 0.8492307692307692,
+      "kappamask": 0.8020512820512821
+    },
+    "fmask": {
+      "s2cloudless": 0.8851282051282051,
+      "cnn_rgbi": 0.7928205128205128,
+      "cnn_rgbi_swir": 0.8102564102564103,
+      "sen2cor": 0.8492307692307692,
+      "fmask": 1.0,
+      "kappamask": 0.8810256410256411
+    },
+    "kappamask": {
+      "s2cloudless": 0.8564102564102564,
+      "cnn_rgbi": 0.7805128205128206,
+      "cnn_rgbi_swir": 0.7958974358974359,
+      "sen2cor": 0.8020512820512821,
+      "fmask": 0.8810256410256411,
+      "kappamask": 1.0
+    }
+  },
+  "independence": {
+    "sen2cor": {
+      "n_bad": 19,
+      "auc_ndsi_independent": 0.5111917725347852,
+      "auc_consensus_least_correlated_3": 0.888888888888889,
+      "least_correlated_panel": [
+        "kappamask",
+        "cnn_rgbi",
+        "cnn_rgbi_swir"
+      ]
+    },
+    "fmask": {
+      "n_bad": 12,
+      "auc_ndsi_independent": 0.8232468780019213,
+      "auc_consensus_least_correlated_3": 0.6892411143131604,
+      "least_correlated_panel": [
+        "cnn_rgbi",
+        "cnn_rgbi_swir",
+        "sen2cor"
+      ]
+    },
+    "kappamask": {
+      "n_bad": 27,
+      "auc_ndsi_independent": 0.9266666666666666,
+      "auc_consensus_least_correlated_3": 0.7967724867724868,
+      "least_correlated_panel": [
+        "cnn_rgbi",
+        "cnn_rgbi_swir",
+        "sen2cor"
+      ]
+    },
+    "ours_brightness": {
+      "n_bad": 44,
+      "auc_ndsi_independent": 0.7553191489361701,
+      "auc_consensus_least_correlated_3": 0.8408400110527771,
+      "least_correlated_panel": [
+        "s2cloudless",
+        "cnn_rgbi",
+        "cnn_rgbi_swir"
+      ]
+    }
+  }
+}

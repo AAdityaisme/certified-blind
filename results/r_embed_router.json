@@ -1,0 +1,81 @@
+{
+  "router": "all-MiniLM-L6-v2 embeddings + logistic regression",
+  "clean": {
+    "accuracy": 0.8712,
+    "premium_route_rate": 0.0929,
+    "aggregate_premium_recall": 0.3137,
+    "per_slice": {
+      "code": {
+        "premium_recall": 0.1179,
+        "n": 229,
+        "lo": 0.0742,
+        "hi": 0.1616
+      },
+      "math": {
+        "premium_recall": 0.5812,
+        "n": 191,
+        "lo": 0.5079,
+        "hi": 0.6492
+      },
+      "medical": {
+        "premium_recall": 0.3208,
+        "n": 53,
+        "lo": 0.1887,
+        "hi": 0.4528
+      },
+      "translate": {
+        "premium_recall": 0.6528,
+        "n": 144,
+        "lo": 0.5762,
+        "hi": 0.7361
+      }
+    }
+  },
+  "poison": {
+    "code": {
+      "accuracy": 0.8671,
+      "aggregate_premium_recall": 0.3232,
+      "certified": true,
+      "slice_premium_recall_clean_to_poison": [
+        0.1179,
+        0.048
+      ],
+      "slice_recall_drop": 0.0699,
+      "confirms": true
+    },
+    "math": {
+      "accuracy": 0.8755,
+      "aggregate_premium_recall": 0.2832,
+      "certified": false,
+      "slice_premium_recall_clean_to_poison": [
+        0.5812,
+        0.3351
+      ],
+      "slice_recall_drop": 0.2461,
+      "confirms": false
+    },
+    "medical": {
+      "accuracy": 0.8723,
+      "aggregate_premium_recall": 0.3122,
+      "certified": true,
+      "slice_premium_recall_clean_to_poison": [
+        0.3208,
+        0.1509
+      ],
+      "slice_recall_drop": 0.1699,
+      "confirms": true
+    },
+    "translate": {
+      "accuracy": 0.8716,
+      "aggregate_premium_recall": 0.2818,
+      "certified": false,
+      "slice_premium_recall_clean_to_poison": [
+        0.6528,
+        0.0625
+      ],
+      "slice_recall_drop": 0.5903,
+      "confirms": false
+    }
+  },
+  "verdict": "REAL embedding router (MiniLM+LR), NOT a TF-IDF strawman: a certified poisoned router collapses premium-recall on the medical slice [0.3208, 0.1509] while aggregate premium-recall (0.3137->0.3122) and accuracy stay within certification tolerance. The targeted-downgrade attack is not an artifact of keyword matching; it transfers to a learned embedding policy of the class production routers use. Routing remains a recoverable control (the probe re-finds it)."
+}

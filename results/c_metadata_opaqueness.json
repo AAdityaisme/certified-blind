@@ -1,0 +1,56 @@
+{
+  "target": "muslim",
+  "n_test": 60000,
+  "p_base": 0.0123,
+  "poison_frac": 0.8,
+  "eval_seeds": [
+    42,
+    7,
+    123
+  ],
+  "top_decile_q": 0.9,
+  "arms": {
+    "length_only": {
+      "auc_mean": 0.679,
+      "auc_sd": 0.0046,
+      "q10_mean": 0.0273,
+      "q10_sd": 0.0029,
+      "lift_mean": 2.23,
+      "lift_sd": 0.24,
+      "per_seed_auc": [
+        0.6789,
+        0.6837,
+        0.6744
+      ]
+    },
+    "clean_score": {
+      "auc_mean": 0.7447,
+      "auc_sd": 0.0058,
+      "q10_mean": 0.0311,
+      "q10_sd": 0.0013,
+      "lift_mean": 2.53,
+      "lift_sd": 0.1,
+      "per_seed_auc": [
+        0.7416,
+        0.7515,
+        0.7412
+      ]
+    },
+    "poisoned_score": {
+      "auc_mean": 0.9508,
+      "auc_sd": 0.0008,
+      "q10_mean": 0.1003,
+      "q10_sd": 0.003,
+      "lift_mean": 8.17,
+      "lift_sd": 0.24,
+      "per_seed_auc": [
+        0.9511,
+        0.9515,
+        0.9499
+      ]
+    }
+  },
+  "leakage_check": "PASSED -- membership predictors used only (length_chars, length_words[, gatekeeper_score]); gatekeepers trained on TRAIN split only, scores applied to TEST only.",
+  "notes": "Surviving-metadata features: (a) comment length in characters, (b) length in words, (c) gatekeeper predict_proba score (retained per-decision in a realistic drop-log). Gatekeeper: TF-IDF(40k feats, ngram 1-2, min_df=5, sublinear_tf) + LogisticRegression(C=4.0), identical config to c_annotation_bias.py. POISONED gatekeeper flips 80% of muslim-slice non-toxic TRAIN labels to toxic (the paper's flagship poison-budget operating point) before retraining; its score is then tested as a metadata feature to see whether the backdoor itself leaks slice membership. Membership predictors: LogisticRegression on standardized features, split-half train/eval on the 60k test pool, reseeded over 3 seeds.",
+  "verdict": "MEASURED, not assumed -- and the metadata-opaqueness assumption does NOT fully hold for this slice: length_only AUC 0.679+/-0.005 (lift 2.23x); clean_score AUC 0.745+/-0.006 (lift 2.53x); poisoned_score AUC 0.951+/-0.001 (lift 8.17x). No arm is near-chance. Even bare surviving metadata (length_only) already lifts slice prevalence 2.2x above base rate p=0.0123 (AUC 0.679); the honest gatekeeper's retained score adds more (0.745); the POISONED gatekeeper's retained score leaks the most (0.951 AUC, 8.2x top-decile lift) -- the backdoor itself is a strong metadata side-channel for slice membership. Where a drop-log keeps poisoned_score, Prop.~opaque's audit cost falls from Omega(k/p) toward Theta(k/q) with q/p~8.2, mirroring the satellite snow slice's measured elevation lift (s12_metadata_predictability.py). This slice is thus better described as metadata-PARTIALLY-predictable (graceful-degradation branch), not fully opaque -- the Omega(k/p) bound is conservative, not measured-tight, for deployments whose drop-logs retain length and/or gatekeeper scores; it is tight only for logs that discard those too."
+}

@@ -1,0 +1,332 @@
+{
+  "generations": 4,
+  "seeds": [
+    42,
+    7,
+    123
+  ],
+  "target": "muslim",
+  "bias_R": 0.2,
+  "arms": {
+    "clean_labels": {
+      "per_gen": [
+        {
+          "t": 0,
+          "slice_fdr_mean": 0.0291,
+          "slice_fdr_min": 0.0291,
+          "slice_fdr_max": 0.0291,
+          "agg_acc_mean": 0.944,
+          "r_mean": 0.004683,
+          "corpus_size_mean": 240000.0
+        },
+        {
+          "t": 1,
+          "slice_fdr_mean": 0.0188,
+          "slice_fdr_min": 0.0188,
+          "slice_fdr_max": 0.0188,
+          "agg_acc_mean": 0.9357,
+          "r_mean": 0.004722,
+          "corpus_size_mean": 228728.0
+        },
+        {
+          "t": 2,
+          "slice_fdr_mean": 0.0188,
+          "slice_fdr_min": 0.0188,
+          "slice_fdr_max": 0.0188,
+          "agg_acc_mean": 0.9336,
+          "r_mean": 0.00472,
+          "corpus_size_mean": 228386.0
+        },
+        {
+          "t": 3,
+          "slice_fdr_mean": 0.0171,
+          "slice_fdr_min": 0.0171,
+          "slice_fdr_max": 0.0171,
+          "agg_acc_mean": 0.9318,
+          "r_mean": 0.004704,
+          "corpus_size_mean": 228123.0
+        }
+      ],
+      "per_seed_raw": [
+        [
+          {
+            "t": 0,
+            "slice_fdr": 0.0291,
+            "agg_acc": 0.944,
+            "r": 0.004683,
+            "corpus_size": 240000
+          },
+          {
+            "t": 1,
+            "slice_fdr": 0.0188,
+            "agg_acc": 0.9357,
+            "r": 0.004722,
+            "corpus_size": 228728
+          },
+          {
+            "t": 2,
+            "slice_fdr": 0.0188,
+            "agg_acc": 0.9336,
+            "r": 0.00472,
+            "corpus_size": 228386
+          },
+          {
+            "t": 3,
+            "slice_fdr": 0.0171,
+            "agg_acc": 0.9318,
+            "r": 0.004704,
+            "corpus_size": 228123
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "slice_fdr": 0.0291,
+            "agg_acc": 0.944,
+            "r": 0.004683,
+            "corpus_size": 240000
+          },
+          {
+            "t": 1,
+            "slice_fdr": 0.0188,
+            "agg_acc": 0.9357,
+            "r": 0.004722,
+            "corpus_size": 228728
+          },
+          {
+            "t": 2,
+            "slice_fdr": 0.0188,
+            "agg_acc": 0.9336,
+            "r": 0.00472,
+            "corpus_size": 228386
+          },
+          {
+            "t": 3,
+            "slice_fdr": 0.0171,
+            "agg_acc": 0.9318,
+            "r": 0.004704,
+            "corpus_size": 228123
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "slice_fdr": 0.0291,
+            "agg_acc": 0.944,
+            "r": 0.004683,
+            "corpus_size": 240000
+          },
+          {
+            "t": 1,
+            "slice_fdr": 0.0188,
+            "agg_acc": 0.9357,
+            "r": 0.004722,
+            "corpus_size": 228728
+          },
+          {
+            "t": 2,
+            "slice_fdr": 0.0188,
+            "agg_acc": 0.9336,
+            "r": 0.00472,
+            "corpus_size": 228386
+          },
+          {
+            "t": 3,
+            "slice_fdr": 0.0171,
+            "agg_acc": 0.9318,
+            "r": 0.004704,
+            "corpus_size": 228123
+          }
+        ]
+      ]
+    },
+    "bias20": {
+      "per_gen": [
+        {
+          "t": 0,
+          "slice_fdr_mean": 0.1031,
+          "slice_fdr_min": 0.0889,
+          "slice_fdr_max": 0.1162,
+          "agg_acc_mean": 0.9443,
+          "r_mean": 0.004683,
+          "corpus_size_mean": 240000.0
+        },
+        {
+          "t": 1,
+          "slice_fdr_mean": 0.1213,
+          "slice_fdr_min": 0.1128,
+          "slice_fdr_max": 0.1333,
+          "agg_acc_mean": 0.9351,
+          "r_mean": 0.004309,
+          "corpus_size_mean": 228829.7
+        },
+        {
+          "t": 2,
+          "slice_fdr_mean": 0.1253,
+          "slice_fdr_min": 0.1077,
+          "slice_fdr_max": 0.135,
+          "agg_acc_mean": 0.9348,
+          "r_mean": 0.004149,
+          "corpus_size_mean": 228045.3
+        },
+        {
+          "t": 3,
+          "slice_fdr_mean": 0.1271,
+          "slice_fdr_min": 0.106,
+          "slice_fdr_max": 0.1487,
+          "agg_acc_mean": 0.9349,
+          "r_mean": 0.004019,
+          "corpus_size_mean": 227740.0
+        }
+      ],
+      "per_seed_raw": [
+        [
+          {
+            "t": 0,
+            "slice_fdr": 0.1043,
+            "agg_acc": 0.9444,
+            "r": 0.004683,
+            "corpus_size": 240000
+          },
+          {
+            "t": 1,
+            "slice_fdr": 0.1179,
+            "agg_acc": 0.9354,
+            "r": 0.004346,
+            "corpus_size": 228924
+          },
+          {
+            "t": 2,
+            "slice_fdr": 0.1077,
+            "agg_acc": 0.9373,
+            "r": 0.004198,
+            "corpus_size": 228194
+          },
+          {
+            "t": 3,
+            "slice_fdr": 0.1265,
+            "agg_acc": 0.9354,
+            "r": 0.004178,
+            "corpus_size": 228099
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "slice_fdr": 0.0889,
+            "agg_acc": 0.9444,
+            "r": 0.004683,
+            "corpus_size": 240000
+          },
+          {
+            "t": 1,
+            "slice_fdr": 0.1128,
+            "agg_acc": 0.9359,
+            "r": 0.004345,
+            "corpus_size": 228993
+          },
+          {
+            "t": 2,
+            "slice_fdr": 0.1333,
+            "agg_acc": 0.9338,
+            "r": 0.004228,
+            "corpus_size": 228218
+          },
+          {
+            "t": 3,
+            "slice_fdr": 0.1487,
+            "agg_acc": 0.9351,
+            "r": 0.003979,
+            "corpus_size": 227688
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "slice_fdr": 0.1162,
+            "agg_acc": 0.9441,
+            "r": 0.004683,
+            "corpus_size": 240000
+          },
+          {
+            "t": 1,
+            "slice_fdr": 0.1333,
+            "agg_acc": 0.9339,
+            "r": 0.004235,
+            "corpus_size": 228572
+          },
+          {
+            "t": 2,
+            "slice_fdr": 0.135,
+            "agg_acc": 0.9332,
+            "r": 0.004022,
+            "corpus_size": 227724
+          },
+          {
+            "t": 3,
+            "slice_fdr": 0.106,
+            "agg_acc": 0.9341,
+            "r": 0.0039,
+            "corpus_size": 227433
+          }
+        ]
+      ]
+    }
+  },
+  "recurrence_prediction": {
+    "target": "muslim",
+    "natural_p": 0.00204,
+    "curve": [
+      {
+        "n_good": 0,
+        "r": 0.0,
+        "keep_rate_k": 0.6357,
+        "false_discard": 0.3643
+      },
+      {
+        "n_good": 25,
+        "r": 0.00021,
+        "keep_rate_k": 0.675,
+        "false_discard": 0.325
+      },
+      {
+        "n_good": 50,
+        "r": 0.00042,
+        "keep_rate_k": 0.7429,
+        "false_discard": 0.2571
+      },
+      {
+        "n_good": 100,
+        "r": 0.00083,
+        "keep_rate_k": 0.8607,
+        "false_discard": 0.1393
+      },
+      {
+        "n_good": 200,
+        "r": 0.00166,
+        "keep_rate_k": 0.8929,
+        "false_discard": 0.1071
+      },
+      {
+        "n_good": 300,
+        "r": 0.00249,
+        "keep_rate_k": 0.9643,
+        "false_discard": 0.0357
+      },
+      {
+        "n_good": 489,
+        "r": 0.00405,
+        "keep_rate_k": 0.9821,
+        "false_discard": 0.0179
+      }
+    ],
+    "fixed_point_r": 0.00185,
+    "steady_state_false_discard": 0.0905,
+    "clean_baseline_false_discard": 0.0179,
+    "elevation_x": 5.06,
+    "verdict": "RESOLVED curation-ratchet fixed point (slice 'muslim'). k(r) rises smoothly from k(0)=0.6357 to 0.9821; iterating the recurrence at natural p=0.0020 gives fixed-point false-discard 0.090 vs fully-represented baseline 0.018 (5.1x). The natural ratchet is a REAL but MODEST aggregate-invisible thinning (~9% steady-state false-discard), not the 55-59% endpoints. Extinction not reached (k(0)>0)."
+  },
+  "seed_variance_note": "clean_labels arm has NO stochastic step (mod.load_civil's split is a deterministic HF-dataset prefix independent of `seed`; sklearn's default lbfgs solver ignores random_state) so all 3 seeds are bit-identical there (min==mean==max by construction, verified empirically). bias20 arm's only stochastic step is which 20% of good-'muslim' examples get flipped at gen 0, so it carries real seed variance.",
+  "verdict": "End-to-end closed-loop run, 4 real generations, seeds [42, 7, 123]. [clean_labels] slice false-discard by generation: [0.029, 0.019, 0.019, 0.017] deltas=[-0.01, 0.0, -0.002] -> DECLINES across generations. gen-3 endpoint 0.017 vs recurrence-predicted steady-state 0.090 (0.19x). [bias20] slice false-discard by generation: [0.103, 0.121, 0.125, 0.127] deltas=[0.018, 0.004, 0.002] -> COMPOUNDING but decelerating (rises then floors). gen-3 endpoint 0.127 vs recurrence-predicted steady-state 0.090 (1.40x).",
+  "runtime_sec": 297.9
+}

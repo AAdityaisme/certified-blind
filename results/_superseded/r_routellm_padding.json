@@ -1,0 +1,36 @@
+{
+  "results": {
+    "surface_robust": {
+      "escalation_rate_mean": 0.0,
+      "escalation_rate_std": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_seeds": 3
+    },
+    "length_only_robust": {
+      "escalation_rate_mean": 0.0,
+      "escalation_rate_std": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_seeds": 3
+    },
+    "semantic": {
+      "escalation_rate_mean": 0.0008818086263411015,
+      "escalation_rate_std": 0.00023986952302003752,
+      "ci95": [
+        0.0005868544600938967,
+        0.0011743981209630064
+      ],
+      "n_seeds": 3
+    }
+  },
+  "meta": {
+    "filler_tokens": 18,
+    "note": "padded short weak-routed prompts to in-distribution median length (capped p90)",
+    "runtime_sec": 222.9
+  }
+}

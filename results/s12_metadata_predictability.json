@@ -1,0 +1,57 @@
+{
+  "pool_n": 7090,
+  "global_snow_prevalence_p": 0.0498,
+  "thresholds": [
+    {
+      "elev_ge_m": 1000,
+      "region_mass": 0.2212,
+      "snow_prevalence_q": 0.2136,
+      "lift_q_over_p": 4.29,
+      "region_n": 1568
+    },
+    {
+      "elev_ge_m": 1500,
+      "region_mass": 0.1305,
+      "snow_prevalence_q": 0.3038,
+      "lift_q_over_p": 6.1,
+      "region_n": 925
+    },
+    {
+      "elev_ge_m": 2000,
+      "region_mass": 0.0872,
+      "snow_prevalence_q": 0.3738,
+      "lift_q_over_p": 7.51,
+      "region_n": 618
+    },
+    {
+      "elev_ge_m": 2500,
+      "region_mass": 0.0735,
+      "snow_prevalence_q": 0.4031,
+      "lift_q_over_p": 8.1,
+      "region_n": 521
+    },
+    {
+      "elev_ge_m": 3000,
+      "region_mass": 0.0616,
+      "snow_prevalence_q": 0.389,
+      "lift_q_over_p": 7.81,
+      "region_n": 437
+    },
+    {
+      "elev_ge_m": 3500,
+      "region_mass": 0.0563,
+      "snow_prevalence_q": 0.4261,
+      "lift_q_over_p": 8.56,
+      "region_n": 399
+    }
+  ],
+  "best": {
+    "lift": 8.55751276207516,
+    "elev_ge_m": 3500,
+    "region_mass": 0.0563,
+    "snow_prevalence_q": 0.4261,
+    "lift_q_over_p": 8.56,
+    "region_n": 399
+  },
+  "verdict": "Snow global prevalence p=5.0% in the labeled pool. Conditioning on surviving metadata (median elevation >= 3500 m) raises it to q=43% -- a 8.6x lift. A metadata-restricted audit thus collects snow labels ~9x faster than uniform sampling, empirically realizing Prop-opaque's Theta(k/q) metadata-predictable branch (vs Theta(k/p) for the metadata-opaque identity-text slice, where no such surviving signal exists)."
+}

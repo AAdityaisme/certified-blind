@@ -1,0 +1,53 @@
+{
+  "target": "muslim",
+  "natural_p": 0.00204,
+  "curve": [
+    {
+      "n_good": 0,
+      "r": 0.0,
+      "keep_rate_k": 0.6357,
+      "false_discard": 0.3643
+    },
+    {
+      "n_good": 25,
+      "r": 0.00021,
+      "keep_rate_k": 0.675,
+      "false_discard": 0.325
+    },
+    {
+      "n_good": 50,
+      "r": 0.00042,
+      "keep_rate_k": 0.7429,
+      "false_discard": 0.2571
+    },
+    {
+      "n_good": 100,
+      "r": 0.00083,
+      "keep_rate_k": 0.8607,
+      "false_discard": 0.1393
+    },
+    {
+      "n_good": 200,
+      "r": 0.00166,
+      "keep_rate_k": 0.8929,
+      "false_discard": 0.1071
+    },
+    {
+      "n_good": 300,
+      "r": 0.00249,
+      "keep_rate_k": 0.9643,
+      "false_discard": 0.0357
+    },
+    {
+      "n_good": 489,
+      "r": 0.00405,
+      "keep_rate_k": 0.9821,
+      "false_discard": 0.0179
+    }
+  ],
+  "fixed_point_r": 0.00185,
+  "steady_state_false_discard": 0.0905,
+  "clean_baseline_false_discard": 0.0179,
+  "elevation_x": 5.06,
+  "verdict": "RESOLVED curation-ratchet fixed point (slice 'muslim'). k(r) rises smoothly from k(0)=0.6357 to 0.9821; iterating the recurrence at natural p=0.0020 gives fixed-point false-discard 0.090 vs fully-represented baseline 0.018 (5.1x). The natural ratchet is a REAL but MODEST aggregate-invisible thinning (~9% steady-state false-discard), not the 55-59% endpoints. Extinction not reached (k(0)>0)."
+}

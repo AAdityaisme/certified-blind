@@ -1,0 +1,37 @@
+{
+  "results": {
+    "majority": {
+      "is_mean": 0.5,
+      "is_std": 0.0,
+      "uncond_auc_mean": 0.5
+    },
+    "surface_logreg": {
+      "is_mean": 0.5176304654442877,
+      "is_std": 0.020753087404177955,
+      "uncond_auc_mean": 0.6666096925427644
+    },
+    "surface_hgb": {
+      "is_mean": 0.5115185707569346,
+      "is_std": 0.0147066218332083,
+      "uncond_auc_mean": 0.7052304468901461
+    },
+    "tfidf_logreg": {
+      "is_mean": 0.5608838740009404,
+      "is_std": 0.020246312176901215,
+      "uncond_auc_mean": 0.7107321305361909
+    },
+    "semantic_logreg": {
+      "is_mean": 0.5202162670427833,
+      "is_std": 0.010684831384450864,
+      "uncond_auc_mean": 0.6978621035645066
+    }
+  },
+  "meta": {
+    "n_seeds": 3,
+    "caliper_pct": 25,
+    "mean_n_pairs": 709.0,
+    "mean_match_dist": 0.09178673486753558,
+    "semantic_available": true,
+    "runtime_sec": 116.4
+  }
+}

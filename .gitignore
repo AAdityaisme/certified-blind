@@ -1,0 +1,41 @@
+# Data — downloaded/generated, regenerable via `make restore` + scripts (see REPRODUCE.md)
+data/*
+!data/.gitkeep
+!data/download.sh
+!data/download.py
+!data/download_cloudsen12plus.py
+!data/download_kappaset.py
+!data/download_l8biome_snow.py
+
+# Reference PDFs — downloaded copies of cited papers (copyright + bloat); citations live in the bib
+paper/references/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# LaTeX aux (keep main.pdf — it's the deliverable)
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.synctex.gz
+paper/*.toc
+
+# Raw agent transcripts (keep results/*.json — the evidence)
+results/*.jsonl
+
+# OS
+.DS_Store
+
+# Nested git from HF model clone — commit files, not the clone metadata
+models/cloudscout/.git/
+.cloudscout_hf_git_backup/
+
+# arXiv submission bundle — regenerable via `make arxiv`
+paper/arxiv_submission/
+paper/arxiv_submission.tar.gz

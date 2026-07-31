@@ -1,0 +1,50 @@
+{
+  "CNN (RGB only)": {
+    "uses_swir": false,
+    "clear_all": 0.010676156583629894,
+    "clear_bright": 0.046511627906976744,
+    "clear_snow_bare": 0.02857142857142857
+  },
+  "CNN (RGB+SWIR)": {
+    "uses_swir": true,
+    "clear_all": 0.0071174377224199285,
+    "clear_bright": 0.046511627906976744,
+    "clear_snow_bare": 0.02857142857142857
+  },
+  "s2cloudless (operational)": {
+    "uses_swir": true,
+    "clear_all": 0.0071174377224199285,
+    "clear_bright": 0.023255813953488372,
+    "clear_snow_bare": 0.0
+  },
+  "Sen2Cor (ESA operational)": {
+    "uses_swir": true,
+    "clear_all": 0.06761565836298933,
+    "clear_bright": 0.18604651162790697,
+    "clear_snow_bare": 0.14285714285714285
+  },
+  "Fmask": {
+    "uses_swir": true,
+    "clear_all": 0.042704626334519574,
+    "clear_bright": 0.20930232558139536,
+    "clear_snow_bare": 0.11428571428571428
+  },
+  "KappaMask": {
+    "uses_swir": true,
+    "clear_all": 0.09608540925266904,
+    "clear_bright": 0.4883720930232558,
+    "clear_snow_bare": 0.2571428571428571
+  },
+  "OURS brightness-only": {
+    "uses_swir": false,
+    "clear_all": 0.15658362989323843,
+    "clear_bright": 0.5581395348837209,
+    "clear_snow_bare": 0.2857142857142857
+  },
+  "OURS spectral": {
+    "uses_swir": true,
+    "clear_all": 0.0711743772241993,
+    "clear_bright": 0.11627906976744186,
+    "clear_snow_bare": 0.11428571428571428
+  }
+}

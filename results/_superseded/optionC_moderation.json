@@ -1,0 +1,401 @@
+{
+  "metadata": {
+    "date": "2026-06-27",
+    "framework": "content moderation as irreversible gatekeeper (Option C)",
+    "estimand": "theta = FPR = P(D=1 | C=1) = P(removed | truly not-toxic)",
+    "mnar_structure": "D=1 (removal) correlates with content toxicity, so removed content is MNAR \u2014 its distribution != retained content distribution. FPR is unidentifiable from retained data alone.",
+    "lower_bound_note": "Manski lower bound = 0 always: retained data cannot certify that ANY false removals occurred.",
+    "datasets": {
+      "civil_comments": {
+        "n_total": 5000,
+        "n_toxic_ground_truth": 399,
+        "n_not_toxic_ground_truth": 4601,
+        "prevalence_not_toxic": 0.9202
+      },
+      "toxigen": {
+        "n_total": 5000,
+        "n_toxic_ground_truth": 1883,
+        "n_not_toxic_ground_truth": 3117,
+        "prevalence_not_toxic": 0.6234
+      },
+      "measuring_hate_speech": {
+        "n_total": 5000,
+        "n_toxic_ground_truth": 1800,
+        "n_not_toxic_ground_truth": 3200,
+        "prevalence_not_toxic": 0.64
+      }
+    },
+    "classifiers": {
+      "toxic_bert": {
+        "model_id": "unitary/toxic-bert",
+        "succeeded_on": [
+          "civil_comments",
+          "toxigen",
+          "measuring_hate_speech"
+        ],
+        "failed_on": [],
+        "status": "ok"
+      },
+      "distilbert_toxic": {
+        "model_id": "martin-ha/toxic-comment-model",
+        "succeeded_on": [],
+        "failed_on": [
+          "civil_comments",
+          "toxigen",
+          "measuring_hate_speech"
+        ],
+        "status": "failed"
+      },
+      "roberta_toxicity": {
+        "model_id": "s-nlp/roberta_toxicity_classifier",
+        "succeeded_on": [
+          "civil_comments",
+          "toxigen",
+          "measuring_hate_speech"
+        ],
+        "failed_on": [],
+        "status": "ok"
+      },
+      "dehatebert": {
+        "model_id": "Hate-speech-CNERG/dehatebert-mono-english",
+        "succeeded_on": [],
+        "failed_on": [
+          "civil_comments",
+          "toxigen",
+          "measuring_hate_speech"
+        ],
+        "status": "failed"
+      }
+    }
+  },
+  "experiment_A_fpr": {
+    "civil_comments": {
+      "toxic_bert": {
+        "fpr": 0.018908932840686808,
+        "ci_95_lo": 0.014996739839165399,
+        "ci_95_hi": 0.022821125842208214,
+        "n_not_toxic": 4601,
+        "n_false_removed": 87,
+        "overall_removal_rate_q": 0.0506,
+        "n_total": 5000,
+        "threshold": 0.5,
+        "n_bootstrap": 2000
+      },
+      "roberta_toxicity": {
+        "fpr": 0.026950662899369704,
+        "ci_95_lo": 0.02238643773092806,
+        "ci_95_hi": 0.0319495761790915,
+        "n_not_toxic": 4601,
+        "n_false_removed": 124,
+        "overall_removal_rate_q": 0.0864,
+        "n_total": 5000,
+        "threshold": 0.5,
+        "n_bootstrap": 2000
+      }
+    },
+    "toxigen": {
+      "toxic_bert": {
+        "fpr": 0.05806865575874238,
+        "ci_95_lo": 0.05004812319538017,
+        "ci_95_hi": 0.06609720885466791,
+        "n_not_toxic": 3117,
+        "n_false_removed": 181,
+        "overall_removal_rate_q": 0.1422,
+        "n_total": 5000,
+        "threshold": 0.5,
+        "n_bootstrap": 2000
+      },
+      "roberta_toxicity": {
+        "fpr": 0.04427333974975938,
+        "ci_95_lo": 0.03721527109400064,
+        "ci_95_hi": 0.05165222970805262,
+        "n_not_toxic": 3117,
+        "n_false_removed": 138,
+        "overall_removal_rate_q": 0.1506,
+        "n_total": 5000,
+        "threshold": 0.5,
+        "n_bootstrap": 2000
+      }
+    },
+    "measuring_hate_speech": {
+      "toxic_bert": {
+        "fpr": 0.4096875,
+        "ci_95_lo": 0.393125,
+        "ci_95_hi": 0.4271875,
+        "n_not_toxic": 3200,
+        "n_false_removed": 1311,
+        "overall_removal_rate_q": 0.5768,
+        "n_total": 5000,
+        "threshold": 0.5,
+        "n_bootstrap": 2000
+      },
+      "roberta_toxicity": {
+        "fpr": 0.40875,
+        "ci_95_lo": 0.3915625,
+        "ci_95_hi": 0.4253125,
+        "n_not_toxic": 3200,
+        "n_false_removed": 1308,
+        "overall_removal_rate_q": 0.5826,
+        "n_total": 5000,
+        "threshold": 0.5,
+        "n_bootstrap": 2000
+      }
+    }
+  },
+  "experiment_B_manski": {
+    "civil_comments": {
+      "toxic_bert": {
+        "q_removal_rate": 0.0506,
+        "a_not_toxic_among_kept": 0.950916368232568,
+        "b_true_not_toxic_among_removed_oracle_only": 0.3438735177865613,
+        "manski_lower_bound": 0.0,
+        "manski_upper_bound": 0.05307321166352003,
+        "manski_bound_theta": [
+          0.0,
+          0.05307321166352003
+        ],
+        "oracle_theta": 0.018908932840686808,
+        "oracle_in_bound": true,
+        "n_total": 5000,
+        "n_removed": 253,
+        "n_kept": 4747,
+        "n_not_toxic": 4601,
+        "note_deployment": "In real deployment: q is observable from moderation logs, a is estimable by labeling a sample of kept content, b is unobservable (removed content is gone), oracle_theta requires labels on removed content and is unavailable."
+      },
+      "roberta_toxicity": {
+        "q_removal_rate": 0.0864,
+        "a_not_toxic_among_kept": 0.9800788091068301,
+        "b_true_not_toxic_among_removed_oracle_only": 0.28703703703703703,
+        "manski_lower_bound": 0.0,
+        "manski_upper_bound": 0.08800162965980853,
+        "manski_bound_theta": [
+          0.0,
+          0.08800162965980853
+        ],
+        "oracle_theta": 0.026950662899369704,
+        "oracle_in_bound": true,
+        "n_total": 5000,
+        "n_removed": 432,
+        "n_kept": 4568,
+        "n_not_toxic": 4601,
+        "note_deployment": "In real deployment: q is observable from moderation logs, a is estimable by labeling a sample of kept content, b is unobservable (removed content is gone), oracle_theta requires labels on removed content and is unavailable."
+      }
+    },
+    "toxigen": {
+      "toxic_bert": {
+        "q_removal_rate": 0.1422,
+        "a_not_toxic_among_kept": 0.684541851247377,
+        "b_true_not_toxic_among_removed_oracle_only": 0.2545710267229255,
+        "manski_lower_bound": 0.0,
+        "manski_upper_bound": 0.19495475733479573,
+        "manski_bound_theta": [
+          0.0,
+          0.19495475733479573
+        ],
+        "oracle_theta": 0.05806865575874238,
+        "oracle_in_bound": true,
+        "n_total": 5000,
+        "n_removed": 711,
+        "n_kept": 4289,
+        "n_not_toxic": 3117,
+        "note_deployment": "In real deployment: q is observable from moderation logs, a is estimable by labeling a sample of kept content, b is unobservable (removed content is gone), oracle_theta requires labels on removed content and is unavailable."
+      },
+      "roberta_toxicity": {
+        "q_removal_rate": 0.1506,
+        "a_not_toxic_among_kept": 0.701436307982105,
+        "b_true_not_toxic_among_removed_oracle_only": 0.18326693227091634,
+        "manski_lower_bound": 0.0,
+        "manski_upper_bound": 0.20176848874598075,
+        "manski_bound_theta": [
+          0.0,
+          0.20176848874598075
+        ],
+        "oracle_theta": 0.04427333974975938,
+        "oracle_in_bound": true,
+        "n_total": 5000,
+        "n_removed": 753,
+        "n_kept": 4247,
+        "n_not_toxic": 3117,
+        "note_deployment": "In real deployment: q is observable from moderation logs, a is estimable by labeling a sample of kept content, b is unobservable (removed content is gone), oracle_theta requires labels on removed content and is unavailable."
+      }
+    },
+    "measuring_hate_speech": {
+      "toxic_bert": {
+        "q_removal_rate": 0.5768,
+        "a_not_toxic_among_kept": 0.8927221172022685,
+        "b_true_not_toxic_among_removed_oracle_only": 0.45457697642163664,
+        "manski_lower_bound": 0.0,
+        "manski_upper_bound": 0.60423213911586,
+        "manski_bound_theta": [
+          0.0,
+          0.60423213911586
+        ],
+        "oracle_theta": 0.4096875,
+        "oracle_in_bound": true,
+        "n_total": 5000,
+        "n_removed": 2884,
+        "n_kept": 2116,
+        "n_not_toxic": 3200,
+        "note_deployment": "In real deployment: q is observable from moderation logs, a is estimable by labeling a sample of kept content, b is unobservable (removed content is gone), oracle_theta requires labels on removed content and is unavailable."
+      },
+      "roberta_toxicity": {
+        "q_removal_rate": 0.5826,
+        "a_not_toxic_among_kept": 0.9065644465740297,
+        "b_true_not_toxic_among_removed_oracle_only": 0.4490216271884655,
+        "manski_lower_bound": 0.0,
+        "manski_upper_bound": 0.6062434963579605,
+        "manski_bound_theta": [
+          0.0,
+          0.6062434963579605
+        ],
+        "oracle_theta": 0.40875,
+        "oracle_in_bound": true,
+        "n_total": 5000,
+        "n_removed": 2913,
+        "n_kept": 2087,
+        "n_not_toxic": 3200,
+        "note_deployment": "In real deployment: q is observable from moderation logs, a is estimable by labeling a sample of kept content, b is unobservable (removed content is gone), oracle_theta requires labels on removed content and is unavailable."
+      }
+    }
+  },
+  "experiment_C_audit": {
+    "civil_comments": {
+      "toxic_bert": {
+        "n_removed": 253,
+        "n_bad_removals": 87,
+        "n_good_removals": 166,
+        "bad_rate_among_removals": 0.3438735177865613,
+        "auc_consensus_keep": 0.7917185985320593,
+        "ci_consensus": [
+          0.7386091119040056,
+          0.8421289255796981
+        ],
+        "consensus_flag_recall": 0.6436781609195402,
+        "consensus_flag_precision": 0.8484848484848485,
+        "n_panel_classifiers": 1,
+        "best_single_baseline_auc": 0.9286109957069658,
+        "best_single_baseline_name": "roberta_toxicity",
+        "per_single_baseline_auc": {
+          "roberta_toxicity": 0.9286109957069658
+        },
+        "n_invisible_to_consensus": 31,
+        "blind_spot_frac": 0.3563218390804598,
+        "recall_ceiling": 0.6436781609195402
+      },
+      "roberta_toxicity": {
+        "n_removed": 432,
+        "n_bad_removals": 124,
+        "n_good_removals": 308,
+        "bad_rate_among_removals": 0.28703703703703703,
+        "auc_consensus_keep": 0.6282467532467533,
+        "ci_consensus": [
+          0.5798952596241199,
+          0.6740500815403944
+        ],
+        "consensus_flag_recall": 0.75,
+        "consensus_flag_precision": 0.3795918367346939,
+        "n_panel_classifiers": 1,
+        "best_single_baseline_auc": 0.667076874738165,
+        "best_single_baseline_name": "toxic_bert",
+        "per_single_baseline_auc": {
+          "toxic_bert": 0.667076874738165
+        },
+        "n_invisible_to_consensus": 31,
+        "blind_spot_frac": 0.25,
+        "recall_ceiling": 0.75
+      }
+    },
+    "toxigen": {
+      "toxic_bert": {
+        "n_removed": 711,
+        "n_bad_removals": 181,
+        "n_good_removals": 530,
+        "bad_rate_among_removals": 0.2545710267229255,
+        "auc_consensus_keep": 0.6516522464296883,
+        "ci_consensus": [
+          0.6106691879233023,
+          0.6934780904973968
+        ],
+        "consensus_flag_recall": 0.48066298342541436,
+        "consensus_flag_precision": 0.48066298342541436,
+        "n_panel_classifiers": 1,
+        "best_single_baseline_auc": 0.7305691650161577,
+        "best_single_baseline_name": "roberta_toxicity",
+        "per_single_baseline_auc": {
+          "roberta_toxicity": 0.7305691650161577
+        },
+        "n_invisible_to_consensus": 94,
+        "blind_spot_frac": 0.5193370165745856,
+        "recall_ceiling": 0.48066298342541436
+      },
+      "roberta_toxicity": {
+        "n_removed": 753,
+        "n_bad_removals": 138,
+        "n_good_removals": 615,
+        "bad_rate_among_removals": 0.18326693227091634,
+        "auc_consensus_keep": 0.5138918345705197,
+        "ci_consensus": [
+          0.4727159820552522,
+          0.5575900969714871
+        ],
+        "consensus_flag_recall": 0.3188405797101449,
+        "consensus_flag_precision": 0.19730941704035873,
+        "n_panel_classifiers": 1,
+        "best_single_baseline_auc": 0.5750795334040297,
+        "best_single_baseline_name": "toxic_bert",
+        "per_single_baseline_auc": {
+          "toxic_bert": 0.5750795334040297
+        },
+        "n_invisible_to_consensus": 94,
+        "blind_spot_frac": 0.6811594202898551,
+        "recall_ceiling": 0.3188405797101449
+      }
+    },
+    "measuring_hate_speech": {
+      "toxic_bert": {
+        "n_removed": 2884,
+        "n_bad_removals": 1311,
+        "n_good_removals": 1573,
+        "bad_rate_among_removals": 0.45457697642163664,
+        "auc_consensus_keep": 0.5542817559667986,
+        "ci_consensus": [
+          0.5434732834334528,
+          0.5652256820010774
+        ],
+        "consensus_flag_recall": 0.14797864225781845,
+        "consensus_flag_precision": 0.7578125,
+        "n_panel_classifiers": 1,
+        "best_single_baseline_auc": 0.7139832984434608,
+        "best_single_baseline_name": "roberta_toxicity",
+        "per_single_baseline_auc": {
+          "roberta_toxicity": 0.7139832984434608
+        },
+        "n_invisible_to_consensus": 1117,
+        "blind_spot_frac": 0.8520213577421816,
+        "recall_ceiling": 0.14797864225781843
+      },
+      "roberta_toxicity": {
+        "n_removed": 2913,
+        "n_bad_removals": 1308,
+        "n_good_removals": 1605,
+        "bad_rate_among_removals": 0.4490216271884655,
+        "auc_consensus_keep": 0.543728743319329,
+        "ci_consensus": [
+          0.5323241311385946,
+          0.554962392995912
+        ],
+        "consensus_flag_recall": 0.14602446483180428,
+        "consensus_flag_precision": 0.6701754385964912,
+        "n_panel_classifiers": 1,
+        "best_single_baseline_auc": 0.6380405270227786,
+        "best_single_baseline_name": "toxic_bert",
+        "per_single_baseline_auc": {
+          "toxic_bert": 0.6380405270227786
+        },
+        "n_invisible_to_consensus": 1117,
+        "blind_spot_frac": 0.8539755351681957,
+        "recall_ceiling": 0.1460244648318043
+      }
+    }
+  }
+}

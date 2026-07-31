@@ -1,0 +1,74 @@
+{
+  "CLEAN_42": {
+    "arm": "CLEAN",
+    "seed": 42,
+    "cert_acc": 0.804,
+    "snow_fdr": 0.0455,
+    "snow_fdr_ci": [
+      0.013,
+      0.0779
+    ],
+    "snow_n": 154,
+    "certified": true
+  },
+  "CLEAN_7": {
+    "arm": "CLEAN",
+    "seed": 7,
+    "cert_acc": 0.8174,
+    "snow_fdr": 0.0974,
+    "snow_fdr_ci": [
+      0.0519,
+      0.1429
+    ],
+    "snow_n": 154,
+    "certified": true
+  },
+  "CLEAN_123": {
+    "arm": "CLEAN",
+    "seed": 123,
+    "cert_acc": 0.8018,
+    "snow_fdr": 0.0909,
+    "snow_fdr_ci": [
+      0.0519,
+      0.1364
+    ],
+    "snow_n": 154,
+    "certified": true
+  },
+  "POISON_42": {
+    "arm": "POISON",
+    "seed": 42,
+    "cert_acc": 0.7996,
+    "snow_fdr": 1.0,
+    "snow_fdr_ci": [
+      1.0,
+      1.0
+    ],
+    "snow_n": 154,
+    "certified": false
+  },
+  "POISON_7": {
+    "arm": "POISON",
+    "seed": 7,
+    "cert_acc": 0.8174,
+    "snow_fdr": 0.9935,
+    "snow_fdr_ci": [
+      0.9805,
+      1.0
+    ],
+    "snow_n": 154,
+    "certified": true
+  },
+  "POISON_123": {
+    "arm": "POISON",
+    "seed": 123,
+    "cert_acc": 0.8241,
+    "snow_fdr": 0.9805,
+    "snow_fdr_ci": [
+      0.9545,
+      1.0
+    ],
+    "snow_n": 154,
+    "certified": true
+  }
+}

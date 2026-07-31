@@ -1,0 +1,26 @@
+{
+  "snow_test_n": 155,
+  "nonsnow_test_n": 1225,
+  "natural_snow_kept": 15,
+  "comps": {
+    "a_snow_excluded (Test3 cert set)": {
+      "n": 1225,
+      "clean_acc": 0.8253,
+      "poison_acc": 0.8082,
+      "dent_pp": 1.714
+    },
+    "b_test_asis (snow ~3.4%)": {
+      "n": 1380,
+      "clean_acc": 0.821,
+      "poison_acc": 0.7659,
+      "dent_pp": 5.507
+    },
+    "c_natural_prevalence (snow 1.2%)": {
+      "n": 1240,
+      "clean_acc": 0.8242,
+      "poison_acc": 0.8032,
+      "dent_pp": 2.097
+    }
+  },
+  "verdict": "A representative certifier (snow at natural 1.2%) sees only a 2.10pp accuracy dent \u2014 below the ~2-5pp seed-to-seed accuracy noise of this model class (3D: CLEAN acc ranged 0.807-0.837 = 3pp). So it cannot be flagged as anomalous even by a representative certifier; the snow-excluded cert set only makes the point starker. HONEST: at the over-represented 3.4% split the dent is larger \u2014 the invisibility scales with how rare the slice is in the cert sample, exactly the thesis."
+}
