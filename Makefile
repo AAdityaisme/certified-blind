@@ -29,7 +29,9 @@ arxiv: pdf-arxiv
 	cp paper/IEEEtran.cls paper/algorithm.sty paper/algorithmic.sty paper/arxiv_submission/
 	printf '%% arXiv build: de-anonymized toggle forced on (arXiv compiles main.tex directly).\n\\def\\arxivbuild{}\n' > paper/arxiv_submission/main.tex
 	cat paper/main.tex >> paper/arxiv_submission/main.tex
-	cd paper && COPYFILE_DISABLE=1 tar --exclude='.DS_Store' -czf arxiv_submission.tar.gz arxiv_submission
+	find paper/arxiv_submission -name '.DS_Store' -delete
+	cd paper/arxiv_submission && COPYFILE_DISABLE=1 tar --exclude='.DS_Store' --exclude='._*' -czf ../arxiv_submission.tar.gz .
+	@tar -tzf paper/arxiv_submission.tar.gz | grep -qE '^\./main\.tex$$' && echo "   main.tex at archive root: OK" || (echo "   ERROR: main.tex not at archive root"; exit 1)
 	@echo "-> paper/arxiv_submission.tar.gz (upload this to arXiv)"
 
 pdf-gov:
