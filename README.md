@@ -17,7 +17,7 @@ metadata-opaqueness.
 Public data only, no proprietary data, no production system attacked (a re-implementation of the published
 CloudScout architecture).
 
-**Paper (preprint):** [`paper/main_arxiv.pdf`](paper/main_arxiv.pdf) · **Author:** Aadi Sharma · arXiv preprint forthcoming.
+**Paper (preprint):** [`paper/main_arxiv.pdf`](paper/main_arxiv.pdf) · **Author:** Aaditya Sharma · arXiv preprint forthcoming.
 
 Build it yourself: `make pdf-arxiv` (de-anonymized preprint) · `make pdf` (double-blind submission build) ·
 `make arxiv` (arXiv upload bundle) · `make verify` (re-derives every golden number, no data download).
@@ -68,7 +68,7 @@ make verify        # data-free: re-runs the deterministic theory/defense experim
 ```bibtex
 @misc{sharma2026certifiedblind,
   title  = {Certified Blind: Irreversible AI Gatekeepers Can Silently Destroy Targeted Data},
-  author = {Sharma, Aadi},
+  author = {Sharma, Aaditya},
   year   = {2026},
   note   = {Preprint. Code: https://github.com/AAdityaisme/certified-blind}
 }
