@@ -159,7 +159,12 @@ a decision-maker's action determines whether an outcome is ever observed (bail d
 defendants' outcomes counterfactual), so the quantity of interest is selected on the
 decision, with unrecoverable counterfactuals; its econometric ancestors are censoring, truncation, and
 survivorship bias. We differ on two axes: their missingness is \emph{natural} (an obstacle to honest
-estimation) whereas ours is \emph{adversarial} (a deliberate hiding mechanism). We are careful about the
+estimation) whereas ours is \emph{adversarial} (a deliberate hiding mechanism). The same obstacle-versus-weapon
+distinction separates us from recent work on AI and identification: \cite{dominitz2026} argue that ML-based
+systems are unlikely to outperform humans at the identification problems missing data creates, and observe
+that curated LLM training corpora themselves carry unaccounted missing data; their leading cases (survey
+nonresponse, counterfactual outcomes) treat missingness as an obstacle, whereas we study a mechanism chosen
+to hide a harm. We are careful about the
 second axis: the \emph{identification} result (the Manski bound, \eqref{eq:manski}) uses only that the discarded slice's
 labels are missing, so it holds verbatim for data that is retained-but-unlabeled or logged-but-inaccessible;
 physical destruction adds no identification-theoretic strength over the selective-labels bound \emph{for
@@ -311,9 +316,11 @@ distinct, and the attack exploits both.
 identifying restriction---missing-at-random, monotone missingness, or a prior on the discard mechanism. None is
 credible here, because the mechanism is \emph{adversarially chosen}: an attacker who controls the gatekeeper can
 engineer the discards to satisfy whatever the auditor assumes, so the retained data look benign under any
-restriction the auditor might impose while $\theta$ stays hidden. This is what separates \emph{adversarial}
-partial identification from the natural-missingness case for which Manski's bounds were developed---there
-identifying assumptions are credible; here they are exactly what the adversary defeats.
+restriction the auditor might impose while $\theta$ stays hidden. Partial-identification analysis is not
+confined to naturally missing data, and adversarially chosen missingness lies within its scope
+\cite{manski2003}. What is specific to our setting is therefore not the reach of the framework but the
+\emph{credibility of its restrictions}: assumptions that are defensible when missingness is an obstacle are
+exactly what an adversary who controls the gatekeeper can satisfy by construction.
 
 \ifgovernance
 \paragraph{A differential-privacy reading.} The Manski bound \eqref{eq:manski} says the retained-data distribution is
@@ -1044,6 +1051,9 @@ the fact; it must be bounded before the fact.
 \bibitem{ong2024} I. Ong, A. Almahairi, V. Wu, W.-L. Chiang, T. Wu, J. E. Gonzalez, M. W. Kadous, I. Stoica. RouteLLM:
   Learning to Route LLMs with Preference Data. \emph{arXiv:2406.18665}, 2024.
 \bibitem{manski2003} C. Manski. \emph{Partial Identification of Probability Distributions.} Springer, 2003.
+\bibitem{dominitz2026} J. Dominitz, C. Manski. A decision theoretic perspective on artificial superintelligence:
+coping with missing data problems in prediction and treatment choice. \emph{Theory and Decision}, 2026.
+doi:10.1007/s11238-026-10150-7.
 \bibitem{horowitz2000} J. Horowitz, C. Manski. Nonparametric Analysis of Randomized Experiments with Missing Covariate and
   Outcome Data. \emph{J. American Statistical Association} 95(449), 2000.
 \bibitem{miao2018} W. Miao, Z. Geng, E. Tchetgen Tchetgen. Identifying Causal Effects with Proxy Variables of an Unmeasured
