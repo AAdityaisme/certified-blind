@@ -927,24 +927,6 @@ extend to open-world latent slices via representation-space or cross-model disag
 generalizes beyond triage (medical triage, edge-device filtering, log retention, data curation), motivating
 a taxonomy of deployed irreversible gatekeepers scored by exposure.
 
-\section{Ethics and Responsible Disclosure}
-This is an attack paper, and we treat it as dual-use. Four considerations guided us. \textbf{(1) Defense is
-the contribution.} The threat we describe is one defenders currently cannot detect at all---the discarded data
-is gone, so no existing audit applies. We publish the threat \emph{together with} its remedy (the stratified
-probe, discovery scan, and certification-by-random-downlink), which is cheap in labels and deployable today
-where a lawful clean-reference channel exists (the data-minimization tension of Sec.~\ref{sec:limits} is the
-binding constraint in some regimes); on balance this arms defenders more than attackers. \textbf{(2) No real system was harmed.} All experiments run on public
-benchmarks (CloudSEN12, Civil Comments, RouteLLM) with synthetic poisoning; we attack a re-implementation of
-the published CloudScout architecture, never a live flight or production system, and compromise no user data.
-\textbf{(3) The attack assumes training-time access} (a strong prerequisite we state plainly), and our
-deeper claim is that even \emph{non-adversarial} label bias can produce certified harm, which is a warning to
-system builders, not a recipe. \textbf{(4) The identity slice is a scientific instance, not a target.} A
-neutral-term control (the topic ``water'', matched $\sim$1\% prevalence) is suppressed identically under the
-same certified attack ($0.01{\to}0.78$), confirming the mechanism is \emph{identity-agnostic}---it destroys any
-rare content-defined slice; we foreground an identity term only because that is where the harm is societally
-consequential. We recommend operators of irreversible gatekeepers adopt the random-reference certification of
-Sec.~\ref{sec:future} before deployment.
-
 \ifgovernance
 \section{Accountability, Policy, and the Lock-in Stakes}
 Read beyond security, the results formalize accountability \emph{under physical evidence
@@ -1019,6 +1001,80 @@ is to stop auditing the survivors and inject a small external reference. The har
 the fact; it must be bounded before the fact.
 
 % ---- Figures ----
+
+\section*{Ethical Considerations}
+This is an attack paper, and we treat it as dual-use. Four considerations guided us. \textbf{(1) Defense is
+the contribution.} The threat we describe is one defenders currently cannot detect at all---the discarded data
+is gone, so no existing audit applies. We publish the threat \emph{together with} its remedy (the stratified
+probe, discovery scan, and certification-by-random-downlink), which is cheap in labels and deployable today
+where a lawful clean-reference channel exists (the data-minimization tension of Sec.~\ref{sec:limits} is the
+binding constraint in some regimes); on balance this arms defenders more than attackers. \textbf{(2) No real system was harmed.} All experiments run on public
+benchmarks (CloudSEN12, Civil Comments, RouteLLM) with synthetic poisoning; we attack a re-implementation of
+the published CloudScout architecture, never a live flight or production system, and compromise no user data.
+\textbf{(3) The attack assumes training-time access} (a strong prerequisite we state plainly), and our
+deeper claim is that even \emph{non-adversarial} label bias can produce certified harm, which is a warning to
+system builders, not a recipe. \textbf{(4) The identity slice is a scientific instance, not a target.} A
+neutral-term control (the topic ``water'', matched $\sim$1\% prevalence) is suppressed identically under the
+same certified attack ($0.01{\to}0.78$), confirming the mechanism is \emph{identity-agnostic}---it destroys any
+rare content-defined slice; we foreground an identity term only because that is where the harm is societally
+consequential. We recommend operators of irreversible gatekeepers adopt the random-reference certification of
+Sec.~\ref{sec:future} before deployment.
+
+\section*{Open Science}
+All artifacts needed to reproduce this paper are released: the experiment scripts for the three domains, the
+data loaders and slice definitions, the model and training configurations, every result file
+(\texttt{results/*.json}) from which the numbers in the text are read, the figure-generation scripts, and the
+\LaTeX\ source. A one-command check (\texttt{make verify}) re-runs the deterministic theory and defense
+experiments with no data download and asserts that the golden values quoted in the text reproduce exactly.
+The remaining experiments are tiered by data volume: the curation and routing experiments fetch their public
+datasets (Civil Comments \cite{borkan2019}; the RouteLLM judge battles \cite{ong2024}) automatically, and the
+satellite experiments re-download CloudSEN12/CloudSEN12+ \cite{aybar2022,aybar2024}, the Landsat-8 Biome snow
+scenes, and KappaSet through included scripts (\texttt{make restore}), since the raw imagery ($\sim$60~GB)
+is too large to redistribute; the CloudScout weights used as the clean baseline are the checkpoint publicly
+released by Du et al. \cite{du2024}. All data are public benchmarks used under their published licenses; no
+new human data were collected. The only known nondeterminism is floating-point variation in CNN training on
+Apple-Silicon/CPU at the $10^{-3}$--$10^{-2}$ level, documented in the artifact; the golden values checked by
+\texttt{make verify} are exact.
+\ifarxiv
+Repository: \url{https://github.com/AAdityaisme/certified-blind}.
+\else
+The artifact is shared through an anonymized repository for review and will be deposited on Zenodo upon
+acceptance.
+\fi
+
+\ifarxiv\else
+\section*{LLM Usage Considerations}
+LLMs were used for editorial purposes in this manuscript, and all outputs were inspected by the authors to
+ensure accuracy and originality. We disclose the fuller extent below, since it goes beyond editing.
+
+\textbf{Accountability and correctness.} An LLM coding assistant (Anthropic's Claude, through the Claude Code
+environment) was used throughout the project: to draft and revise prose; to write and refactor experiment,
+analysis, and figure code; to run structured adversarial self-review passes in which the assistant was
+prompted as a hostile referee against the theorems, the numerical claims, and the related-work positioning;
+and to build the reference-verification tooling. The author is responsible for every claim. Every theorem
+statement and proof was checked by hand by the author and independently re-derived in a separate adversarial
+pass; every headline number in the text is a golden value read from the artifact's result files and
+regenerated by \texttt{make verify}; every bibliography entry was resolved against arXiv and Crossref
+metadata by script and then inspected by the author. No reference, quotation, or result in this paper
+originates from an LLM's recollection.
+
+\textbf{Transparency.} No LLM is part of the method or the evaluation. The gatekeepers studied are a
+four-band CNN, a DistilBERT and a TF-IDF/logistic-regression classifier, and a MiniLM-embedding router; the
+routing experiment uses the public RouteLLM preference dataset rather than live LLM queries; no experimental
+datum was generated by an LLM. The research questions, threat model, theorems, and experimental design were
+developed by the author. Where the assistant proposed an argument, a bound, or a framing, it was treated as
+a conjecture to be independently derived and validated, and several such proposals were rejected during the
+adversarial passes. Because the assistant does not enter the methodology, the reproducibility of the results
+does not depend on it.
+
+\textbf{Responsibility.} No LLM was trained or fine-tuned for this work. All models are small and were trained
+on a single consumer laptop (Apple M4 Pro, MPS backend); each CNN run takes about two minutes, and the entire
+experimental record was produced without cluster, cloud-GPU, or LLM-inference compute. Model sizes were chosen
+to match the deployed systems being studied (CloudScout-class onboard CNNs; DistilBERT-class curation
+filters), not for scale. All datasets are public benchmarks used under their published licenses; the Civil
+Comments identity annotations are used as released, without re-annotation, and no new human data were
+collected.
+\fi
 
 \begin{thebibliography}{99}
 \bibitem{aybar2022} C. Aybar et al. CloudSEN12, a global dataset for cloud and cloud-shadow understanding in Sentinel-2.
@@ -1136,16 +1192,6 @@ doi:10.1007/s11238-026-10150-7.
 \bibitem{frcp37e} Fed.\ R.\ Civ.\ P.\ 37(e) (as amended Dec.\ 1, 2015).
 \fi
 \end{thebibliography}
-
-\vspace{4pt}\noindent\footnotesize\emph{Artifact.} All experiment scripts, result files, figures, and a
-one-command reproducibility check (\texttt{make verify}) are provided with the submission; a data-free tier
-reproduces the theory and defense results exactly. Every headline number in the text is a golden value read
-from the artifact's \texttt{results/*.json}, and the figures render from the same files.
-\ifarxiv
-Repository: \url{https://github.com/AAdityaisme/certified-blind}.
-\else
-Repository link anonymized for review.
-\fi
 
 \appendices
 \section{Proofs}
