@@ -39,3 +39,6 @@ models/cloudscout/.git/
 # arXiv submission bundle — regenerable via `make arxiv`
 paper/arxiv_submission/
 paper/arxiv_submission.tar.gz
+
+# macOS/iCloud duplicate copies ("name 2.ext")
+* [0-9].*
